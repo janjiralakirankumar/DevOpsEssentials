@@ -21,10 +21,10 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.2.8/terraform_1.2.8_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.5.4/terraform_1.5.4_linux_amd64.zip
 ```
 ```
-unzip terraform_1.2.8_linux_amd64.zip
+unzip terraform_1.5.4_linux_amd64.zip
 ```
 ```
 ls
@@ -379,6 +379,7 @@ the course document which gives screenshots
 ## Lab 3: Configure Jenkins
 
 
+cd~
 Copy private key to Jenkins server so that we can SSH into docker server from jenkins server
 ```
 ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
