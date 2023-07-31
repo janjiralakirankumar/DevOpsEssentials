@@ -631,15 +631,17 @@ Once the loadbuild is successful, to access the tomcat server page, you can use 
 http://<docker ip address>:8080/hello-world-war-1.0.0/
 http://3.95.192.77:8080/hello-world-war-1.0.0/
 
+### Still if this is now working follow below steps
+```
+mkdir  /var/lib/jenkins
+```
+```
+mkdir /var/lib/jenkins/.ssh
+```
+```
+cp /home/ubuntu/.ssh/known_host /var/lib/jetnkins/.ssh/
+```
 
 Clean up the Instances
 
-We can now terminate all the 3 instances. 
-
-
-
-
-
-
-
-
+We can now terminate all the 3 instances.
