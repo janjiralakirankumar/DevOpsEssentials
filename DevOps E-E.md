@@ -480,13 +480,13 @@ press esc
 :g/8080/s//9999/g  hit enter
 /9999 hit enter to verify
 
-To exit press ctrl+c
-
 Now restart the system for the changes to take effect
 ```
 sudo service tomcat9 restart
 sudo service tomcat9 status
 ```
+To exit press ctrl+c
+
 Once the Tomcat service restart is successful, go to your web browser and enter Jenkins
 Server IP address followed by 9999 port, you can check the Tomcat running on port 9999 
 on the same machine. http://< Your Jenkins Public IP >:9999
