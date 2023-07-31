@@ -186,7 +186,7 @@ terraform apply -auto-approve
 ```
 cat /etc/ansible/hosts
 ```
-### To update Jenkins & Docker Public IP addresses (Optional)
+To update Jenkins & Docker Public IP addresses (Optional)
 ```
 sudo vi /etc/ansible/hosts 
 ```
