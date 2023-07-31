@@ -186,7 +186,8 @@ terraform apply -auto-approve
 ```
 cat /etc/ansible/hosts
 ...
-# To update IP addresses
+
+### To update IP addresses
 ...
 sudo vi /etc/ansible/hosts 
 ```
