@@ -480,6 +480,7 @@ press esc
 :g/8080/s//9999/g  hit enter
 /9999 hit enter to verify
 
+To exit press ctrl+c
 
 Now restart the system for the changes to take effect
 ```
