@@ -186,7 +186,8 @@ terraform apply -auto-approve
 ```
 cat /etc/ansible/hosts
 
-# Use only to update IP addressess
+# To update IP addresses
+...
 sudo vi /etc/ansible/hosts 
 ```
 It will show ip addresses of jenkins server and docker server as below.
