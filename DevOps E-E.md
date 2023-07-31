@@ -184,7 +184,8 @@ terraform apply -auto-approve
 ```
 ### After the terraform code is executed, check hosts inventory file and ensure below output (sample)
 ```
-sudo vi /etc/ansible/hosts
+cat /etc/ansible/hosts
+sudo vi /etc/ansible/hosts (Use only to update IP addressess)
 ```
 It will show ip addresses of jenkins server and docker server as below.
 
