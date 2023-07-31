@@ -497,8 +497,9 @@ to tomcat webapps directory to serve the web content
 ```
 sudo cp -R /var/lib/jenkins/workspace/hello-world/target/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps
 ```
-Once this is done, go to your browser and enter Jenkins Server Public IP address followed 
-by port 9999 and path Ã¢â‚¬Ëœhello-world-war-1.0.0Ã¢â‚¬â„¢ and you can see tomcat is now serving your web page
+Once this is done, go to your browser and enter Jenkins Server Public IP address followed by port 9999 and path 
+
+you can see tomcat is now serving your web page
 (URL:  http://< Your Jenkins Public IP >:9999/hello-world-war-1.0.0/)
 
 http://184.72.112.155:9999/hello-world-war-1.0.0/
