@@ -271,7 +271,7 @@ unzip hello-world-master.zip -d hello-world-master
 ```
 ls
 rm hello-world-master.zip
-cd hello-world-master
+cd hello-world-master && cd hello-world-master
 ls
 ```
 ```
