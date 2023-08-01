@@ -38,7 +38,7 @@ ls
 terraform -v
 ```
 ```
-rm terraform_1.2.8_linux_amd64.zip
+rm terraform_1.5.4_linux_amd64.zip
 ```
 
 ### Task 2: Install AWS CLI and Ansible
