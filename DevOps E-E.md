@@ -489,9 +489,8 @@ sudo service tomcat9 status
 ```
 To exit press ctrl+c
 
-* Once the Tomcat service restart is successful, go to your web browser and enter Jenkins
-Server IP address followed by 9999 port.
-Example: http://< Your Jenkins Public IP >:9999    or     http://184.72.112.155:9999
+* Once the Tomcat service restart is successful, go to your web browser and enter Jenkins Server IP address followed by 9999 port.
+* Example: http://< Your Jenkins Public IP >:9999     or     http://184.72.112.155:9999
 * Now you can check the Tomcat running on port 9999 on the same machine.
  
 * We need to copy the .war file created in the previous Jenkins build from the Jenkins workspace 
