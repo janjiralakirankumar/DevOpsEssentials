@@ -538,20 +538,20 @@ Observe the successful load build in Jenkins page.
 * launch method to be set as Launch agents via SSH.
 * In the host section, give the public IP of the Docker instance.
 * For Credentials for this Docker node, click on the dropdown button named Add and then click on Jenkins;
-* Then in the next window, select kind as SSH username and private key give username as ubuntu,
-* select Enter directly proceed to a private key value below, once it is done.
+* Then in the next window, select kind as SSH username and private key (give username as ubuntu),
+* select Enter directly and proceed to a private key value below,
 * Click on the Add button.
+* once it is done.
 
 You can get the private key as below: Goto your CICD anchor EC2 machine.  
 ```
 cd ~/.ssh
 cat id_rsa
 ```
-Copy the entire content including first line and last line. Paste it into the space provided for 
+Copy the entire content including the first line and last line. Paste it into the space provided for 
 private key
 
-In SSH Credentials, choose newly created ubuntu. Host Key Verification Strategy select Known 
-host file Verification Strategy. 
+In SSH Credentials, choose the newly created Ubuntu. Host Key Verification Strategy Select Known host file Verification Strategy. 
 
 SSH into your Docker Host. Perform the below steps to create a Dockerfile 
 in /home/ubuntu directory.
@@ -569,17 +569,17 @@ FROM tomcat:8-jre8
 # Maintainer
 MAINTAINER "CloudThat"
 
-# Copy the war file to images tomcat path
+# Copy the war file to the images tomcat path
 ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/
 ```
 
-Go to your Jenkins Home page, click on drop-down hello-world project, select Configure on the left 
-tab. In General Tab, check Restrict where this project can be run and enter Label Expression as 
+Go to your Jenkins Home page, click on the drop-down hello-world project, and select Configure on the left 
+tab. In General, Tab, check Restrict where this project can be run and enter Label Expression as 
 docker-slave
 
 
 Go to Post Steps Tab, select Run only if the build succeeds then click on Add post-build step select 
-Execute shell from the drop-down and type the following commands in the shell and Save
+Execute the shell from the drop-down and type the following commands in the shell and Save
 
 execute shell commands in Jenkins:
 ```
@@ -589,8 +589,7 @@ sudo docker container rm -f yourname-helloworld-container
 sudo docker build -t helloworld-image .
 sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image
 ```
-### Note - you may replace 'yourname' with your actual first name (line 3 and 5).
-
+### Note - you may replace 'yourname' with your actual first name (lines 3 and 5).
 
 Now you can build your hello-world project by clicking on Build Now or by making a small change in
 Github files. 
