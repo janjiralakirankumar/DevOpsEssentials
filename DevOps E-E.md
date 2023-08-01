@@ -209,7 +209,7 @@ sudo vi /etc/ansible/hosts
 ```
 ssh ubuntu@<Jenkins ip address>
 ```
-### Set the hostname as
+#### Set the hostname as
 ```
 sudo hostnamectl set-hostname Jenkins
 ```
@@ -217,7 +217,7 @@ sudo hostnamectl set-hostname Jenkins
 ```
 ssh ubuntu@<Docker ip address>  
 ```
-### Set the hostname as
+#### Set the hostname as
 ```
 sudo hostnamectl set-hostname Docker
 ```
