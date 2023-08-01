@@ -633,7 +633,7 @@ http://3.95.192.77:8080/hello-world-war-1.0.0/
 
 ### Still if this is now working follow below steps
 ```
-mkdir  /var/lib/jenkins
+mkdir /var/lib/jenkins
 ```
 ```
 mkdir /var/lib/jenkins/.ssh
