@@ -511,17 +511,17 @@ sudo apt remove tomcat9 -y
 
 ### Task 1:Configure Git WebHook in Jenkins
 
-1. Go to Jenkins webpage. Manage Jenkins > Manage Plugins
+1. Go to Jenkins webpage. Manage Jenkins > Plugins
 2. Go to Available Tab, Search for GitHub Integration. Click on the GitHub Integration Plugin and then on Install without restart
 3. Once the installation is completed, click on Go back to the top page.
 4. In your hello-world project, Click on Configure.
 5. Go to Build Triggers and enable the GitHub hook trigger for GITScm polling. Then Save.
 6. Go to your GitHub website, and inside the hello-world repository > Settings Tab > Webhooks and Click on the Add Webhook.
-7. Fill in the details below.
-#### Payload URL : 
-* http://<<jenkins-publicIP>>/github-webhook/
+7. Now fill in the details as below.
+   #### Payload URL Example: 
+* http://< jenkins-PublicIP >/github-webhook/
 * http://184.72.112.155:8080/github-webhook/
-* Content-type: application/JSON
+* Content type: application/JSON
 Then, Click on Add Webhook.
 
 
