@@ -409,7 +409,7 @@ the course document which gives screenshots
 
 Copy the private key to the Jenkins server so that we can SSH into the docker server from Jenkins server
 ```
-cd~
+cd ~
 ```
 ```
 ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
