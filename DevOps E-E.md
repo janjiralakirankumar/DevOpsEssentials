@@ -411,11 +411,9 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 afbe8d33e25b4b908c0b9f91546f09e6
 
-Now, go to the browser and enter Jenkins URL
-http://54.227.66.155:8080/
-
-Under Unlock Jenkins, enter the above Initial password. Continue.
-Click on Install suggested Plugins on Customize Jenkins page.
+1. Now, go to the browser and enter Jenkins URL as example http://54.227.66.155:8080/
+2. Under Unlock Jenkins, enter the above Initial password. Continue.
+3. Click on Install suggested Plugins on Customize Jenkins page.
 
 Once the plugins are installed, it gives you the page where you can create new admin user id and password. 
 
