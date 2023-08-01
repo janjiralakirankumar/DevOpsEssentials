@@ -193,10 +193,6 @@ terraform apply -auto-approve
 ```
 cat /etc/ansible/hosts
 ```
-To update Jenkins & Docker Public IP addresses (Optional)
-```
-sudo vi /etc/ansible/hosts 
-```
 It will show ip addresses of jenkins server and docker server as below.
 
 [jenkins-server]
@@ -204,6 +200,10 @@ It will show ip addresses of jenkins server and docker server as below.
 [docker-server]
 34.203.249.54
 
+To update Jenkins & Docker Public IP addresses (Optional)
+```
+sudo vi /etc/ansible/hosts 
+```
 
 ### Now ssh into docker-server & jenkins-server and check they are accessible
 ```
