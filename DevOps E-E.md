@@ -478,20 +478,20 @@ To exit press ctrl+c
 
 * Once the Tomcat service restart is successful, go to your web browser and enter Jenkins
 Server IP address followed by 9999 port.
-* you can check the Tomcat running on port 9999 on the same machine.
-* http://< Your Jenkins Public IP >:9999        http://184.72.112.155:9999
+Example: http://< Your Jenkins Public IP >:9999    or     http://184.72.112.155:9999
+* Now you can check the Tomcat running on port 9999 on the same machine.* 
  
-We need to copy the .war file created in the previous Jenkins build from Jenkins workspace 
+* We need to copy the .war file created in the previous Jenkins build from Jenkins workspace 
 to tomcat webapps directory to serve the web content
 ```
 sudo cp -R /var/lib/jenkins/workspace/hello-world/target/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps
 ```
-Once this is done, go to your browser and enter Jenkins Server Public IP address followed by port 9999 and path 
+* Once this is done, go to your browser and enter Jenkins Server Public IP address followed by port 9999 and path.
+Example:
+** (URL:  http://< Your Jenkins Public IP >:9999/hello-world-war-1.0.0/)
+** http://184.72.112.155:9999/hello-world-war-1.0.0/
+* Now, you can see tomcat is now serving your web page
 
-you can see tomcat is now serving your web page
-(URL:  http://< Your Jenkins Public IP >:9999/hello-world-war-1.0.0/)
-
-http://184.72.112.155:9999/hello-world-war-1.0.0/
 
 Stop tomcat9 and remove it. Else it will slow down Jenkins
 ```
