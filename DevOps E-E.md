@@ -548,13 +548,10 @@ You can get the private key as below: Goto your CICD anchor EC2 machine.
 cd ~/.ssh
 cat id_rsa
 ```
-Copy the entire content including the first line and last line. Paste it into the space provided for 
-private key
-
-In SSH Credentials, choose the newly created Ubuntu. Host Key Verification Strategy Select Known host file Verification Strategy. 
-
-SSH into your Docker Host. Perform the below steps to create a Dockerfile 
-in /home/ubuntu directory.
+* Copy the entire content including the first line and last line. Paste it into the space provided for the private key
+* In SSH Credentials, choose the newly created Ubuntu.
+* Host Key Verification Strategy Select as Known host file Verification Strategy. 
+* SSH into your Docker Host. Perform the below steps to create a Dockerfile in /home/ubuntu directory.
 ```
 cd ~
 ```
@@ -597,8 +594,8 @@ Github files.
 Once the loadbuild is successful, to access the tomcat server page, you can use below:
 
 ### Use http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/ in your browser to see the website
-http://<docker ip address>:8080/hello-world-war-1.0.0/
-http://3.95.192.77:8080/hello-world-war-1.0.0/
+* http://<docker ip address>:8080/hello-world-war-1.0.0/
+* http://3.95.192.77:8080/hello-world-war-1.0.0/
 
 ### Still if this is now working follow below steps
 ```
