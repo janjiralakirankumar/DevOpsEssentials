@@ -205,7 +205,7 @@ To update Jenkins & Docker Public IP addresses (Optional)
 sudo vi /etc/ansible/hosts 
 ```
 
-### Now ssh into jenkins-server and check they are accessible from anchor EC2
+#### Now ssh into jenkins-server and check they are accessible from anchor EC2
 ```
 ssh ubuntu@<Jenkins ip address>
 ```
@@ -213,7 +213,7 @@ ssh ubuntu@<Jenkins ip address>
 ```
 sudo hostnamectl set-hostname Jenkins
 ```
-### Now ssh into docker-server and check they are accessible from anchor EC2
+#### Now ssh into docker-server and check they are accessible from anchor EC2
 ```
 ssh ubuntu@<Docker ip address>  
 ```
