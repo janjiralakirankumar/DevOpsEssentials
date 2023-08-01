@@ -389,14 +389,14 @@ git push origin master
 
 
 
-### After this, you have to complete Jenkins setup and Docker setup. You can refer to 
+### After this, you have to complete the Jenkins setup and Docker setup. You can refer to 
 the course document which gives screenshots 
 
 
 ## Lab 3: Configure Jenkins
 
 
-Copy private key to Jenkins server so that we can SSH into docker server from jenkins server
+Copy the private key to the Jenkins server so that we can SSH into the docker server from Jenkins server
 ```
 cd~
 ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
@@ -405,12 +405,13 @@ ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu
 SSH into the Jenkins server and get the initial password for Jenkins
 ```
 ssh ubuntu@3.93.145.99
+```
+```
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 afbe8d33e25b4b908c0b9f91546f09e6
 
 Now, go to the browser and enter Jenkins URL
-http://3.93.145.99:8080/
 http://54.227.66.155:8080/
 
 Under Unlock Jenkins, enter the above Initial password. Continue.
