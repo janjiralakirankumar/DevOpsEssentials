@@ -594,7 +594,7 @@ Github files.
 Once the loadbuild is successful, to access the tomcat server page, you can use below:
 
 ### Use http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/ in your browser to see the website
-* http://<docker ip address>:8080/hello-world-war-1.0.0/
+* http://< docker ip address >:8080/hello-world-war-1.0.0/
 * http://3.95.192.77:8080/hello-world-war-1.0.0/
 
 ### Still if this is now working follow below steps
