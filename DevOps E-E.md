@@ -3,9 +3,10 @@
 ## Lab 1: Use terraform to setup the docker server and jenkins server for CICD Lab
 
 
-Launch Ubuntu 20.04 t2.micro EC2 machine.
-Note: In the security group, open ports 22, 80, 8080, 9999 and 4243. 
-Use the EC2 tag "CICDLab-yourname'
+Launch Ubuntu 20.04 t2.micro EC2 Instance in us-east-1 Region and Use the EC2 tag "CICDLab-yourname'
+
+##### Note: In the security group, open ports 22, 80, 8080, 9999 and 4243.
+
 
 ### Task 1: Install Terraform
 
@@ -37,15 +38,18 @@ rm terraform_1.2.8_linux_amd64.zip
 ### Task 2: Install AWS CLI and Ansible
 ```
 sudo apt-get install python3-pip -y
+```
+```
 sudo pip3 install awscli boto boto3 ansible
 ```
 ```
 aws configure
 ```
-example: 
-Access Key ID:
+Enter the Credentials as #### Example: 
+
+#### Access Key ID:
 AKIAXMWJXSSHRD27T6SC
-Secret Access Key:
+#### Secret Access Key:
 H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT
 
 ### If you need to create new credentials, Follow below steps
@@ -241,11 +245,10 @@ http://44.208.26.120:4243/version
 ## Lab 2: Git operations
 
 
-Crteate the github repository based on the method shown in the course document
-Create an empty repository in your github account. Name = hello-world
+Create the GitHub repository based on the method shown in the course document
+Create an empty repository with the name "hello-world" in your GitHub account.
 
-After that, lets operate in local Git repository
-
+After that, let's operate in the local Git repository
 
 ### Initializing the local git repository and committing changes
 
@@ -253,11 +256,11 @@ On the CICD anchor EC2, do the below:
 ```
 cd ~/
 ```
-Check GIT version. 
+Check the GIT version. 
 ```
 git --version
 ```
-If it does not exist, then you can install with below command. Else no need to execute below line:  
+If it does not exist, then you can install it with the below command. Else no need to execute the below line:  
 ```
 sudo apt install git -y
 ```
@@ -271,6 +274,8 @@ unzip hello-world-master.zip -d hello-world-master
 ```
 ls
 rm hello-world-master.zip
+```
+```
 cd hello-world-master && cd hello-world-master
 ls
 ```
@@ -329,6 +334,8 @@ When you enter the token, the cursor does not move. It's the expected behavior
 ```
 git branch dev
 git branch
+```
+```
 git checkout dev
 git branch
 ```
@@ -346,6 +353,8 @@ Press INSERT and add the below content
 Save vi using ESCAPE + :wq!
 ```
 git status
+```
+```
 git add index.html
 git status
 ```
@@ -356,18 +365,22 @@ git log
 ```
 git push origin dev
 ```
-when it asks for password, enter PAT Token
+when it asks for a password, enter PAT Token
 Token: <your PAT>
 ```
 git branch
 git branch prod
+```
+```
 git branch
 git checkout prod
+```
+```
 git branch
 git merge dev
 git push origin prod
 ```
-Token: <PAT>
+Enter Token: <PAT>
 ```
 git checkout master
 git merge prod
