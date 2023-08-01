@@ -135,7 +135,9 @@ Now, create the variables file with all variables to be used in the main config 
 ```
 vi variables.tf
 ```
-Add following contents into variables.tf. Please update the keyname and sg_id below.
+Add following contents into variables.tf. 
+### Edit the security group id and keyname in variables.tf
+
 ```
 variable "region" {
     default = "us-east-1"
@@ -171,8 +173,6 @@ variable "my-servers" {
   default = ["jenkins-server", "docker-server"]
 }
 ```
-### Edit the security group id and keyname in variables.tf
-
 ### Now, execute the terraform config files to launch the servers
 ```
 terraform init
