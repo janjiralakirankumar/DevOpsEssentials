@@ -479,86 +479,68 @@ To exit press ctrl+c
 * Once the Tomcat service restart is successful, go to your web browser and enter Jenkins
 Server IP address followed by 9999 port.
 Example: http://< Your Jenkins Public IP >:9999    or     http://184.72.112.155:9999
-* Now you can check the Tomcat running on port 9999 on the same machine.* 
+* Now you can check the Tomcat running on port 9999 on the same machine.
  
-* We need to copy the .war file created in the previous Jenkins build from Jenkins workspace 
+* We need to copy the .war file created in the previous Jenkins build from the Jenkins workspace 
 to tomcat webapps directory to serve the web content
 ```
 sudo cp -R /var/lib/jenkins/workspace/hello-world/target/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps
 ```
 * Once this is done, go to your browser and enter Jenkins Server Public IP address followed by port 9999 and path.
+
 Example:
-** (URL:  http://< Your Jenkins Public IP >:9999/hello-world-war-1.0.0/)
-** http://184.72.112.155:9999/hello-world-war-1.0.0/
-* Now, you can see tomcat is now serving your web page
-
-
-Stop tomcat9 and remove it. Else it will slow down Jenkins
+* (URL:  http://< Your Jenkins Public IP >:9999/hello-world-war-1.0.0/)
+* http://184.72.112.155:9999/hello-world-war-1.0.0/
+* Now, you can see Tomcat is now serving your web page
+* Now, Stop tomcat9 and remove it. Else it will slow down Jenkins
 ```
 sudo service tomcat9 stop
 sudo apt remove tomcat9 -y
 ```
-
-
 
 ### Lab 4: Using GitWebHook to build your code automatically using Jenkins
 
 
 ### Task 1:Configure Git WebHook in Jenkins
 
-Go to Jenkins webpage. Manage Jenkins > Manage Plugins
-
-Go to Available Tab, Search for GitHub Integration. Click on the GitHub Integration Plugin 
-and then on Install without restart
-
-Once the installation is completed, click on Go back to the top page
-
-In your hello-world project, Click on Configure. Go to Build Triggers and enable GitHub hook 
-trigger for GITScm polling. Then Save
-
-Go to your GitHub website, and inside hello-world repository under Settings Tab, then Webhooks. 
-Click on the Add webhook
-
-Fill the details as below.
-Payload URL : http://<<jenkins-publicIP>>/github-webhook/
-
-http://184.72.112.155:8080/github-webhook/
-Content type: application/json
-Click Add webhook
+1. Go to Jenkins webpage. Manage Jenkins > Manage Plugins
+2. Go to Available Tab, Search for GitHub Integration. Click on the GitHub Integration Plugin and then on Install without restart
+3. Once the installation is completed, click on Go back to the top page.
+4. In your hello-world project, Click on Configure.
+5. Go to Build Triggers and enable the GitHub hook trigger for GITScm polling. Then Save.
+6. Go to your GitHub website, and inside the hello-world repository > Settings Tab > Webhooks and Click on the Add Webhook.
+7. Fill in the details below.
+#### Payload URL : 
+* http://<<jenkins-publicIP>>/github-webhook/
+* http://184.72.112.155:8080/github-webhook/
+* Content-type: application/JSON
+Then, Click on Add Webhook.
 
 
 ### Task 2: Verify the working of WebHook by editing the Source Code
 
-Now change your source code in the hello-world repository by editing hello.txt file.
-Make a minor change and commit
+1. Now change your source code in the hello-world repository by editing hello.txt file and Make a minor change and commit
+2. As the source code got changed, Jenkins will get triggered by the WebHook and will start building the new source code.
+3. Go to Jenkins and you can see a build is happening.
 
-As the source code got changed, Jenkins will get triggered by the WebHook and will start building the 
-new source code. Go to Jenkins and you can see a build is happening.
-
-Observe successful load build in Jenkins page.
-
-
-
+Observe the successful load build in Jenkins page.
 
 ### Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
-
-Go to Jenkins' home page and click on the Manage Jenkins option on the left. 
-Click on Manage Nodes and Clouds option
-
-Click on the option New Node in the next window. Give the node name as docker-slave and then 
-click on the ok button. Select 'permanent agent'
-
-Fill out the details for the node docker-slave as given below. The name should be given as 
-docker-slave, Remote Root Directory as Ëœ/home/ubuntu/, labels to be docker-slave, usage to 
-be given as use this node as much as possible and launch method to be set as Launch agents 
-via SSH. In the host section, give the public IP of the Docker instance.
-
-
-For Credentials for this Docker node, click on the dropdown button named Add and then click on 
-Jenkins; then in the next window, select kind as SSH username and private key give username 
-as ubuntu, select Enter directly proceed to a private key value below. Click on the Add button 
-once it is done.
+1. Go to Jenkins' home page and click on the Manage Jenkins option on the left.
+2. Click on Manage Nodes and Clouds option
+3. Click on the option New Node in the next window. Give the node name as docker-slave and then click on the ok button. Select 'permanent agent'
+4. Fill out the details for the node docker-slave as given below.
+* The name should be given as docker-slave,
+* Remote Root Directory as Ëœ/home/ubuntu/,
+* labels to be docker-slave,
+* usage to be given as use this node as much as possible
+* launch method to be set as Launch agents via SSH.
+* In the host section, give the public IP of the Docker instance.
+* For Credentials for this Docker node, click on the dropdown button named Add and then click on Jenkins;
+* Then in the next window, select kind as SSH username and private key give username as ubuntu,
+* select Enter directly proceed to a private key value below, once it is done.
+* Click on the Add button.
 
 You can get the private key as below: Goto your CICD anchor EC2 machine.  
 ```
