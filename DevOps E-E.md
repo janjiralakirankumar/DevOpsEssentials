@@ -419,38 +419,22 @@ afbe8d33e25b4b908c0b9f91546f09e6
 6. Enter the Id and password which you used for Github. (In real life, you must keep the user ids and passwords separate for each account.)
 7. In the next step, on Instance Configuration Page, verify your Jenkins Public IP and Port Number then click on Save and Finish
 
-You will be prompted to the Jenkins Home Page
+#### Now you will be prompted to the Jenkins Home Page
 
-Click on Manage Jenkins > Manage Plugins
-
-Under Manage Plugins, go to the Available tab and search for Maven. Select the Maven Integration 
-Plugin and Unleash Maven Plugin and click Install without restart
-
-Once the installation is completed, click on Go back to the top page
-
-After going back to the Home Page select Manage Jenkins and go to Global Tool Configuration
-
-Inside Global Tool Configuration, look for Maven, and under Maven installations, click Add Maven. 
-Give the Name as Maven, choose Version as 3.8.4 and Save the configuration
-
-Now you need to make a project for your application build, for that select New Item from the 
-Home Page of Jenkins
-
-Enter an item name as hello-world and select the project as Maven Project and then click OK
-
-After you click on OK, you will be prompted to the configure page inside hello-world project. 
-Go to Source Code Management tab, select Source Code Management as Git You need to provide the 
-GitHub Repository URL and GitHub Account Credentials. In the Credentials field, you have to 
-click Add then click on Jenkins.
-
-Then you will get prompted to Jenkins Credentials Provider page of Jenkins. Under Add Credentials, 
-you can add your GitHub Username, Password and Description. Then click on Add
-
-After returning to the Source Code Management Page, click on Credentials and Choose your 
-GitHub Credentials.
-
-Keep all the other values as default and select Build Tab and inside Goals and options put a 
-line as a clean package and save the configuration by clicking on Save.
+1. Click on Manage Jenkins > Manage Plugins
+2. Under Manage Plugins, go to the Available tab and search for Maven. Select the Maven Integration Plugin and Unleash Maven Plugin and click Install without restart
+3. Once the installation is completed, click on Go back to the top page
+4. After going back to the Home Page select Manage Jenkins and go to Global Tool Configuration
+5. Inside Global Tool Configuration, look for Maven, and under Maven installations, click Add Maven. 
+6. Give the Name as Maven, choose Version as 3.8.4, and Save the configuration
+7. Now you need to make a project for your application build, for that select New Item from the Home Page of Jenkins
+8. Enter an item name as hello-world and select the project as Maven Project and then click OK
+9. After you click on OK, you will be prompted to the configure page inside the hello-world project. 
+10. Go to the Source Code Management tab, and select Source Code Management as Git You need to provide the GitHub Repository URL and GitHub Account Credentials.
+11. In the Credentials field, you have to click Add then click on Jenkins.
+12 Then you will get prompted to the Jenkins Credentials Provider page of Jenkins. Under Add Credentials, you can add your GitHub Username, Password, and Description. Then click on Add
+13. After returning to the Source Code Management Page, click on Credentials and Choose your GitHub Credentials.
+14. Keep all the other values as default and select Build Tab and inside Goals and options put a line as a clean package and save the configuration by clicking on Save.
 
 ### 'clean package' command clears the target directory and Builds the project and packages the 
 ### resulting JAR file into the target directory.
