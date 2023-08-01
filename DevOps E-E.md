@@ -416,8 +416,7 @@ afbe8d33e25b4b908c0b9f91546f09e6
 3. Click on Install suggested Plugins on Customize Jenkins page.
 4. Once the plugins are installed, it gives you the page where you can create a new admin user id and password. 
 5. Enter the user id and password then Save & Continue. 
-#### Note: To keep things easier for this training, you may use the same user
-6. Enter the Id and password which you used for Github. (In real life, you must keep the user ids and passwords separate.)
+6. Enter the Id and password which you used for Github. (In real life, you must keep the user ids and passwords separate for each account.)
 7. In the next step, on Instance Configuration Page, verify your Jenkins Public IP and Port Number then click on Save and Finish
 
 You will be prompted to the Jenkins Home Page
