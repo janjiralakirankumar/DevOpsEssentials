@@ -437,12 +437,12 @@ afbe8d33e25b4b908c0b9f91546f09e6
 14. After returning to the Source Code Management Page, click on Credentials and Choose your GitHub Credentials.
 15. Keep all the other values as default and select Build Tab and inside Goals and options put a line as a clean package and save the configuration by clicking on Save.
 
-### 'clean package' command clears the target directory, Builds the project, and packages the resulting JAR file into the target directory.
+#### Note: 'clean package' command clears the target directory, Builds the project, and packages the resulting JAR file into the target directory.
 
-You will get back to the Maven project hello-world and click on Build Now for building the .war file for your application
+16. Now, you will get back to the Maven project hello-world and click on Build Now for building the .war file for your application
 
-### You can go to Workspace > dist folder to see that the .war file is created there.
-### war file will be created in /var/lib/jenkins/workspace/hello-world/target/
+#### You can go to Workspace > dist folder to see that the .war file is created there.
+#### war file will be created in /var/lib/jenkins/workspace/hello-world/target/
 
 ## Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins server
 
