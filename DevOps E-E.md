@@ -295,17 +295,27 @@ git config user.name
 If you need to change it, you can use below:
 ```
 git config --global user.email "< Add your email >"
+```
+```
 git config --global user.name "< Add your Name >"
 ```
 ```
 git status
+```
+```
 git add .
 git status
 ```
 ```
 git log
+```
+```
 git commit -m "This is the first commit"
+```
+```
 git log
+```
+```
 git status
 ```
 ```
@@ -315,25 +325,21 @@ Ex: git remote add origin https://github.com/karthiksen/hello-world.git
 ```
 git remote show origin
 ```
-
-
 ### Task 3: Pushing the Code into your Remote GitHub Repository  
 
-To push code to Github, You need to generate a Personal Access Token (PAT) in github.
-Go to your Github homepage. Click on settings in right side top menu. Click on Developer settings on 
-left side menu bottom. Click on Personal Access Token on left side menu. Click on Generate New Token
-Under 'Select Scopes' select all items. Click on 'generate token'. Copy the token
+* To push code to Github, You need to generate a Personal Access Token (PAT) in github.
+* Go to your Github homepage. Click on settings in the right-side top menu.
+* Click on Developer settings > on the left side menu at the bottom. Click on Personal Access Token and then Click on Generate New Token.
+* Under 'Select Scopes' select all items. Click on 'generate token'. Copy the token
 
-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
+Example: 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
 ```
 git push origin master 
 ```
-when it asks for password, enter the PAT Token
+* when it asks for password, enter the PAT Token
 Token: <enter your PAT> 
-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 # Use your respective PAT
-When you enter the token, the cursor does not move. It's the expected behavior
+* When you enter the token, the cursor does not move. It's the expected behavior
  
-
 ### Task 4: Creating a Git Branch and Pushing into the Remote Repository  
 
 ```
