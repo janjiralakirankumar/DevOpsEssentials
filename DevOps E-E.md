@@ -49,7 +49,7 @@ sudo pip3 install awscli boto boto3 ansible
 ```
 aws configure
 ```
-Enter the Credentials as #### Example: 
+#### Enter the Credentials as below Example: 
 
 #### Access Key ID:
 AKIAXMWJXSSHRD27T6SC
