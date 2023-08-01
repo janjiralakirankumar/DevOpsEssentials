@@ -19,6 +19,8 @@ bash
 ```
 ```
 sudo apt update
+```
+```
 sudo apt install wget unzip -y
 ```
 ```
@@ -30,8 +32,12 @@ unzip terraform_1.5.4_linux_amd64.zip
 ```
 ls
 sudo mv terraform /usr/local/bin
+```
+```
 ls
 terraform -v
+```
+```
 rm terraform_1.2.8_linux_amd64.zip
 ```
 
