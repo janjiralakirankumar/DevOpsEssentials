@@ -435,9 +435,9 @@ afbe8d33e25b4b908c0b9f91546f09e6
 
 #### Now you will be prompted to the Jenkins Home Page
 
-1. Click on Manage Jenkins > Manage Plugins
-2. Under Manage Plugins, go to the Available tab and search for Maven.
-3. Select the Maven Integration Plugin and Unleash Maven Plugin and click Install without restart
+1. Click on Manage Jenkins > Plugins
+2. Under Plugins > the Available tab and search for Maven.
+3. Select the "Maven Integration" Plugin and "Unleash Maven" Plugin and click Install without restart
 4. Once the installation is completed, click on Go back to the top page
 5. After going back to the Home Page select Manage Jenkins and go to Global Tool Configuration
 6. Inside Global Tool Configuration, look for Maven, and under Maven installations, click Add Maven. 
