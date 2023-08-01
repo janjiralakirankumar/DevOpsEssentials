@@ -76,9 +76,8 @@ aws s3 ls
 
 ### Task 3: Use terraform to launch 2 servers. 
 
-* We need 2 additional servers docker-server and jenkins-server
-* For git-ws, we will use the anchor EC2 (from where we are operating now) 
-  (You can use t2.micro for Docker/Jenkins)
+* We need 2 additional servers (docker-server and jenkins-server)
+* For git-ws, we will use the anchor EC2 from where we are operating now (You can use t2.micro for Docker/Jenkins)
 
 ### Create the terraform directory and set up the config files in it
 ```
