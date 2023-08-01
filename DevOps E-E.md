@@ -195,9 +195,9 @@ cat /etc/ansible/hosts
 ```
 It will show ip addresses of jenkins server and docker server as below.
 
-[jenkins-server]
+* [jenkins-server]
 44.202.164.153
-[docker-server]
+* [docker-server]
 34.203.249.54
 
 To update Jenkins & Docker Public IP addresses (Optional)
