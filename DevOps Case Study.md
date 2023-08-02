@@ -139,14 +139,3 @@ http://PublicIP:NodePort_no/v1/books/navathe
 http://PublicIP:NodePort_no/v1/books/hightower
 http://PublicIP:NodePort_no/v1/books/ritchie
 ```
-
-
-                      
- 
-  
-
-
-
-
-
-
