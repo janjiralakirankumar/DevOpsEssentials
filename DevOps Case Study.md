@@ -2,15 +2,15 @@
 
 ## Python Task
 
-### Guideline for Python ,API with Python, RDBMS ( Capestone_project ):
+#### Guideline for Python, API with Python, RDBMS ( Capestone_project ):
 
-### Code is provided for the tasks but somewhere code is missing, and format is not appropriate. So, do it yourself and complete the provided tasks.
+#### Code is provided for the tasks but somewhere code is missing, and the format is not appropriate. So, do it yourself and complete the provided tasks.
 
-### TASK 1: Create a Restful API in python with Flask for displaying the list of employees with browser and Postman, record the screenshots for both.
+#### TASK 1: Create a Restful API in Python with Flask for displaying the list of employees with browser and Postman, and record the screenshots for both.
 
-### TASK 2: Create a Restful API in python with Flask for displaying a particular emp_no. record with browser and Postman, record the screenshots for both.
+#### TASK 2: Create a Restful API in python with Flask for displaying a particular emp_no. record with browser and Postman, and record the screenshots for both.
 
-### TASK 3: Create a Restful API in python with Flask for the CRUD operations specifically get, put, delete with Postman only, record the screenshots for three of operations.
+#### TASK 3: Create a Restful API in Python with Flask for the CRUD operations specifically get, put, and delete with Postman only, and record the screenshots for three of the operations.
 
 <a href="https://github.com/cloudthat-devops/genpact_capstone_batch1/blob/main/Python/Python_readme.pdf">See the Python task here</a>
 
