@@ -1,6 +1,6 @@
 # DevOps Essentials Lab Cheat Sheet
 ### Table of Contents
-* [Lab 1: Use terraform to setup the docker server and jenkins server for CICD Lab](https://developer.hashicorp.com/terraform/tutorials/aws-get-started)
+* [Lab 1: Use terraform to setup the docker server and jenkins server for CICD Lab](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-1-use-terraform-to-setup-the-docker-server-and-jenkins-server-for-cicd-lab)
 * [Lab 2: Git operations](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-2-git-operations)
 * [Lab 3: Configure Jenkins](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-3-configure-jenkins)
 * [Lab 4: Using GitWebHook to build your code automatically using Jenkins](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-4-using-gitwebhook-to-build-your-code-automatically-using-jenkins)
