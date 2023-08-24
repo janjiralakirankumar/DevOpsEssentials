@@ -541,16 +541,16 @@ sudo apt remove tomcat9 -y
 * http://< jenkins-PublicIP >/github-webhook/
 * http://184.72.112.155:8080/github-webhook/
 * Content type: application/JSON
+
 Then, Click on Add Webhook.
 
 
 #### Task 2: Verify the working of WebHook by editing the Source Code
 
-1. Now change your source code in the hello-world repository by editing hello.txt file and Make a minor change and commit
-2. As the source code gets changed, Jenkins will get triggered by the WebHook and start building the new source code.
+1. Now change your source code in the **hello-world repository** by editing **hello.txt** file and Make a minor change and commit.
+2. As the source code gets changed, Jenkins gets triggered by the WebHook and starts building the new source code.
 3. Go to Jenkins, and you can see a build is happening.
-
-Observe the successful load build in Jenkins page.
+4. Observe the successful load build on the Jenkins page.
 
 ## Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
