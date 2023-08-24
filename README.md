@@ -469,10 +469,12 @@ afbe8d33e25b4b908c0b9f91546f09e6
 
 ## Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
 
-Now, 
-1. SSH into the Jenkins server (Make sure that you are root user and Install Tomcat web server)
+**Optional Step:**
+* Now, SSH into the Jenkins server (Make sure that you are root user and Install Tomcat web server)
 
-Example: **ssh ubuntu@3.87.66.176**:  (If you are already in Jenkins, this step not needed.)
+* Example: **ssh ubuntu@3.87.66.176**:  (If you are already in Jenkins, this step not needed.)
+
+1. Follow below steps:
 ```
 sudo apt update
 ```
