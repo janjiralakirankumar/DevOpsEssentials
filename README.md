@@ -301,7 +301,7 @@ ls
 ```
 git init .
 ```
-Check the email and user name configured.
+Check the email and user name configurations.
 ```
 git config user.email
 git config user.name
@@ -343,10 +343,10 @@ git remote show origin
 ```
 #### Task 3: Pushing the Code into your Remote GitHub Repository  
 
-* To push code to Github, You need to generate a Personal Access Token (PAT) in github.
-* Go to your Github homepage. Click on settings in the right-side top menu.
-* Click on Developer settings > on the left side menu at the bottom. Click on Personal Access Token and then Click on Generate New Token.
-* Under 'Select Scopes' select all items. Click on 'generate token'. Copy the token
+* To push code to **Github**, You need to generate a **Personal Access Token** (PAT) in github.
+* Go to your GitHub homepage and Click on settings on the top right profile Icon.
+* Click on Developer settings (At the bottom on the left side menu). Click on Personal Access Token and then Click on Generate New Token.
+* Under '**Select Scopes**' select all items. Click on '**generate token**'. Copy the token
 
 Example: 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
 ```
