@@ -1,8 +1,8 @@
 # DevOps Essentials Lab Cheat Sheet
-### DevOps Essentials Labs Pre-requisites
-1. Basic understanding of Linux Commands.
-2. Basic knowledge of a Cloud platform such as AWS.
-3. Good to have AWS-Free Tier Account for Practice.
+### DevOps Essentials Lab Pre-requisites
+1. Basic understanding of Linux commands,
+2. Basic knowledge of a Cloud platform such as AWS,
+3. It's good to have an AWS-Free Tier Account for Practice.
 
 ### Table of Contents
 * [Lab 1: Use terraform to setup the docker server and jenkins server for CICD Lab](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-1-use-terraform-to-setup-the-docker-server-and-jenkins-server-for-cicd-lab)
@@ -13,15 +13,14 @@
 
 ## Lab 1: Use terraform to setup the docker server and jenkins server for CICD Lab
 
-
-Launch an EC2 Instance with **Ubuntu 20.04**, **t2.micro** in **us-east-1** Region and Use the EC2 tag "**CICDLab-yourname**'
+* Launch an EC2 Instance with **Ubuntu 20.04**, **t2.micro** in **us-east-1** Region and Use the EC2 tag "**CICDLab-yourname**'
 
 ##### Note: In the security group, open ports 22, 80, 8080, 9999, and 4243.
 
 
 ### Task 1: Install Terraform
 
-After the EC2 server is up & running, SSH into the machine and do the below:
+After the EC2 server is up and running, SSH into the machine and do the following:
 ```
 sudo hostnamectl set-hostname CICDLab
 ```
@@ -63,33 +62,34 @@ sudo pip3 install awscli boto boto3 ansible
 ```
 aws configure
 ```
-#### Enter the Credentials as below Example: 
+#### Enter the Credentials as below. Example:
 | **Access Key ID** | **Secret Access Key** |
 | ----------------- | --------------------- |
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
-### If you need to create new credentials, Follow below steps
-Go to aws console. On top right corner, click on your name or aws profile id. 
-when the menu opens, click on Security Credentials
-Under AWS IAM Credntials, click on Create access key. If you already have 2 active keys, 
-you can deactivate and delete the older one so that you can create a new key
+### If you need to create new credentials, Follow below steps:
+1. Go to the AWs console. On the top right corner, click on your name or AWS profile ID.
+2. when the menu opens, click on Security Credentials
+3. Under AWS IAM Credentials, click on Create access key.
 
-Complete aws configure step
+**Note:** If you already have two active keys, you can deactivate and delete the older one so that you can create a new one.
 
-### do smoke test to check if your credentials are valid
+4. Complete aws configure step
+
+### a smoke test to check if your credentials are valid
 ```
 aws s3 ls
 ```
-### Create hosts inventory file with the necessary permissions
+### Create a host inventory file with the necessary permissions
  ```
  sudo mkdir /etc/ansible && sudo touch /etc/ansible/hosts
  sudo chmod 766 /etc/ansible/hosts
 ```
 
-### Task 3: Use terraform to launch 2 servers. 
+### Task 3: Use Terraform to launch two servers.
 
-* We need 2 additional servers (docker-server and jenkins-server)
-* For git-ws, we will use the anchor EC2 from where we are operating now (You can use t2.micro for Docker/Jenkins)
+* We need two additional servers (docker-server and jenkins-server)
+* For git-ws, we will use the anchor EC2 from where we are operating now (You can use t2.micro for Docker or Jenkins)
 
 ### Create the terraform directory and set up the config files in it
 ```
