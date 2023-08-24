@@ -480,18 +480,20 @@ sudo apt update
 ```
 ```
 sudo apt install tomcat9 tomcat9-admin -y
+```
+```
 ss -ltn
 ```
 ```
 sudo systemctl enable tomcat9
 ```
-#### Now we need to navigate to server.xml to change the Tomcat port number from 8080 to 9999, 
-#### as port number 8080 is already being used by the Jenkins website.
+Now we need to navigate to **server.xml** to change the Tomcat port number from **8080 to 9999**.
+(As port number 8080 is already being used by the Jenkins website)
 ```
 sudo vi /etc/tomcat9/server.xml
 ```
-#### Change 8080 to 9999 in 1 place. (There are 2 other references in comments)
-* press esc & Enter **:** and copy paste below code and hit enter
+#### Change 8080 to 9999
+* press esc & Enter **":"** and copy paste below code and hit enter
 ```
 g/8080/s//9999/g  
 ```
@@ -500,24 +502,26 @@ g/8080/s//9999/g
 Now restart the system for the changes to take effect
 ```
 sudo service tomcat9 restart
+```
+```
 sudo service tomcat9 status
 ```
-To exit press ctrl+c
+To exit, press **ctrl+c**
 
-* Once the Tomcat service restart is successful, go to your web browser and enter Jenkins Server IP address followed by 9999 port.
-* Example: http://< Your Jenkins Public IP >:9999     or     http://184.72.112.155:9999
-* Now you can check the Tomcat running on port 9999 on the same machine.
- 
-* We need to copy the .war file created in the previous Jenkins build from the Jenkins workspace 
-to tomcat webapps directory to serve the web content
+* Once the Tomcat service restart is successful, go to your web browser and enter **Jenkins Server IP address** followed by **9999** port.
+* Example: **http://< Jenkins Public IP >:9999**     or     **http://184.72.112.155:9999**
+* Now you can check the Tomcat running on **port 9999** on the same machine.
+* We need to copy the **.war** file created in the previous Jenkins build from the Jenkins workspace to tomcat webapps directory to serve the web content
 ```
 sudo cp -R /var/lib/jenkins/workspace/hello-world/target/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps
 ```
-* Once this is done, go to your browser and enter Jenkins Public IP address followed by port 9999 and path (URL:  http://< Your Jenkins Public IP >:9999/hello-world-war-1.0.0/).
-* Now, you can see Tomcat is now serving your web page
-* Now, Stop tomcat9 and remove it. Else it will slow down Jenkins
+* Once this is done, go to your browser and enter Jenkins Public IP address followed by port 9999 and path (URL:  **http://< Jenkins Public IP >:9999/hello-world-war-1.0.0/**).
+* Now, you can see that Tomcat is now serving your web page
+* Now, Stop tomcat9 and remove it. Otherwise, it will slow down Jenkins
 ```
 sudo service tomcat9 stop
+```
+```
 sudo apt remove tomcat9 -y
 ```
 
