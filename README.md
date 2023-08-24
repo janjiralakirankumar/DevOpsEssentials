@@ -464,14 +464,15 @@ afbe8d33e25b4b908c0b9f91546f09e6
 
 16. Now, you will get back to the Maven project "**hello-world**" and click on "**Build Now**" for building the **.war** file for your application
 
-#### You can go to Workspace > dist folder to see that the .war file is created there.
-#### war file will be created in /var/lib/jenkins/workspace/hello-world/target/
+* You can go to **Workspace** > **dist** folder to see that the **.war** file is created there.
+* war file will be created in **/var/lib/jenkins/workspace/hello-world/target/**
 
-## Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins server
+## Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
 
+Now, 
+1. SSH into the Jenkins server (Make sure that you are root user and Install Tomcat web server)
 
-SSH into Jenkins server. Make sure that you are root user and Install Tomcat web server
-ssh ubuntu@3.87.66.176 # If you are already in Jenkins, this step not needed
+Example: **ssh ubuntu@3.87.66.176**:  (If you are already in Jenkins, this step not needed.)
 ```
 sudo apt update
 ```
@@ -482,12 +483,12 @@ ss -ltn
 ```
 sudo systemctl enable tomcat9
 ```
-### Now we need to navigate to server.xml to change the Tomcat port number from 8080 to 9999, 
-### as port number 8080 is already being used by Jenkins website.
+#### Now we need to navigate to server.xml to change the Tomcat port number from 8080 to 9999, 
+#### as port number 8080 is already being used by Jenkins website.
 ```
 sudo vi /etc/tomcat9/server.xml
 ```
-### Change 8080 to 9999 in 1 place. (There are 2 other references in comments)
+#### Change 8080 to 9999 in 1 place. (There are 2 other references in comments)
 * press esc
 * :g/8080/s//9999/g  hit enter
 * /9999 hit enter to verify
