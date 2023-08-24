@@ -244,7 +244,7 @@ Exit from Docker Server
 cd ~
 mkdir ansible && cd ansible
 ```
-### Download the playbook which will deploy packages into the servers.
+### Download the playbook, which will deploy packages into the servers.
 ```
 wget https://devops-e-e.s3.ap-south-1.amazonaws.com/DevOpsSetup.yml
 ```
@@ -252,10 +252,9 @@ wget https://devops-e-e.s3.ap-south-1.amazonaws.com/DevOpsSetup.yml
 ```
 ansible-playbook DevOpsSetup.yml
 ```
-### At the end of this step, the docker-server and jenkins-server will be ready for the 
-### Devops labs
+### At the end of this step, the Docker-server and Jenkins-server will be ready for the 
 
-### Check if Jenkins landing page is appearing: 
+### Check if the Jenkins landing page is appearing: 
 http://44.202.164.153:8080/ # Use your respective ip address
 
 ### Check if docker is working
@@ -263,11 +262,11 @@ http://34.203.249.54:4243/version # Use your respective ip address
 http://44.208.26.120:4243/version
 
 
-## Lab 2: Git operations
+## Lab 2: Git and GitHub Operations.
 
-
-Create the GitHub repository based on the method shown in the course document
-Create an empty repository with the name "hello-world" in your GitHub account.
+1. Create a GitHub Account
+2. Create the GitHub repository based on the method shown in the course document
+3. Create an empty repository with the name "hello-world" in your GitHub account.
 
 After that, let's operate in the local Git repository
 
