@@ -525,34 +525,34 @@ sudo service tomcat9 stop
 sudo apt remove tomcat9 -y
 ```
 
-### Lab 4: Using GitWebHook to build your code automatically using Jenkins
+## Lab 4: Using GitWebHook to build your code automatically using Jenkins
 
 
-### Task 1:Configure Git WebHook in Jenkins
+#### Task 1:Configure Git WebHook in Jenkins
 
-1. Go to Jenkins webpage. Manage Jenkins > Plugins
-2. Go to Available Tab, Search for GitHub Integration. Click on the GitHub Integration Plugin and then on Install without restart
-3. Once the installation is completed, click on Go back to the top page.
-4. In your hello-world project, Click on Configure.
-5. Go to Build Triggers and enable the GitHub hook trigger for GITScm polling. Then Save.
-6. Go to your GitHub website, and inside the hello-world repository > Settings Tab > Webhooks and Click on the Add Webhook.
+1. Go to Jenkins webpage and choose **Manage Jenkins** > **Plugins**
+2. Go to the **Available** Tab, Search for **GitHub Integration**. Select on the **GitHub Integration Plugin** and then on **Install** (without restart).
+3. Once the installation is complete, click on **Go back to the top page**.
+4. In your **hello-world project**, Click on **Configure**.
+5. Go to **Build Triggers** and enable the **GitHub hook trigger for GITScm polling**. Then **Save**.
+6. Go to your **GitHub website**, and inside the **hello-world** repository > **Settings** > **Webhooks** and Click on the **Add Webhook**.
 7. Now fill in the details as below.
-   #### Payload URL Example: 
+#### Payload URL Example: 
 * http://< jenkins-PublicIP >/github-webhook/
 * http://184.72.112.155:8080/github-webhook/
 * Content type: application/JSON
 Then, Click on Add Webhook.
 
 
-### Task 2: Verify the working of WebHook by editing the Source Code
+#### Task 2: Verify the working of WebHook by editing the Source Code
 
 1. Now change your source code in the hello-world repository by editing hello.txt file and Make a minor change and commit
-2. As the source code got changed, Jenkins will get triggered by the WebHook and will start building the new source code.
-3. Go to Jenkins and you can see a build is happening.
+2. As the source code gets changed, Jenkins will get triggered by the WebHook and start building the new source code.
+3. Go to Jenkins, and you can see a build is happening.
 
 Observe the successful load build in Jenkins page.
 
-### Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
+## Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
 1. Go to Jenkins' home page and click on the Manage Jenkins option on the left.
 2. Click on Manage Nodes and Clouds option
