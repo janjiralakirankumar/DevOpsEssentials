@@ -486,13 +486,15 @@ ss -ltn
 sudo systemctl enable tomcat9
 ```
 #### Now we need to navigate to server.xml to change the Tomcat port number from 8080 to 9999, 
-#### as port number 8080 is already being used by Jenkins website.
+#### as port number 8080 is already being used by the Jenkins website.
 ```
 sudo vi /etc/tomcat9/server.xml
 ```
 #### Change 8080 to 9999 in 1 place. (There are 2 other references in comments)
-* press esc
-* :g/8080/s//9999/g  hit enter
+* press esc & Enter **:** and copy paste below code and hit enter
+```
+g/8080/s//9999/g  
+```
 * /9999 hit enter to verify
 
 Now restart the system for the changes to take effect
