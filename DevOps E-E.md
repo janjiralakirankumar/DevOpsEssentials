@@ -1,4 +1,9 @@
 # DevOps Essentials Lab Cheat Sheet
+### Terraform Labs Pre-requisites
+1. Basic understanding of Linux Commands.
+2. Basic knowledge of a Cloud platform such as AWS.
+3. Good to have AWS-Free Tier Account for Practice.
+
 ### Table of Contents
 * [Lab 1: Use terraform to setup the docker server and jenkins server for CICD Lab](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-1-use-terraform-to-setup-the-docker-server-and-jenkins-server-for-cicd-lab)
 * [Lab 2: Git operations](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-2-git-operations)
