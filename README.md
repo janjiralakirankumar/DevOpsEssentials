@@ -99,9 +99,9 @@ As a first step, create a key using ssh-keygen.
 ```
 ssh-keygen -t rsa -b 2048 
 ```
-This will create id_rsa and id_rsa.pub in /home/ubuntu/.ssh/
-Keep the path as /home/ubuntu/.ssh/id_rsa; don't set up any passphrase
-Basically just hit 'Enter' key for the 3 questions it asks
+**Note:**
+1. This will create id_rsa and id_rsa.pub in /home/ubuntu/.ssh/
+2. Keep the path as /home/ubuntu/.ssh/id_rsa; don't set up any passphrase, just hit the 'Enter' key for the 3 questions it asks
 
 ### Now prepare the terraform config files.
 ```
