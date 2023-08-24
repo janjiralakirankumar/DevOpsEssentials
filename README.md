@@ -554,30 +554,30 @@ Then, Click on Add Webhook.
 
 ## Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
-1. Go to Jenkins' home page and click on the Manage Jenkins option on the left.
-2. Click on Manage Nodes and Clouds option
-3. Click on the option New Node in the next window. Give the node name as docker-slave and then click on the ok button. Select 'permanent agent'
-4. Fill out the details for the node docker-slave as given below.
-* The name should be given as docker-slave,
-* Remote Root Directory as Ëœ/home/ubuntu/,
-* labels to be docker-slave,
-* usage to be given as use this node as much as possible
-* launch method to be set as Launch agents via SSH.
-* In the host section, give the public IP of the Docker instance.
-* For Credentials for this Docker node, click on the dropdown button named Add and then click on Jenkins;
-* Then in the next window, select kind as SSH username and private key (give username as ubuntu),
-* select Enter directly and proceed to a private key value below,
+1. Go to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
+2. Click on **New Node** in the next window. Give the node name as **docker-slave** and Select **"permanent agent"**
+3. Fill out the details for the node docker-slave as given below.
+* The name should be given as **docker-slave**,
+* Remote Root Directory as **/home/ubuntu**,
+* labels to be **docker-slave-nodes**,
+* usage to be given as **"use this node as much as possible"**
+* Launch method to be set as **"launch agents via SSH"**.
+* In the host section, give the **Public IP of the Docker instance**.
+* For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
+* Then in the next window, select kind as **SSH username** and **private key** (give username as ubuntu),
+* Select **Enter directly** and proceed to a private key value below,
 * Click on the Add button.
-* once it is done.
+* Once it is done.
 
-You can get the private key as below: Goto your CICD anchor EC2 machine.  
+**Note:**
+You can get the private key as below: Go to your CICD-anchored EC2 machine.
 ```
 cd ~/.ssh
 cat id_rsa
 ```
-* Copy the entire content including the first line and last line. Paste it into the space provided for the private key
-* In SSH Credentials, choose the newly created Ubuntu.
-* Host Key Verification Strategy Select as Known host file Verification Strategy and Save it.
+* Copy the entire content, including the first and last lines. Paste it into the space provided for the private key.
+* In SSH Credentials, choose the newly created **Ubuntu**.
+* Host Key Verification Strategy Select as **"Known host file Verification Strategy"** and **Save** it.
   
 ### SSH into your Docker Host. Perform the below steps to create a Dockerfile in /home/ubuntu directory.
 ```
