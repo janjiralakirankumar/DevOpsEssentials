@@ -436,14 +436,12 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 afbe8d33e25b4b908c0b9f91546f09e6
 
-1. Now, go to the browser and enter Jenkins URL as shown: http://< Jenkins Public IP>:8080/
-2. Under Unlock Jenkins, enter the above initialAdminPassword & click Continue.
-3. Click on Install suggested Plugins on Customize Jenkins page.
-4. Once the plugins are installed, it gives you the page where you can create a new admin user. 
-5. Enter the user id and password followed by Name and E-Mail ID then Save & Continue.
-
-   Note: Enter the Id and password which you used for Github. (In real life, you must keep the user ids and passwords separate for each account.)
-7. In the next step, on Instance Configuration Page, verify your Jenkins Public IP and Port Number then click on Save and Finish
+1. Now, go to the **browser** and enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**
+2. Under Unlock Jenkins, enter the above **initialAdminPassword** & click **Continue**.
+3. Click on **Install suggested Plugins** on Customize Jenkins page.
+4. Once the plugins are installed, it gives you the page where you can create a **new admin user**. 
+5. Enter the **user id** and **password** followed by **Name and E-Mail ID** then **Save & Continue**.
+6. In the next step, on Instance Configuration Page, verify your **Jenkins Public IP** and **Port Number** then click on **Save and Finish**
 
 #### Now you will be prompted to the Jenkins Home Page
 
