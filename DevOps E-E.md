@@ -1,5 +1,5 @@
 # DevOps Essentials Lab Cheat Sheet
-### Terraform Labs Pre-requisites
+### DevOps Essentials Labs Pre-requisites
 1. Basic understanding of Linux Commands.
 2. Basic knowledge of a Cloud platform such as AWS.
 3. Good to have AWS-Free Tier Account for Practice.
