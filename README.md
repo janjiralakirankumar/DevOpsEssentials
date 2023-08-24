@@ -35,11 +35,11 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.5.4/terraform_1.5.4_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
 ```
 [Terraform's Latest Versions](https://developer.hashicorp.com/terraform/downloads)
 ```
-unzip terraform_1.5.4_linux_amd64.zip
+unzip terraform_1.5.6_linux_amd64.zip
 ls
 ```
 ```
