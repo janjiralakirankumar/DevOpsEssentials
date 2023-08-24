@@ -445,24 +445,24 @@ afbe8d33e25b4b908c0b9f91546f09e6
 
 #### Now you will be prompted to the Jenkins Home Page
 
-1. Click on Manage Jenkins > Plugins > Available tab and search for Maven.
-2. Select the "Maven Integration" Plugin and "Unleash Maven" Plugin and click Install without restart
-3. Once the installation is completed, click on Go back to the top page
-4. After going back to the Home Page select Manage Jenkins > Tool Configuration.
-5. Inside Tool Configuration, look for Maven installations, click Add Maven. 
-6. Give the Name as Maven, choose Version as 3.8.4, and Save the configuration.
-7. Now you need to make a project for your application build, for that select New Item from the Home Page of Jenkins
-8. Enter an item name as hello-world and select the project as Maven Project and then click OK
+1. Click on **Manage Jenkins** > **Plugins** > **Available Plugins** tab and search for **Maven**.
+2. Select the "**Maven Integration**" Plugin and "**Unleash Maven**" Plugin and click **Install** (without restart).
+3. Once the installation is completed, click on **Go back to the top page**.
+4. On Home Page select **Manage Jenkins** > **Tool**.
+5. Inside Tool Configuration, look for **Maven installations**, click **Add Maven**. 
+6. Give the **Name as "Maven"**, choose **Version as 3.9.4**, and **Save** the configuration.
+7. Now you need to make a project for your application build, for that select **New Item** from the Home Page of Jenkins
+8. Enter an item name as **hello-world** and select the project as **Maven Project** and then **click OK.**
    ( You will be prompted to the configure page inside the hello-world project.)
-9. Go to the "Source Code Management" tab, and select Source Code Management as Git, Now you need to provide the GitHub Repository Master Branch URL and GitHub Account Credentials.
-10. In the Credentials field, you have to click Add then click on Jenkins.
-11. Then you will get prompted to the Jenkins Credentials Provider page. Under Add Credentials, you can add your GitHub Username, Password, and Description. Then click on Add
-12. After returning to the Source Code Management Page, click on Credentials and Choose your GitHub Credentials.
-13. Keep all the other values as default and select "Build" Tab and inside Goals and options write "clean package" and save the configuration by clicking on Save.
+9. Go to the "**Source Code Management**" tab, and select Source Code Management as **Git**, Now you need to provide the GitHub Repository **Master Branch URL** and **GitHub Account Credentials**.
+10. In the Credentials field, you have to click **Add** then click on **Jenkins**.
+11. Then you will be prompted to the **Jenkins Credentials Provider** page. Under Add Credentials, you can add your **GitHub Username**, **Password**, and **Description**. Then click on **Add**.
+12. After returning to the Source Code Management Page, click on Credentials and Choose your **GitHub Credentials**.
+13. Keep all the other values as default and select "**Build**" Tab and inside Goals and options write "**clean package**" and **save** the configuration.
 
 #### Note: 'clean package' command clears the target directory, Builds the project, and packages the resulting JAR file into the target directory.
 
-16. Now, you will get back to the Maven project "hello-world" and click on "Build Now" for building the .war file for your application
+16. Now, you will get back to the Maven project "**hello-world**" and click on "**Build Now**" for building the **.war** file for your application
 
 #### You can go to Workspace > dist folder to see that the .war file is created there.
 #### war file will be created in /var/lib/jenkins/workspace/hello-world/target/
