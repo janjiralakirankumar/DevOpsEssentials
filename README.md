@@ -56,6 +56,8 @@ rm terraform_1.5.6_linux_amd64.zip
 ### Task 2: Install AWS CLI and Ansible
 ```
 sudo apt-get install python3-pip -y
+```
+```
 sudo pip3 install awscli boto boto3 ansible
 ```
 ```
