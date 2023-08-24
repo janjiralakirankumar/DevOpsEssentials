@@ -76,7 +76,7 @@ aws configure
 
 4. Complete aws configure step
 
-### a smoke test to check if your credentials are valid
+### Once Configured do a smoke test to check if your credentials are valid
 ```
 aws s3 ls
 ```
