@@ -263,9 +263,9 @@ ansible-playbook DevOpsSetup.yml
 
 ## Lab 2: Git and GitHub Operations.
 
-1. Create a GitHub Account
-2. Create the GitHub repository based on the method shown in the course document
-3. Create an empty repository with the name "hello-world" in your GitHub account.
+#### Pre-requisites:
+1. Create a **GitHub Account** & **Repository** (To know how to create refer Course Material)
+2. Create an empty Public repository with the name **"hello-world"** in your GitHub account.
 
 After that, let's operate in the local Git repository
 
