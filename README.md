@@ -561,10 +561,9 @@ sudo apt remove tomcat9 -y
 #### Payload URL Example: 
 * http://< jenkins-PublicIP >/github-webhook/
 * http://184.72.112.155:8080/github-webhook/
-* Content type: application/JSON
+* Content type: **application/JSON**
 
 Then, Click on Add Webhook.
-
 
 #### Task 2: Verify the working of WebHook by editing the Source Code
 
@@ -580,15 +579,13 @@ Then, Click on Add Webhook.
 3. Fill out the details for the node docker-slave as given below.
 * The name should be given as **docker-slave**,
 * Remote Root Directory as **/home/ubuntu**,
-* labels to be **docker-slave-nodes**,
+* labels to be **Slave-Nodes**,
 * usage to be given as **"use this node as much as possible"**
 * Launch method to be set as **"launch agents via SSH"**.
 * In the host section, give the **Public IP of the Docker instance**.
 * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
 * Then in the next window, select kind as **SSH username** and **private key** (give username as ubuntu),
 * Select **Enter directly** and proceed to a private key value below,
-* Click on the Add button.
-* Once it is done.
 
 **Note:**
 You can get the private key as below: Go to your CICD-anchored EC2 machine.
@@ -596,9 +593,12 @@ You can get the private key as below: Go to your CICD-anchored EC2 machine.
 cd ~/.ssh
 cat id_rsa
 ```
-* Copy the entire content, including the first and last lines. Paste it into the space provided for the private key.
+* Copy the entire content, including the **first and last lines**. Paste it into the space provided for the private key.
 * In SSH Credentials, choose the newly created **Ubuntu**.
-* Host Key Verification Strategy Select as **"Known host file Verification Strategy"** and **Save** it.
+* Host Key Verification Strategy Select as **"Non Verifying Verification Strategy"** and **Save** it.
+
+* Click on the **Add** button.
+* Once it is done.
   
 ### SSH into your Docker Host. Perform the below steps to create a Dockerfile in /home/ubuntu directory.
 ```
@@ -619,13 +619,11 @@ MAINTAINER "CloudThat"
 ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/
 ```
 
-Go to your Jenkins Home page, click on the drop-down hello-world project, and select Configure on the left 
-tab. In General, Tab, check Restrict where this project can be run and enter Label Expression as 
-docker-slave
-
-
-Go to Post Steps Tab, select Run only if the build succeeds then click on Add post-build step select 
-Execute the shell from the drop-down and type the following commands in the shell and Save
+1. Go to your **Jenkins Home page**, click on the **drop-down** on **hello-world project**, and select Configure 
+tab.
+2. In **General Tab**, check Restrict where this project can be run and enter Label Expression as 
+**Slave-Nodes.**
+3. Go to **Post Steps Tab**, select **"Run only if the build succeeds"** then click on **Add post-build** step select **Execute shell** from the drop-down and type the following commands in the shell and **Save**
 
 execute shell commands in Jenkins:
 ```
@@ -635,27 +633,14 @@ sudo docker container rm -f yourname-helloworld-container
 sudo docker build -t helloworld-image .
 sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image
 ```
-### Note - you may replace 'yourname' with your actual first name (lines 3 and 5).
+### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
 
-Now you can build your hello-world project by clicking on Build Now or by making a small change in
-Github files. 
-
-Once the loadbuild is successful, to access the tomcat server page, you can use below:
+* Now you can build your hello-world project by clicking on **"Build Now"** or by **making a small change in
+Github files**. 
+* Once the loadbuild is successful, to access the tomcat server page, you can use below:
 
 ### Use http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/ in your browser to see the website
 * http://3.95.192.77:8080/hello-world-war-1.0.0/
 
-### Still if this is now working follow below steps
-```
-mkdir /var/lib/jenkins
-```
-```
-mkdir /var/lib/jenkins/.ssh
-```
-```
-cp /home/ubuntu/.ssh/known_host /var/lib/jetnkins/.ssh/
-```
-
-Clean up the Instances
-
-We can now terminate all the 3 instances.
+Once Done, **Clean up** the Instances
+We can now **terminate all the 3 instances**.
