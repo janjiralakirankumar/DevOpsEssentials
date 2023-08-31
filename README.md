@@ -516,8 +516,10 @@ sudo vi /etc/tomcat9/server.xml
 #### Change 8080 to 9999
 * press esc & Enter **":"** and copy paste below code and hit enter
 ```
-g/8080/s//9999/g  
+g/8080/s//9999/g
 ```
+Save vi using **ESCAPE + :wq!**
+
 * /9999 hit enter to verify
 
 Now restart the system for the changes to take effect
@@ -588,7 +590,7 @@ Then, Click on Add Webhook.
 * Select **Enter directly** and proceed to a private key value below,
 
 **Note:**
-You can get the private key as below: Go to your CICD-anchored EC2 machine.
+To get the private key, Go to your CICD-anchored EC2 machine.
 ```
 cd ~/.ssh
 cat id_rsa
@@ -596,9 +598,8 @@ cat id_rsa
 * Copy the entire content, including the **first and last lines**. Paste it into the space provided for the private key.
 * In SSH Credentials, choose the newly created **Ubuntu**.
 * Host Key Verification Strategy Select as **"Non Verifying Verification Strategy"** and **Save** it.
-
 * Click on the **Add** button.
-* Once it is done.
+* it's done.
   
 ### SSH into your Docker Host. Perform the below steps to create a Dockerfile in /home/ubuntu directory.
 ```
@@ -625,7 +626,7 @@ tab.
 **Slave-Nodes.**
 3. Go to **Post Steps Tab**, select **"Run only if the build succeeds"** then click on **Add post-build** step select **Execute shell** from the drop-down and type the following commands in the shell and **Save**
 
-execute shell commands in Jenkins:
+Execute shell commands in Jenkins:
 ```
 cd ~
 cp -f /home/ubuntu/workspace/hello-world/target/hello-world-war-1.0.0.war .
@@ -639,8 +640,8 @@ sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-
 Github files**. 
 * Once the loadbuild is successful, to access the tomcat server page, you can use below:
 
-### Use http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/ in your browser to see the website
-* http://3.95.192.77:8080/hello-world-war-1.0.0/
+Enter **"http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/"** in your browser to see the website
+* **Example:** http://3.95.192.77:8080/hello-world-war-1.0.0/
 
 Once Done, **Clean up** the Instances
 We can now **terminate all the 3 instances**.
