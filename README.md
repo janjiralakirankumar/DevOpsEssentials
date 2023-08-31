@@ -360,10 +360,14 @@ Token: <enter your PAT>
 
 ```
 git branch dev
+```
+```
 git branch
 ```
 ```
 git checkout dev
+```
+```
 git branch
 ```
 ```
@@ -383,34 +387,49 @@ git status
 ```
 ```
 git add index.html
+```
+```
 git status
 ```
 ```
 git commit -m "adding new file index.html in new branch dev"
+```
+```
 git log
 ```
 ```
 git push origin dev
 ```
-when it asks for a password, enter PAT Token
-Token: <your PAT>
+Enter PAT Token when it asks for a password and Press Enter. (PAT is invisible, when you paste)
 ```
 git branch
+```
+```
 git branch prod
 ```
 ```
 git branch
+```
+```
 git checkout prod
 ```
 ```
 git branch
+```
+```
 git merge dev
+```
+```
 git push origin prod
 ```
 Enter Token: <PAT>
 ```
 git checkout master
+```
+```
 git merge prod
+```
+```
 git push origin master
 ```
 
@@ -425,6 +444,8 @@ cd ~
 ```
 ```
 ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
+```
+```
 ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
 ```
 SSH into the Jenkins server and get the initial password for Jenkins
