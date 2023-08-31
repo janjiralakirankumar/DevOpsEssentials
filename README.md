@@ -1,4 +1,6 @@
 # DevOps Essentials Lab Cheat Sheet
+Welcome to the DevOps Essentials Lab Cheat Sheet! This guide provides step-by-step instructions for completing various DevOps labs, covering tasks like setting up servers using Terraform, working with Git and GitHub, configuring Jenkins, using GitWebHook, and deploying code in Docker containers.
+
 ### DevOps Essentials Lab Pre-requisites
 1. Basic understanding of Linux commands,
 2. Basic knowledge of a Cloud platform such as AWS,
@@ -11,7 +13,7 @@
 * [Lab 4: Using GitWebHook to build your code automatically using Jenkins](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-4-using-gitwebhook-to-build-your-code-automatically-using-jenkins)
 * [Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/DevOps%20E-E.md#lab-5-add-docker-machine-as-jenkins-slave-build-and-deploy-code-in-docker-host-as-a-container)
 
-## Lab 1: Use terraform to setup the docker server and jenkins server for CICD Lab
+## Lab 1: Use Terraform to Setup Docker Server and Jenkins Server for CICD Lab
 
 * Launch an EC2 Instance with **Ubuntu 20.04**, **t2.micro**, in the **us-east-1** Region and Use the EC2 tag "**CICDLab-yourname**'
 
@@ -53,6 +55,7 @@ rm terraform_1.5.6_linux_amd64.zip
 ```
 
 #### Task 2: Install AWS CLI and Ansible
+Install Python 3 and required packages:
 ```
 sudo apt-get install python3-pip -y
 ```
@@ -87,10 +90,9 @@ aws s3 ls
 ```
 
 #### Task 3: Use Terraform to launch two servers.
-
-* We need two additional servers (docker-server and jenkins-server)
-* For git-ws, we will use the anchor EC2 from where we are operating now (You can use t2.micro for Docker or Jenkins)
-
+Create the Terraform configuration and variables files as described.
+* We need to create two additional servers (docker-server and jenkins-server, You can use **t2.micro** for Docker or Jenkins)
+* For **git** we will use the anchor EC2 from where we are operating now 
 #### Create the terraform directory and set up the config files in it
 ```
 mkdir devops-labs && cd devops-labs
@@ -239,8 +241,9 @@ sudo hostnamectl set-hostname Docker
 
 Exit from Docker Server
 
-#### Task 4: Use Ansible to deploy respective packages into each of the 3 servers 
-Create a directory and change to it
+#### Task 4: Use Ansible to deploy respective packages onto each of the servers 
+* Navigate to the ansible directory and download the playbook:
+* Create a directory and change to it
 ```
 cd ~
 mkdir ansible && cd ansible
@@ -264,12 +267,12 @@ ansible-playbook DevOpsSetup.yml
 ## Lab 2: Git and GitHub Operations.
 
 #### Pre-requisites:
-1. Create a **GitHub Account** & **Repository** (To know how to create refer Course Material)
-2. Create an empty Public repository with the name **"hello-world"** in your GitHub account.
+1. Create a **GitHub Account** & **Empty Public Repository** with name as **"hello-world"** (To know how to create refer Course Material)
+2. Basic familiarity with Git commands.
 
 After that, let's operate in the local Git repository
 
-#### Initializing the local git repository and committing changes
+#### Task-1: Initializing the local git repository and committing changes
 
 On the CICD anchor EC2, do the below:
 ```
@@ -337,11 +340,11 @@ git status
 ```
 git remote add origin < Replace your Repository URL > 
 ```
-Ex: git remote add origin https://github.com/karthiksen/hello-world.git
+**Ex:** git remote add origin **https://github.com/janjiralakirankumar/hello-world.git**
 ```
 git remote show origin
 ```
-#### Task 3: Pushing the Code into your Remote GitHub Repository  
+#### Task 2: Pushing the Code to your Remote GitHub Repository  
 
 * To push code to **Github**, You need to generate a **Personal Access Token** (PAT) in github.
 * Go to your GitHub homepage and Click on settings on the top right profile Icon.
@@ -356,7 +359,7 @@ git push origin master
 Token: <enter your PAT> 
 * When you enter the token, the cursor does not move. It's the expected behavior
  
-#### Task 4: Creating a Git Branch and Pushing into the Remote Repository  
+#### Task 3: Creating a Git Branch and Pushing into the Remote Repository  
 
 ```
 git branch dev
@@ -438,7 +441,7 @@ You can refer to the course document which gives screenshots
 
 ## Lab 3: Configure Jenkins
 
-Copy the private key to the Jenkins server so that we can SSH into the docker server from Jenkins server
+Copy the private key to the Jenkins server so that we can SSH into the docker server from Jenkins server and viseversa.
 ```
 cd ~
 ```
@@ -450,18 +453,18 @@ ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu
 ```
 SSH into the Jenkins server and get the initial password for Jenkins
 ```
-ssh ubuntu@3.93.145.99
+ssh ubuntu@xx.xx.xx.xx
 ```
 ```
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-afbe8d33e25b4b908c0b9f91546f09e6
+**Example:** "afbe8d33e25b4b908c0b9f91546f09e6"
 
 1. Now, go to the **browser** and enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**
 2. Under Unlock Jenkins, enter the above **initialAdminPassword** & click **Continue**.
 3. Click on **Install suggested Plugins** on Customize Jenkins page.
-4. Once the plugins are installed, it gives you the page where you can create a **new admin user**. 
-5. Enter the **user id** and **password** followed by **Name and E-Mail ID** then **Save & Continue**.
+4. Once the plugins are installed, it gives you the page where you can create a New **Admin User**. 
+5. Enter the **User Id** and **Password** followed by **Name and E-Mail ID** then click on **Save & Continue**.
 6. In the next step, on Instance Configuration Page, verify your **Jenkins Public IP** and **Port Number** then click on **Save and Finish**
 
 #### Now you will be prompted to the Jenkins Home Page
