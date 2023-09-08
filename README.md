@@ -150,7 +150,7 @@ Now, create the variables file with all variables to be used in the main config 
 vi variables.tf
 ```
 Add following contents into variables.tf. 
-Edit the **allocated Region** (**Ex:** ap-south-1), **security group id** and **keyname** in variables.tf
+Edit the **allocated Region** (**Ex:** ap-south-1) & **AMI ID**, **security group id** and **keyname** in variables.tf
 
 ```
 variable "region" {
