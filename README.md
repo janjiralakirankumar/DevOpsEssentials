@@ -36,11 +36,11 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
 ```
 View the [Terraform's Latest Versions](https://developer.hashicorp.com/terraform/downloads)
 ```
-unzip terraform_1.5.6_linux_amd64.zip
+unzip terraform_1.5.7_linux_amd64.zip
 ls
 ```
 ```
@@ -51,7 +51,7 @@ ls
 terraform -v
 ```
 ```
-rm terraform_1.5.6_linux_amd64.zip
+rm terraform_1.5.7_linux_amd64.zip
 ```
 
 #### Task 2: Install AWS CLI and Ansible
