@@ -605,7 +605,7 @@ cat id_rsa
 * Click on the **Add** button.
 * it's done.
   
-### Now In CLI, SSH into your Docker Host and Perform the below steps to create a "Dockerfile" in /home/ubuntu directory.
+#### Now In CLI, SSH into your Docker Host and Perform the below steps to create a "Dockerfile" in /home/ubuntu directory.
 ```
 cd ~
 ```
@@ -638,7 +638,7 @@ sudo docker container rm -f yourname-helloworld-container
 sudo docker build -t helloworld-image .
 sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image
 ```
-### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
+#### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
 
 * Now you can build your **hello-world project** Either by
 1. Clicking on **"Build Now"** or
@@ -653,4 +653,4 @@ Once Done, It's time to **Clean up** the Instances
 
 We can now **terminate all the 3 instances** and we are Done with All Labs.
 
-#### ----------------------------------END of DevOps LABS--------------------------------------------
+####            ----------------------------------END of DevOps LABS--------------------------------------------
