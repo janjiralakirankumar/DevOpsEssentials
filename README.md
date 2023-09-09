@@ -653,4 +653,4 @@ Once Done, It's time to **Clean up** the Instances
 
 We can now **terminate all the 3 instances** and we are Done with All Labs.
 
-#### Thanks
+#### ----------------------------------END of DevOps LABS--------------------------------------------
