@@ -523,8 +523,10 @@ g/8080/s//9999/g
 ```
 Save vi using **ESCAPE + :wq!**
 
-* /9999 hit enter to verify
-
+* To Verify whether the Port is changed, execute the below Command.
+```
+cat /etc/tomcat9/server.xml
+```
 Now restart the system for the changes to take effect
 ```
 sudo service tomcat9 restart
@@ -543,7 +545,7 @@ sudo cp -R /var/lib/jenkins/workspace/hello-world/target/hello-world-war-1.0.0.w
 ```
 * Once this is done, go to your browser and enter Jenkins Public IP address followed by port 9999 and path (URL:  **http://< Jenkins Public IP >:9999/hello-world-war-1.0.0/**).
 * Now, you can see that Tomcat is now serving your web page
-* Now, Stop tomcat9 and remove it. Otherwise, it will slow down Jenkins
+* Now, Stop tomcat9 and remove it. Otherwise, it will slow down Jenkins.
 ```
 sudo service tomcat9 stop
 ```
@@ -568,7 +570,7 @@ sudo apt remove tomcat9 -y
 * http://184.72.112.155:8080/github-webhook/
 * Content type: **application/JSON**
 
-Then, Click on Add Webhook.
+Then, Click on **Add Webhook**.
 
 #### Task 2: Verify the working of WebHook by editing the Source Code
 
@@ -604,7 +606,7 @@ cat id_rsa
 * Click on the **Add** button.
 * it's done.
   
-### SSH into your Docker Host. Perform the below steps to create a Dockerfile in /home/ubuntu directory.
+### Now, SSH into your Docker Host and Perform the below steps to create a "Dockerfile" in /home/ubuntu directory.
 ```
 cd ~
 ```
@@ -627,7 +629,7 @@ ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/
 tab.
 2. In **General Tab**, check Restrict where this project can be run and enter Label Expression as 
 **Slave-Nodes.**
-3. Go to **Post Steps Tab**, select **"Run only if the build succeeds"** then click on **Add post-build** step select **Execute shell** from the drop-down and type the following commands in the shell and **Save**
+3. Go to **Post Steps Tab**, select **"Run only if the build succeeds"** then click on **Add post-build** step select **Execute shell** from the drop-down and copy paste the below commands in the shell and **Save**
 
 Execute shell commands in Jenkins:
 ```
@@ -639,12 +641,15 @@ sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-
 ```
 ### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
 
-* Now you can build your hello-world project by clicking on **"Build Now"** or by **making a small change in
-Github files**. 
-* Once the loadbuild is successful, to access the tomcat server page, you can use below:
+* Now you can build your hello-world project Either by
+  1. Clicking on **"Build Now"** or
+  2. By **making a small change in Github files**.
 
-Enter **"http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/"** in your browser to see the website
+* Once the loadbuild is successful, to access the tomcat server page,
+To access the Page In Browser Type **"http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/"** to see the website
 * **Example:** http://3.95.192.77:8080/hello-world-war-1.0.0/
 
-Once Done, **Clean up** the Instances
-We can now **terminate all the 3 instances**.
+Once Done, It's time to **Clean up** the Instances
+We can now **terminate all the 3 instances** and we are Done with All Labs.
+
+Thanks
