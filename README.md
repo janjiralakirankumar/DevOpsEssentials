@@ -152,7 +152,7 @@ vi variables.tf
 Change following data in variables.tf File. 
 1. Edit the **Allocated Region** (**Ex:** ap-south-1) & **AMI ID** of same region,
 2. **security group id** and
-3. **keyname** in variables.tf
+3. **KeyPair Name** (Example: "**yourname**-CICDlab-key-pair")
 
 ```
 variable "region" {
