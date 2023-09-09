@@ -8,7 +8,7 @@ Welcome to the DevOps Essentials Lab Cheat Sheet! This guide provides step-by-st
 
 ### Table of Contents
 * [Lab 1: Use terraform to setup the docker server and jenkins server for CICD Lab](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/README.md#lab-1-use-terraform-to-setup-docker-server-and-jenkins-server-for-cicd-lab)
-* [Lab 2: Git operations](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/README.md#lab-2-git-and-github-operations)
+* [Lab 2: Git and GitHub Operations](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/README.md#lab-2-git-and-github-operations)
 * [Lab 3: Configure Jenkins](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/README.md#lab-3-configure-jenkins)
 * [Lab 4: Using GitWebHook to build your code automatically using Jenkins](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/README.md#lab-4-using-gitwebhook-to-build-your-code-automatically-using-jenkins)
 * [Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container](https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/README.md#lab-5-add-docker-machine-as-jenkins-slave-build-and-deploy-code-in-docker-host-as-a-container)
@@ -436,13 +436,12 @@ git merge prod
 ```
 git push origin master
 ```
-
-#### After this, you have to complete the Jenkins and Docker setups.
-You can refer to the course document which gives screenshots 
+Enter UserID and Token then Press Enter.
 
 ## Lab 3: Configure Jenkins
+In this Lab you have to complete the Jenkins and Docker setups.
 
-Copy the **private key** to the Jenkins server. so, that we can SSH from from **Jenkins Server** to **Docker Server** and viseversa.
+Initially, Copy the **private key** to the Jenkins server. so, that we can SSH from from **Jenkins Server** to **Docker Server** and viseversa.
 ```
 cd ~
 ```
