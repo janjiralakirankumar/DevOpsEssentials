@@ -353,13 +353,12 @@ git remote show origin
 * Click on Developer settings (At the bottom on the left side menu). Click on Personal Access Token and then Click on Generate New Token.
 * Under '**Select Scopes**' select all items. Click on '**generate token**'. Copy the token
 
-Example: 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
+**Example:** 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
 ```
 git push origin master 
 ```
-* when it asks for password, enter the PAT Token
-Token: <enter your PAT> 
-* When you enter the token, the cursor does not move. It's the expected behavior
+* when it asks for password, enter the **Personal Access Token** and Press Enter.
+* **Note:** When you enter the token, PAT is invisible and It's the expected behavior.
  
 #### Task 3: Creating a Git Branch and Pushing into the Remote Repository  
 
@@ -443,7 +442,7 @@ You can refer to the course document which gives screenshots
 
 ## Lab 3: Configure Jenkins
 
-Copy the private key to the Jenkins server so that we can SSH into the docker server from Jenkins server and viseversa.
+Copy the **private key** to the Jenkins server. so, that we can SSH from from **Jenkins Server** to **Docker Server** and viseversa.
 ```
 cd ~
 ```
@@ -453,7 +452,7 @@ ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubunt
 ```
 ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
 ```
-SSH into the Jenkins server and get the initial password for Jenkins
+SSH into the **Jenkins server** and get the **initial password** for Jenkins
 ```
 ssh ubuntu@xx.xx.xx.xx
 ```
@@ -495,10 +494,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ## Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
 
-**Optional Step:**
 * Now, SSH into the Jenkins server (Make sure that you are root user and Install Tomcat web server)
-
-* Example: **ssh ubuntu@3.87.66.176**:  (If you are already in Jenkins, this step not needed.)
+* **Note:** (If you are already in Jenkins Server, again SSH is needed.)
 
 1. Follow below steps:
 ```
@@ -536,10 +533,11 @@ sudo service tomcat9 restart
 ```
 sudo service tomcat9 status
 ```
-To exit, press **ctrl+c**
+**To exit**, press **ctrl+c**
 
 * Once the Tomcat service restart is successful, go to your web browser and enter **Jenkins Server IP address** followed by **9999** port.
-* Example: **http://< Jenkins Public IP >:9999**     or     **http://184.72.112.155:9999**
+
+Example: **http://< Jenkins Public IP >:9999**     or     **http://184.72.112.155:9999**
 * Now you can check the Tomcat running on **port 9999** on the same machine.
 * We need to copy the **.war** file created in the previous Jenkins build from the Jenkins workspace to tomcat webapps directory to serve the web content
 ```
@@ -558,7 +556,7 @@ sudo apt remove tomcat9 -y
 ## Lab 4: Using GitWebHook to build your code automatically using Jenkins
 
 
-#### Task 1:Configure Git WebHook in Jenkins
+#### Task 1: Configure Git WebHook in Jenkins
 
 1. Go to Jenkins webpage and choose **Manage Jenkins** > **Plugins**
 2. Go to the **Available** Tab, Search for **GitHub Integration**. Select on the **GitHub Integration Plugin** and then on **Install** (without restart).
@@ -568,15 +566,14 @@ sudo apt remove tomcat9 -y
 6. Go to your **GitHub website**, and inside the **hello-world** repository > **Settings** > **Webhooks** and Click on the **Add Webhook**.
 7. Now fill in the details as below.
 #### Payload URL Example: 
-* http://< jenkins-PublicIP >/github-webhook/
-* http://184.72.112.155:8080/github-webhook/
-* Content type: **application/JSON**
+* http://< jenkins-PublicIP >/github-webhook/ (**Example:** http://184.72.112.155:8080/github-webhook/)
+* **Content type:** application/JSON
 
 Then, Click on **Add Webhook**.
 
-#### Task 2: Verify the working of WebHook by editing the Source Code
+#### Task 2: Verifying whether the WebHook is working or not by editing the Source Code
 
-1. Now change your source code in the **hello-world repository** by editing **hello.txt** file and Make a minor change and commit.
+1. Now, Make a minor change and commit in GitHub's **hello-world repository** by editing **hello.txt** file.
 2. As the source code gets changed, Jenkins gets triggered by the WebHook and starts building the new source code.
 3. Go to Jenkins, and you can see a build is happening.
 4. Observe the successful load build on the Jenkins page.
@@ -593,22 +590,22 @@ Then, Click on **Add Webhook**.
 * Launch method to be set as **"launch agents via SSH"**.
 * In the host section, give the **Public IP of the Docker instance**.
 * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
-* Then in the next window, select kind as **SSH username** and **private key** (give username as ubuntu),
-* Select **Enter directly** and proceed to a private key value below,
+* Then in the next window, in kind select **SSH username with private key** (give username as ubuntu),
+* In **Private Key** Select **Enter directly** and click on **Add** then Copy-Paste the Private Key.
 
 **Note:**
-To get the private key, Go to your CICD-anchored EC2 machine.
+To get the private key, Go to your **CICD-anchored EC2 machine** and run below command.
 ```
 cd ~/.ssh
 cat id_rsa
 ```
-* Copy the entire content, including the **first and last lines**. Paste it into the space provided for the private key.
-* In SSH Credentials, choose the newly created **Ubuntu**.
+* Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
+* Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
 * Host Key Verification Strategy Select as **"Non Verifying Verification Strategy"** and **Save** it.
 * Click on the **Add** button.
 * it's done.
   
-### Now, SSH into your Docker Host and Perform the below steps to create a "Dockerfile" in /home/ubuntu directory.
+### Now In CLI, SSH into your Docker Host and Perform the below steps to create a "Dockerfile" in /home/ubuntu directory.
 ```
 cd ~
 ```
@@ -633,7 +630,7 @@ tab.
 **Slave-Nodes.**
 3. Go to **Post Steps Tab**, select **"Run only if the build succeeds"** then click on **Add post-build** step select **Execute shell** from the drop-down and copy paste the below commands in the shell and **Save**
 
-Execute shell commands in Jenkins:
+**Execute shell commands in Jenkins:**
 ```
 cd ~
 cp -f /home/ubuntu/workspace/hello-world/target/hello-world-war-1.0.0.war .
@@ -643,16 +640,17 @@ sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-
 ```
 ### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
 
-* Now you can build your hello-world project Either by
-  1. Clicking on **"Build Now"** or
-  2. By **making a small change in Github files**.
+* Now you can build your **hello-world project** Either by
+1. Clicking on **"Build Now"** or
+2. By **making a small change in Github files**.
 
-* Once the loadbuild is successful, to access the tomcat server page,
+* Once the build is successful, access the tomcat server page,
+
 To access the Page In Browser Type **"http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/"** to see the website
 * **Example:** http://3.95.192.77:8080/hello-world-war-1.0.0/
-
+----------------------------------------------------------------------
 Once Done, It's time to **Clean up** the Instances
 
 We can now **terminate all the 3 instances** and we are Done with All Labs.
 
-Thanks
+#### Thanks
