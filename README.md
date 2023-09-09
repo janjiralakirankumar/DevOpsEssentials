@@ -1,5 +1,6 @@
 # DevOps Essentials Lab Cheat Sheet
 Welcome to the DevOps Essentials Lab Cheat Sheet! 
+
 This guide provides the step-by-step instructions for completing various DevOps labs, covering tasks like 
 
 **Setting up servers** using **Terraform**, **Working with Git and GitHub**, **Configuring Jenkins**, **Using GitWebHook**, and **Deploying code in Docker containers**.
