@@ -15,10 +15,9 @@ Welcome to the DevOps Essentials Lab Cheat Sheet! This guide provides step-by-st
 
 ## Lab 1: Use Terraform to Setup Docker Server and Jenkins Server for CICD Lab
 
-* Launch an EC2 Instance with **Ubuntu 20.04**, **t2.micro**, in the **us-east-1** Region and Use the EC2 tag "**CICDLab-yourname**'
+* First step is to Launch an EC2 Instance with **Ubuntu 20.04**, **t2.micro**, in the **us-east-1** Region and Use the EC2 Tag/Name as "**CICDLab-yourname**'
 
 **Note:** In the security group, open ports 22, 80, 8080, 9999, and 4243.
-
 
 #### Task 1: Install Terraform
 
