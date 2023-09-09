@@ -149,8 +149,10 @@ Now, create the variables file with all variables to be used in the main config 
 ```
 vi variables.tf
 ```
-Add following contents into variables.tf. 
-Edit the **allocated Region** (**Ex:** ap-south-1) & **AMI ID**, **security group id** and **keyname** in variables.tf
+Change following data in variables.tf File. 
+1. Edit the **Allocated Region** (**Ex:** ap-south-1) & **AMI ID** of same region,
+2. **security group id** and
+3. **keyname** in variables.tf
 
 ```
 variable "region" {
@@ -228,7 +230,7 @@ ssh ubuntu@<Jenkins ip address>
 sudo hostnamectl set-hostname Jenkins
 ```
 
-Exit from Jenkins Server
+**Exit** from Jenkins Server
 
 #### Now ssh into docker-server and check they are accessible from anchor EC2
 ```
@@ -239,7 +241,7 @@ ssh ubuntu@<Docker ip address>
 sudo hostnamectl set-hostname Docker
 ```
 
-Exit from Docker Server
+**Exit** from Docker Server
 
 #### Task 4: Use Ansible to deploy respective packages onto each of the servers 
 * Navigate to the ansible directory and download the playbook:
@@ -650,6 +652,7 @@ To access the Page In Browser Type **"http:// < Your Docker Host Public IP >:808
 * **Example:** http://3.95.192.77:8080/hello-world-war-1.0.0/
 
 Once Done, It's time to **Clean up** the Instances
+
 We can now **terminate all the 3 instances** and we are Done with All Labs.
 
 Thanks
