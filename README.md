@@ -516,6 +516,9 @@ Now we need to navigate to **server.xml** to change the Tomcat port number from 
 ```
 sudo vi /etc/tomcat9/server.xml
 ```
+```
+sudo chmod 766 /etc/tomcat9/server.xml
+```
 #### Change 8080 to 9999
 * press esc & Enter **":"** and copy paste below code and hit enter
 ```
