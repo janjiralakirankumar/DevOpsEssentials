@@ -595,7 +595,7 @@ Then, Click on **Add Webhook**.
 * In the host section, give the **Public IP of the Docker instance**.
 * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
 * Then in the next window, in kind select **SSH username with private key** (give username as ubuntu),
-* In **Private Key** Select **Enter directly** and click on **Add** then Copy-Paste the Private Key.
+* In **Private Key** Select **Enter directly** then Copy-Paste the Private Key and then click on **Add** .
 
 **Note:**
 To get the private key, Go to your **CICD-anchored EC2 machine** and run below command.
