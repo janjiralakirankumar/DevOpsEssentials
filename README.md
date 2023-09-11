@@ -27,8 +27,6 @@ First step is to Launch an EC2 Instance in AWS with **Ubuntu 20.04**, **t2.micro
 After the EC2 server is up and running, SSH into the machine and do the following:
 ```
 sudo hostnamectl set-hostname CICDLab
-```
-```
 bash
 ```
 ```
@@ -230,6 +228,7 @@ ssh ubuntu@<Jenkins ip address>
 #### Set the hostname as
 ```
 sudo hostnamectl set-hostname Jenkins
+bash
 ```
 ```
 sudo apt update
@@ -243,6 +242,7 @@ ssh ubuntu@<Docker ip address>
 #### Set the hostname as
 ```
 sudo hostnamectl set-hostname Docker
+bash
 ```
 ```
 sudo apt update
