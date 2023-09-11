@@ -571,7 +571,7 @@ sudo apt remove tomcat9 -y
 6. Go to your **GitHub website**, and inside the **hello-world** repository > **Settings** > **Webhooks** and Click on the **Add Webhook**.
 7. Now fill in the details as below.
 #### Payload URL Example: 
-* http://< jenkins-PublicIP >/github-webhook/ (**Example:** http://184.72.112.155:8080/github-webhook/)
+* http://< jenkins-PublicIP >:8080/github-webhook/ (**Example:** http://184.72.112.155:8080/github-webhook/)
 * **Content type:** application/JSON
 
 Then, Click on **Add Webhook**.
