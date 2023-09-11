@@ -231,7 +231,9 @@ ssh ubuntu@<Jenkins ip address>
 ```
 sudo hostnamectl set-hostname Jenkins
 ```
-
+```
+sudo apt update
+```
 **Exit** from Jenkins Server
 
 #### Now ssh into docker-server and check they are accessible from anchor EC2
@@ -242,7 +244,9 @@ ssh ubuntu@<Docker ip address>
 ```
 sudo hostnamectl set-hostname Docker
 ```
-
+```
+sudo apt update
+```
 **Exit** from Docker Server
 
 #### Task 4: Use Ansible to deploy respective packages onto each of the servers 
