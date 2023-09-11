@@ -516,6 +516,7 @@ Now we need to navigate to **server.xml** to change the Tomcat port number from 
 ```
 sudo vi /etc/tomcat9/server.xml
 ```
+If you are unable to open file then change the permissions by using below command.
 ```
 sudo chmod 766 /etc/tomcat9/server.xml
 ```
