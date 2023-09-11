@@ -635,7 +635,7 @@ ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/
 
 1. Go to your **Jenkins Home page**, click on the **drop-down** on **hello-world project**, and select Configure 
 tab.
-2. In **General Tab**, check Restrict where this project can be run and enter Label Expression as 
+2. In **General Tab**, Select **Restrict where this project can be run** and enter Label Expression as 
 **Slave-Nodes.**
 3. Go to **Post Steps Tab**, select **"Run only if the build succeeds"** then click on **Add post-build** step select **Execute shell** from the drop-down and copy paste the below commands in the shell and **Save**
 
