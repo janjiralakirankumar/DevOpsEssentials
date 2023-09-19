@@ -272,6 +272,8 @@ ansible-playbook DevOpsSetup.yml
 #### Check if docker is working
 * Use your respective Public IP address as shown: http://34.203.249.54:4243/version 
 
+=================================END of LAB-01=================================
+
 ## Lab 2: Git and GitHub Operations.
 
 #### Pre-requisites:
@@ -444,6 +446,8 @@ git push origin master
 ```
 Enter UserID and Token then Press Enter.
 
+=================================END of LAB-02=================================
+
 ## Lab 3: Configure Jenkins
 In this Lab you have to complete the Jenkins and Docker setups.
 
@@ -562,6 +566,8 @@ sudo service tomcat9 stop
 sudo apt remove tomcat9 -y
 ```
 
+=================================END of LAB-03=================================
+
 ## Lab 4: Using GitWebHook to build your code automatically using Jenkins
 
 
@@ -586,6 +592,8 @@ Then, Click on **Add Webhook**.
 2. As the source code gets changed, Jenkins gets triggered by the WebHook and starts building the new source code.
 3. Go to Jenkins, and you can see a build is happening.
 4. Observe the successful load build on the Jenkins page.
+
+=================================END of LAB-04=================================
 
 ## Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
@@ -662,4 +670,4 @@ Once Done, It's time to **Clean up** the Instances
 
 We can now **terminate all the 3 instances** and we are Done with All Labs.
 
-####            ----------------------------------END of DevOps LABS--------------------------------------------
+=================================END of LAB-05=================================
