@@ -272,7 +272,7 @@ ansible-playbook DevOpsSetup.yml
 #### Check if docker is working
 * Use your respective Public IP address as shown: http://34.203.249.54:4243/version 
 
-#### =================================END of LAB-01=================================
+#### =============================END of LAB-01=============================
 
 ## Lab 2: Git and GitHub Operations.
 
@@ -446,7 +446,7 @@ git push origin master
 ```
 Enter UserID and Token then Press Enter.
 
-#### =================================END of LAB-02=================================
+#### =============================END of LAB-02=============================
 
 ## Lab 3: Configure Jenkins
 In this Lab you have to complete the Jenkins and Docker setups.
@@ -570,7 +570,7 @@ sudo service tomcat9 stop
 sudo apt remove tomcat9 -y
 ```
 
-#### =================================END of LAB-03=================================
+#### =============================END of LAB-03=============================
 
 ## Lab 4: Using GitWebHook to build your code automatically using Jenkins
 
@@ -597,7 +597,7 @@ Then, Click on **Add Webhook**.
 3. Go to Jenkins, and you can see a build is happening.
 4. Observe the successful load build on the Jenkins page.
 
-#### =================================END of LAB-04=================================
+#### =============================END of LAB-04=============================
 
 ## Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
@@ -652,6 +652,8 @@ tab.
 3. Go to **Post Steps Tab**, select **"Run only if the build succeeds"** then click on **Add post-build** step select **Execute shell** from the drop-down and copy paste the below commands in the shell and **Save**
 
 **Execute shell commands in Jenkins:**
+#### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
+
 ```
 cd ~
 cp -f /home/ubuntu/workspace/hello-world/target/hello-world-war-1.0.0.war .
@@ -659,8 +661,26 @@ sudo docker container rm -f yourname-helloworld-container
 sudo docker build -t helloworld-image .
 sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image
 ```
-#### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
+---
+#### Explanatory Notes of the above Commands:
 
+The commands you provided are part of the Jenkins job's post-build steps, and they are responsible for building a Docker image and running a Docker container for your Java web application. Here's a breakdown of what each command does:
+
+1. `cd ~`: Change the working directory to the user's home directory.
+
+2. `cp -f /home/ubuntu/workspace/hello-world/target/hello-world-war-1.0.0.war .`: Copy the WAR file (presumably the artifact of your Java web application) from the Jenkins workspace to the current directory (`~`), where you'll perform the Docker build.
+
+3. `sudo docker container rm -f yourname-helloworld-container`: Remove any existing Docker container with the name "yourname-helloworld-container" forcefully if it exists. You should replace "yourname" with your actual first name.
+
+4. `sudo docker build -t helloworld-image .`: Build a Docker image with the tag "helloworld-image" based on the Dockerfile located in the current directory (`.`). The Dockerfile you created earlier specifies how the image should be built.
+
+5. `sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image`: Run a Docker container named "yourname-helloworld-container" from the "helloworld-image" image. This container will be detached (`-d`) and will map port 8080 on the host to port 8080 inside the container. You should replace "yourname" with your actual first name.
+
+After running these commands, your Java web application should be deployed inside a Docker container, and it will be accessible on port 8080 of your Docker host.
+
+Make sure that Docker is properly configured on your host, and all the necessary dependencies for your Java web application are included in the WAR file. Additionally, ensure that the Dockerfile is correctly configured to set up your application inside the container.
+
+---
 * Now you can build your **hello-world project** Either by
 1. Clicking on **"Build Now"** or
 2. By **making a small change in Github files**.
@@ -674,4 +694,4 @@ Once Done, It's time to **Clean up** the Instances
 
 We can now **terminate all the 3 instances** and we are Done with All Labs.
 
-#### =================================END of LAB-05=================================
+#### =============================END of LAB-05=============================
