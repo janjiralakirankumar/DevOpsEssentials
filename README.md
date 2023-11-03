@@ -644,7 +644,22 @@ MAINTAINER "CloudThat"
 # Copy the war file to the images tomcat path
 ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/
 ```
+---
+#### Explanatory Notes of Above Docker FIle:
 
+The Dockerfile you provided is a basic Dockerfile for deploying a Java web application using the Tomcat web server as the base image. Here's what each part of the Dockerfile does:
+
+1. `FROM tomcat:8-jre8`: This line specifies the base image for your Docker container. In this case, it uses the official Tomcat 8 image with the Java 8 runtime. This image contains the Tomcat web server and Java runtime environment.
+
+2. `MAINTAINER "CloudThat"`: This line is a comment and specifies the maintainer or author of the Dockerfile.
+
+3. `ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/`: This line adds your Java web application's WAR file (`hello-world-war-1.0.0.war`) to the `/usr/local/tomcat/webapps/` directory inside the container. When Tomcat starts, it will automatically deploy the WAR file as a web application.
+
+This Dockerfile is a simple example of how to package a Java web application in a Docker container. It uses an existing Tomcat image as the base, and you're adding your application's WAR file to it. You can further customize this Dockerfile based on your specific requirements, such as adding environment variables, configuring Tomcat, or specifying additional settings for your application.
+
+Once you build this Docker image and run a container based on it, your Java web application should be accessible through Tomcat on port 8080 inside the container, as mentioned in your Jenkins job's post-build steps.
+
+---
 1. Go to your **Jenkins Home page**, click on the **drop-down** on **hello-world project**, and select Configure 
 tab.
 2. In **General Tab**, Select **Restrict where this project can be run** and enter Label Expression as 
