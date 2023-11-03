@@ -18,6 +18,9 @@ Setting up servers using Terraform, Working with Git and GitHub, Configuring Jen
 
 ## Lab 1: Use Terraform to Setup Docker Server and Jenkins Server for CICD Lab
 
+**Objective:**
+The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
+
 First step is to Launch an EC2 Instance in AWS with **Ubuntu 20.04**, **t2.micro**, in the **us-east-1** Region and Use the EC2 Tag/Name as "**CICDLab-yourname**'
 
 **Note:** In the security group, open ports 22, 80, 8080, 9999, and 4243.
@@ -272,9 +275,23 @@ ansible-playbook DevOpsSetup.yml
 #### Check if docker is working
 * Use your respective Public IP address as shown: http://34.203.249.54:4243/version 
 
+---
+**Summary:**
+1. Launch two EC2 instances in AWS - one for Jenkins and one for Docker.
+2. Install Terraform on the Jenkins server to automate infrastructure provisioning.
+3. Configure AWS CLI and Ansible for managing resources.
+4. Create a Terraform configuration to define the servers and their attributes.
+5. Launch the servers using Terraform.
+6. Update the Ansible hosts file with the server details.
+7. Configure Jenkins and Docker servers with proper hostnames.
+8. Use Ansible to install necessary software packages and dependencies on both servers.
+
 #### =============================END of LAB-01=============================
 
 ## Lab 2: Git and GitHub Operations.
+
+**Objective:**
+This lab focuses on Git and GitHub operations, including initializing a Git repository, making commits, creating branches, and pushing code to a GitHub repository.
 
 #### Pre-requisites:
 1. Create a **GitHub Account** & **Empty Public Repository** with name as **"hello-world"** (To know how to create refer Course Material)
@@ -446,10 +463,22 @@ git push origin master
 ```
 Enter UserID and Token then Press Enter.
 
+---
+**Summary:**
+1. Initialize a local Git repository on an AWS EC2 instance.
+2. Configure Git settings for email and username.
+3. Add and commit changes to the Git repository.
+4. Create and switch between Git branches.
+5. Make changes and commits in different branches.
+6. Push the code to a GitHub repository.
+7. Merge branches and push the changes to GitHub.
+
 #### =============================END of LAB-02=============================
 
 ## Lab 3: Configure Jenkins
-In this Lab you have to complete the Jenkins and Docker setups.
+
+**Objective:**
+The objective of this lab is to configure Jenkins to build and deploy applications. It includes setting up Jenkins, installing necessary plugins, and configuring Jenkins to build Maven projects.
 
 Initially, Copy the **private key** to the Jenkins server. so, that we can SSH from from **Jenkins Server** to **Docker Server** and viseversa.
 ```
@@ -569,11 +598,25 @@ sudo service tomcat9 stop
 ```
 sudo apt remove tomcat9 -y
 ```
+---
+**Summary:**
+1. Install Jenkins on an AWS EC2 instance.
+2. Unlock Jenkins and create an admin user.
+3. Install plugins, including Maven integration.
+4. Configure Jenkins to use a specific version of Maven.
+5. Create a Maven project in Jenkins for the "hello-world" application.
+6. Configure source code management with Git and GitHub.
+7. Define build goals and options.
+8. Build the project and verify the outcome.
+9. Install and configure Apache Tomcat for serving web applications.
+10. Deploy the built WAR file to Tomcat.
 
 #### =============================END of LAB-03=============================
 
 ## Lab 4: Using GitWebHook to build your code automatically using Jenkins
 
+**Objective:**
+This lab focuses on configuring Git WebHooks to automatically trigger Jenkins builds when code changes are pushed to a GitHub repository.
 
 #### Task 1: Configure Git WebHook in Jenkins
 
@@ -596,10 +639,19 @@ Then, Click on **Add Webhook**.
 2. As the source code gets changed, Jenkins gets triggered by the WebHook and starts building the new source code.
 3. Go to Jenkins, and you can see a build is happening.
 4. Observe the successful load build on the Jenkins page.
+---
+**Summary:**
+1. Configure Git WebHooks in Jenkins for automatic triggering of builds.
+2. Create a GitHub WebHook for a specific GitHub repository.
+3. Make a minor code change in the GitHub repository to trigger a build in Jenkins.
+4. Verify that Jenkins successfully starts a new build when changes are pushed.
 
 #### =============================END of LAB-04=============================
 
 ## Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
+
+**Objective:**
+In this lab, you will set up a Docker container as a Jenkins slave, build a Docker image for a Java web application, and deploy it in a Docker container.
 
 1. Go to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
 2. Click on **New Node** in the next window. Give the node name as **docker-slave** and Select **"permanent agent"**
@@ -704,6 +756,15 @@ Make sure that Docker is properly configured on your host, and all the necessary
 
 To access the Page In Browser Type **"http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/"** to see the website
 * **Example:** http://3.95.192.77:8080/hello-world-war-1.0.0/
+---
+**Summary:**
+1. Create a Jenkins slave node named "docker-slave."
+2. Configure the slave node to use SSH for communication.
+3. Set up a Dockerfile to define the Docker image for the Java web application.
+4. Create a Jenkins job to build and deploy the Java web application in a Docker container.
+5. Add post-build steps to the Jenkins job to copy the WAR file, build the Docker image, and run a Docker container.
+6. Trigger the Jenkins job to build and deploy the application in the Docker container.
+7. Access the deployed web application in the Docker container via the Docker host's public IP.
 ----------------------------------------------------------------------
 Once Done, It's time to **Clean up** the Instances
 
