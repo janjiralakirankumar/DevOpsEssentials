@@ -539,6 +539,10 @@ Save vi using **ESCAPE + :wq!**
 ```
 cat /etc/tomcat9/server.xml
 ```
+If you are unable to open file then change the permissions by using below command.
+```
+sudo chmod 766 /etc/tomcat9/server.xml
+```
 Now restart the system for the changes to take effect
 ```
 sudo service tomcat9 restart
