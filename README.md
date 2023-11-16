@@ -27,6 +27,7 @@ The first step is to Manually Launch an EC2 Server using below configuration:
 * Once the Instance is Launched, Connect to the Instance using `MobaXterm` or `Putty` with the username `ubuntu`.
 
 **Note:** Ensure to add the remaining ports in the security group ie... 8080, 9999, and 4243.
+___
 
 #### Task 1: Installing Terraform on to Anchor Server.
 
@@ -42,11 +43,11 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.6.3/terraform_1.6.3_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.6.4/terraform_1.6.4_linux_amd64.zip
 ```
 View the [Terraform's Latest Versions](https://developer.hashicorp.com/terraform/downloads)
 ```
-unzip terraform_1.6.3_linux_amd64.zip
+unzip terraform_1.6.4_linux_amd64.zip
 ls
 ```
 ```
@@ -57,12 +58,13 @@ ls
 terraform -v
 ```
 ```
-rm terraform_1.6.3_linux_amd64.zip
+rm terraform_1.6.4_linux_amd64.zip
 ```
-
-#### Task 2: Install AWS CLI and Ansible
-Install Python 3 and required packages:
+___
+#### Task 2: Install Python 3, pip, AWS CLI, and Ansible
+Install Python 3 and the required packages:
 ```
+sudo apt-get update
 sudo apt-get install python3-pip -y
 ```
 ```
@@ -77,7 +79,7 @@ aws configure
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
 ---
-#### Note: If you need to create new credentials, Follow the below steps:
+#### Note: If you want to create new credentials, Follow the below steps:
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
 2. When the menu opens, click on Security Credentials.
 3. Under AWS IAM Credentials, click on **Create Access Key**.
@@ -85,9 +87,16 @@ aws configure
 5. Complete the "aws configure" step
 ---
 #### Once configured, do a smoke test to check if your credentials are valid
+
+You can check using any one command
 ```
 aws s3 ls
 ```
+(Or)
+```
+aws iam list-users
+```
+
 #### Create a host inventory file with the necessary permissions
  ```
  sudo mkdir /etc/ansible && sudo touch /etc/ansible/hosts
@@ -95,11 +104,13 @@ aws s3 ls
 ```
  sudo chmod 766 /etc/ansible/hosts
 ```
+This above command gives `read and write permissions to the owner,` `read and write permissions to the group,` and `read and write permissions to others.`
 
 #### Task 3: Use Terraform to launch two servers.
 Create the Terraform configuration and variables files as described.
 * We need to create two additional servers (docker-server and jenkins-server, You can use **t2.micro** for Docker or Jenkins)
-* For **git** we will use the anchor EC2 from where we are operating now 
+* For **Git Operations** we will use the **Anchor EC2** from where we are operating now 
+
 #### Create the terraform directory and set up the config files in it
 ```
 mkdir devops-labs && cd devops-labs
@@ -108,6 +119,11 @@ As a first step, create a key using ssh-keygen.
 ```
 ssh-keygen -t rsa -b 2048 
 ```
+##### Explanation of options:
+
+* -t rsa: Specifies the type of key to create, in this case, RSA.
+* -b 2048: Specifies the number of bits in the key, 2048 bits in this case. The larger the number of bits, the stronger the key.
+
 **Note:**
 1. This will create **id_rsa** and **id_rsa.pub** in **/home/ubuntu/.ssh/**
 2. Keep the path as **/home/ubuntu/.ssh/id_rsa**; don't set up any passphrase, just hit the '**Enter**' key for the 3 questions it asks
@@ -156,10 +172,10 @@ Now, create the variables file with all variables to be used in the main config 
 ```
 vi variables.tf
 ```
-Change following data in variables.tf File. 
+Change the following data in variables.tf File. 
 1. Edit the **Allocated Region** (**Ex:** ap-south-1) & **AMI ID** of same region,
-2. **security group id** and
-3. **KeyPair Name** (Example: "**yourname**-CICDlab-key-pair")
+2. Replace the same **Security Group ID** Created for the Anchor Server
+3. **KeyPair Name** (Example: "**YourName**-CICDlab-KeyPair")
 
 ```
 variable "region" {
@@ -184,7 +200,7 @@ variable "ins_type" {
 
 # Replace 'yourname' with your first name
 variable key_name {
-    default = "yourname-CICDlab-key-pair"
+    default = "YourName-CICDlab-KeyPair"
 }
 
 variable public_key {
@@ -212,11 +228,11 @@ terraform plan
 ```
 terraform apply -auto-approve
 ```
-#### After the terraform code is executed, check hosts inventory file and ensure below output (sample)
+#### After the terraform code is executed, check the host's inventory file and ensure the below output.
 ```
 cat /etc/ansible/hosts
 ```
-It will show ip addresses of jenkins server and docker server as below.
+It will show IP addresses of the Jenkins server and docker server as example shown below.
 
 * [jenkins-server]
 44.202.164.153
@@ -228,7 +244,7 @@ To update Jenkins & Docker Public IP addresses (Optional)
 sudo vi /etc/ansible/hosts 
 ```
 
-#### Now ssh into jenkins-server and check they are accessible from anchor EC2
+#### Now `SSH` into `Jenkins-server` and check they are accessible from `Anchor EC2`
 ```
 ssh ubuntu@<Jenkins ip address>
 ```
@@ -240,9 +256,9 @@ bash
 ```
 sudo apt update
 ```
-**Exit** from Jenkins Server
+**Exit** from the Jenkins Server
 
-#### Now ssh into docker-server and check they are accessible from anchor EC2
+#### Now `SSH` into `Docker-Server` and check they are accessible from `Anchor EC2`
 ```
 ssh ubuntu@<Docker ip address>  
 ```
@@ -254,7 +270,8 @@ bash
 ```
 sudo apt update
 ```
-**Exit** from Docker Server
+**Exit** from the Docker Server
+___
 
 #### Task 4: Use Ansible to deploy respective packages onto each of the servers 
 * Navigate to the ansible directory and download the playbook:
