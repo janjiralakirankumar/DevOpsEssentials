@@ -10,8 +10,6 @@ This guide provides step-by-step instructions for completing various DevOps labs
 1. Basic understanding of Linux commands,
 2. Basic knowledge of a Cloud platform such as AWS,
 3. It's good to have an AWS-Free Tier Account for Practice.
-
-
 ---
 ## Lab 1: Use Terraform to Setup the `Docker Server` and `Jenkins Server` for CICD Lab.
 
@@ -31,7 +29,7 @@ The objective of this lab is to set up two AWS EC2 instances, one for Jenkins an
 * Launch the Instance.
 * Once the Instance is Launched, Connect to the Instance using `MobaXterm` or `Putty` with the username `ubuntu`.
 
-**Note:** Ensure to add the remaining ports in the security group ie... 8080, 9999, and 4243.
+**Note:** Ensure to add the remaining ports in the security group ie... `8080,` `9999,` and `4243.`
 ___
 
 #### Task 1: Installing Terraform onto Anchor Server.
