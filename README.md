@@ -502,10 +502,12 @@ Enter UserID and Token then Press Enter.
 
 #### =============================END of LAB-02=============================
 
-## Lab 3: Configure Jenkins Server
+## Lab 3: Configure Jenkins & Tomcat Server for Deploying our Application on Jenkins Server
 
 **Objective:**
 The objective of this lab is to configure Jenkins to build and deploy applications. It includes `Setting up Jenkins,` `installing necessary plugins` and `configuring Jenkins to build Maven projects.`
+___
+#### Task 1: Configure Jenkins Server:
 
 Initially, Copy the **private key** to the Jenkins server. so, that we can SSH from **Jenkins Server** to **Docker Server** and viseversa.
 ```
@@ -556,8 +558,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 * You can go to **Workspace** > **dist** folder to see that the **.war** file is created there.
 * war file will be created in **/var/lib/jenkins/workspace/hello-world/target/**
-
-## Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
+___
+#### Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
 
 ![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/d5dde194-f10d-4b4d-a20c-890e9ca3e392)
 
