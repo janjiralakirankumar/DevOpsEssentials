@@ -14,22 +14,23 @@ This guide provides step-by-step instructions for completing various DevOps labs
 **Objective:**
 The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
-The first step is to Manually Launch an EC2 Server using below configuration:
 
-* Region: North Virginia (us-east-1).
-* Use tag Name: `CICDLab-YourName`
-* OS version as `Ubuntu 22.04 LTS`
-* Instance type: `t2.micro`
+#### Task 0: The first step is to `Manually Launch an EC2 Server` using the below configuration:
+
+* **Region:** North Virginia (us-east-1).
+* **Use tag Name:** `CICDLab-YourName`
+* **AMI Type and OS Version:** `Ubuntu 22.04 LTS`
+* **Instance type:** `t2.micro`
 * Create a new Keypair with the Name `CICDLab-Keypair-YourName`
 * In security groups, include ports `22 (SSH)` and `80 (HTTP)` (Add remaining ports later)
-* Configure Storage: 10 GiB
+* **Configure Storage:** 10 GiB
 * Launch the Instance.
 * Once the Instance is Launched, Connect to the Instance using `MobaXterm` or `Putty` with the username `ubuntu`.
 
 **Note:** Ensure to add the remaining ports in the security group ie... 8080, 9999, and 4243.
 ___
 
-#### Task 1: Installing Terraform on to Anchor Server.
+#### Task 1: Installing Terraform onto Anchor Server.
 
 Once the Anchor EC2 server is up and running, SSH into the machine and do the following:
 ```
@@ -106,6 +107,7 @@ aws iam list-users
 ```
 This above command gives `read and write permissions to the owner,` `read and write permissions to the group,` and `read and write permissions to others.`
 
+___
 #### Task 3: Use Terraform to launch two servers.
 Create the Terraform configuration and variables files as described.
 * We need to create two additional servers (docker-server and jenkins-server, You can use **t2.micro** for Docker or Jenkins)
@@ -315,14 +317,17 @@ ansible-playbook DevOpsSetup.yml
 This lab focuses on Git and GitHub operations, including initializing a Git repository, making commits, creating branches, and pushing code to a GitHub repository.
 
 #### Pre-requisites:
-1. Create a **GitHub Account** & **Empty Public Repository** with name as **"hello-world"** (To know how to create refer Course Material)
+1. Create a **GitHub Account** & **Empty Public Repository** with name as **"hello-world"**
+
+   **Note:** (To SignUp for GitHub Account, [Click Here](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home))
 2. Basic familiarity with Git commands.
 
-After that, let's operate in the local Git repository
+Once the GitHub Account and Empty repository is ready, let's operate in the local Git repository
 
+___
 #### Task-1: Initializing the local git repository and committing changes
 
-On the CICD anchor EC2, do the below:
+On the `CICD anchor EC2,` do the below:
 ```
 cd ~/
 ```
@@ -330,11 +335,11 @@ Check the GIT version.
 ```
 git --version
 ```
-If it does not exist, then you can install it with the below command. Else no need to execute the below line:  
+(Optional) If it does not exist, then you can install it with the below command. Else no need to execute the below line:  
 ```
 sudo apt install git -y
 ```
-Download the Java code we are going to use in the CICD pipeline
+Download the Java code that we are going to use in the CICD pipeline
 ```
 wget https://devops-e-e.s3.ap-south-1.amazonaws.com/hello-world-master.zip
 ```
@@ -352,12 +357,8 @@ ls
 ```
 git init .
 ```
-Check the email and user name configurations.
-```
-git config user.email
-git config user.name
-```
-If you need to change it, you can use below:
+To set the `User Identity` ie... `email and user name.` you can use below:
+
 ```
 git config --global user.email "< Add your email >"
 ```
@@ -388,25 +389,31 @@ git status
 ```
 git remote add origin < Replace your Repository URL > 
 ```
-**Ex:** git remote add origin **https://github.com/janjiralakirankumar/hello-world.git**
+(**Example:** `git remote add origin https://github.com/janjiralakirankumar/hello-world.git`)
 ```
 git remote show origin
 ```
+___
 #### Task 2: Pushing the Code to your Remote GitHub Repository  
 
 * To push code to **Github**, You need to generate a **Personal Access Token** (PAT) in github.
-* Go to your GitHub homepage and Click on settings on the top right profile Icon.
-* Click on Developer settings (At the bottom on the left side menu). Click on Personal Access Token and then Click on Generate New Token.
-* Under '**Select Scopes**' select all items. Click on '**generate token**'. Copy the token
+---
+**To Generate the Token Follow the below steps:**
 
-**Example:** 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
+* First, Go to your `GitHub homepage` and Click on `settings` on the top right profile Icon.
+* Click on `Developer settings` (At the bottom on the left side menu). Click on `Personal Access Token` and then Click on `Generate New Token.`
+* Under '**Select Scopes**' select all items. Click on '**generate token**'.
+* Once generated, Copy and save the token in a safe location as it is not visible again in GitHub.
+
+   **Example:** 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
+---
 ```
 git push origin master 
 ```
-* when it asks for password, enter the **Personal Access Token** and Press Enter.
-* **Note:** When you enter the token, PAT is invisible and It's the expected behavior.
- 
-#### Task 3: Creating a Git Branch and Pushing into the Remote Repository  
+* when it asks for password, enter the **Personal Access Token** and Press Enter (PAT is invisible and It's the expected behavior.)
+
+ ___
+#### Task 3: Creating a Git Branch and Pushing Code to the Remote Repository
 
 ```
 git branch dev
@@ -486,22 +493,21 @@ Enter UserID and Token then Press Enter.
 
 ---
 **Summary:**
-1. Initialize a local Git repository on an AWS EC2 instance.
-2. Configure Git settings for email and username.
+1. Initialize a local Git repository on Anchor EC2 instance.
+2. Configure Git settings like email and username.
 3. Add and commit changes to the Git repository.
 4. Create and switch between Git branches.
 5. Make changes and commits in different branches.
-6. Push the code to a GitHub repository.
-7. Merge branches and push the changes to GitHub.
+6. Merge branches and Push the code to a GitHub repository.
 
 #### =============================END of LAB-02=============================
 
-## Lab 3: Configure Jenkins
+## Lab 3: Configure Jenkins Server
 
 **Objective:**
-The objective of this lab is to configure Jenkins to build and deploy applications. It includes setting up Jenkins, installing necessary plugins, and configuring Jenkins to build Maven projects.
+The objective of this lab is to configure Jenkins to build and deploy applications. It includes `Setting up Jenkins,` `installing necessary plugins` and `configuring Jenkins to build Maven projects.`
 
-Initially, Copy the **private key** to the Jenkins server. so, that we can SSH from from **Jenkins Server** to **Docker Server** and viseversa.
+Initially, Copy the **private key** to the Jenkins server. so, that we can SSH from **Jenkins Server** to **Docker Server** and viseversa.
 ```
 cd ~
 ```
@@ -511,16 +517,16 @@ ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubunt
 ```
 ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
 ```
-SSH into the **Jenkins server** and get the **initial password** for Jenkins
+SSH into the **Jenkins server** with `Public IP` and get the **initial password** for Jenkins from below path.
 ```
 ssh ubuntu@xx.xx.xx.xx
 ```
 ```
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
-**Example:** "afbe8d33e25b4b908c0b9f91546f09e6"
+   (**Example:** "afbe8d33e25b4b908c0b9f91546f09e6")
 
-1. Now, go to the **browser** and enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**
+1. Now, go to the **Web Browser** and enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**
 2. Under Unlock Jenkins, enter the above **initialAdminPassword** & click **Continue**.
 3. Click on **Install suggested Plugins** on Customize Jenkins page.
 4. Once the plugins are installed, it gives you the page where you can create a New **Admin User**. 
@@ -621,7 +627,7 @@ sudo apt remove tomcat9 -y
 ```
 ---
 **Summary:**
-1. Install Jenkins on an AWS EC2 instance.
+1. Opening the `Jenkins Web Page` on the browser.
 2. Unlock Jenkins and create an admin user.
 3. Install plugins, including Maven integration.
 4. Configure Jenkins to use a specific version of Maven.
@@ -638,7 +644,7 @@ sudo apt remove tomcat9 -y
 
 **Objective:**
 This lab focuses on configuring Git WebHooks to automatically trigger Jenkins builds when code changes are pushed to a GitHub repository.
-
+___
 #### Task 1: Configure Git WebHook in Jenkins
 
 1. Go to Jenkins webpage and choose **Manage Jenkins** > **Plugins**
@@ -653,7 +659,7 @@ This lab focuses on configuring Git WebHooks to automatically trigger Jenkins bu
 * **Content type:** application/JSON
 
 Then, Click on **Add Webhook**.
-
+___
 #### Task 2: Verifying whether the WebHook is working or not by editing the Source Code
 
 1. Now, Make a minor change and commit in GitHub's **hello-world repository** by editing **hello.txt** file.
@@ -779,7 +785,7 @@ To access the Page In Browser Type **"http:// < Your Docker Host Public IP >:808
 * **Example:** http://3.95.192.77:8080/hello-world-war-1.0.0/
 ---
 **Summary:**
-1. Create a Jenkins slave node named "docker-slave."
+1. Configure a Jenkins slave node ie... named as "docker-slave."
 2. Configure the slave node to use SSH for communication.
 3. Set up a Dockerfile to define the Docker image for the Java web application.
 4. Create a Jenkins job to build and deploy the Java web application in a Docker container.
