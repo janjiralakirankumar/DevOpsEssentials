@@ -17,7 +17,7 @@ This guide provides step-by-step instructions for completing various DevOps labs
 The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
 
-#### Task 0: The first step is to `Manually Launch an EC2 Server` using the below configuration:
+### Task 0: The first step is to `Manually Launch an EC2 Server` using the below configuration:
 
 * **Region:** North Virginia (us-east-1).
 * **Use tag Name:** `CICDLab-YourName`
@@ -32,7 +32,7 @@ The objective of this lab is to set up two AWS EC2 instances, one for Jenkins an
 **Note:** Ensure to add the remaining ports in the security group ie... `8080,` `9999,` and `4243.`
 ___
 
-#### Task 1: Installing Terraform onto Anchor Server.
+### Task 1: Installing Terraform onto Anchor Server.
 
 Once the Anchor EC2 server is up and running, SSH into the machine and do the following:
 ```
@@ -64,7 +64,7 @@ terraform -v
 rm terraform_1.6.4_linux_amd64.zip
 ```
 ___
-#### Task 2: Install Python 3, pip, AWS CLI, and Ansible
+### Task 2: Install Python 3, pip, AWS CLI, and Ansible
 Install Python 3 and the required packages:
 ```
 sudo apt-get update
@@ -110,7 +110,7 @@ aws iam list-users
 This above command gives `read and write permissions to the owner,` `read and write permissions to the group,` and `read and write permissions to others.`
 
 ___
-#### Task 3: Use Terraform to launch two servers.
+### Task 3: Use Terraform to launch two servers.
 Create the Terraform configuration and variables files as described.
 * We need to create two additional servers (docker-server and jenkins-server, You can use **t2.micro** for Docker or Jenkins)
 * For **Git Operations** we will use the **Anchor EC2** from where we are operating now 
@@ -275,7 +275,7 @@ sudo apt update
 **Exit** from the Docker Server
 ___
 
-#### Task 4: Use Ansible to deploy respective packages onto each of the servers 
+### Task 4: Use Ansible to deploy respective packages onto each of the servers 
 * Navigate to the ansible directory and download the playbook:
 * Create a directory and change to it
 ```
@@ -325,7 +325,7 @@ This lab focuses on Git and GitHub operations, including initializing a Git repo
 Once the GitHub Account and Empty repository is ready, let's operate in the local Git repository
 
 ___
-#### Task-1: Initializing the local git repository and committing changes
+### Task-1: Initializing the local git repository and committing changes
 
 On the `CICD anchor EC2,` do the below:
 ```
@@ -394,7 +394,7 @@ git remote add origin < Replace your Repository URL >
 git remote show origin
 ```
 ___
-#### Task 2: Pushing the Code to your Remote GitHub Repository  
+### Task 2: Pushing the Code to your Remote GitHub Repository  
 
 * To push code to **Github**, You need to generate a **Personal Access Token** (PAT) in github.
 ---
@@ -413,7 +413,7 @@ git push origin master
 * when it asks for password, enter the **Personal Access Token** and Press Enter (PAT is invisible and It's the expected behavior.)
 
  ___
-#### Task 3: Creating a Git Branch and Pushing Code to the Remote Repository
+### Task 3: Creating a Git Branch and Pushing Code to the Remote Repository
 
 ```
 git branch dev
@@ -507,7 +507,7 @@ Enter UserID and Token then Press Enter.
 **Objective:**
 The objective of this lab is to configure Jenkins to build and deploy applications. It includes `Setting up Jenkins,` `installing necessary plugins` and `configuring Jenkins to build Maven projects.`
 ___
-#### Task 1: Configure Jenkins Server:
+### Task 1: Configure Jenkins Server:
 
 Initially, Copy the **private key** to the Jenkins server. so, that we can SSH from **Jenkins Server** to **Docker Server** and viseversa.
 ```
@@ -559,7 +559,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 * You can go to **Workspace** > **dist** folder to see that the **.war** file is created there.
 * war file will be created in **/var/lib/jenkins/workspace/hello-world/target/**
 ___
-#### Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
+### Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
 
 ![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/d5dde194-f10d-4b4d-a20c-890e9ca3e392)
 
@@ -650,7 +650,7 @@ sudo apt remove tomcat9 -y
 **Objective:**
 This lab focuses on configuring Git WebHooks to automatically trigger Jenkins builds when code changes are pushed to a GitHub repository.
 ___
-#### Task 1: Configure Git WebHook in Jenkins
+### Task 1: Configure Git WebHook in Jenkins
 
 1. Go to Jenkins webpage and choose **Manage Jenkins** > **Plugins**
 2. Go to the **Available** Tab, Search for **GitHub Integration**. Select on the **GitHub Integration Plugin** and then on **Install** (without restart).
@@ -665,7 +665,7 @@ ___
 
 Then, Click on **Add Webhook**.
 ___
-#### Task 2: Verifying whether the WebHook is working or not by editing the Source Code
+### Task 2: Verifying whether the WebHook is working or not by editing the Source Code
 
 1. Now, Make a minor change and commit in GitHub's **hello-world repository** by editing **hello.txt** file.
 2. As the source code gets changed, Jenkins gets triggered by the WebHook and starts building the new source code.
