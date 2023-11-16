@@ -8,7 +8,9 @@ This guide provides step-by-step instructions for completing various DevOps labs
 1. Basic understanding of Linux commands,
 2. Basic knowledge of a Cloud platform such as AWS,
 3. It's good to have an AWS-Free Tier Account for Practice.
-![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/123ea574-8ca2-4860-bb00-5f5f5fc34a2f)
+
+![how-devops](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/b0493ccd-3370-4f98-b08a-6e76626ca226)
+
 ---
 ## Lab 1: Use Terraform to Setup the `Docker Server` and `Jenkins Server` for CICD Lab.
 
