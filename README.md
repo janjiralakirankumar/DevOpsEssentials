@@ -17,7 +17,7 @@ This guide provides step-by-step instructions for completing various DevOps labs
 The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
 
-### Task 0: The first step is to `Manually Launch an EC2 Server` using the below configuration:
+### Task 0: First step is to `Manually Launch an EC2 Server` with the below configuration:
 
 * **Region:** North Virginia (us-east-1).
 * **Use tag Name:** `CICDLab-YourName`
@@ -26,15 +26,13 @@ The objective of this lab is to set up two AWS EC2 instances, one for Jenkins an
 * Create a new Keypair with the Name `CICDLab-Keypair-YourName`
 * In security groups, include ports `22 (SSH)` and `80 (HTTP)` (Add remaining ports later)
 * **Configure Storage:** 10 GiB
-* Launch the Instance.
-* Once the Instance is Launched, Connect to the Instance using `MobaXterm` or `Putty` with the username `ubuntu`.
-
-**Note:** Ensure to add the remaining ports in the security group ie... `8080,` `9999,` and `4243.`
+* Click on `Launch Instance.`
+* Once it is Launched, Ensure to add the remaining ports in the security group ie... `8080,` `9999,` and `4243.`
 ___
 
 ### Task 1: Installing Terraform onto Anchor Server.
 
-Once the Anchor EC2 server is up and running, SSH into the machine and do the following:
+Once the Anchor EC2 server is up and running, SSH into the machine using `MobaXterm` or `Putty` with the username `ubuntu` and do the following:
 ```
 sudo hostnamectl set-hostname CICDLab
 bash
@@ -84,12 +82,12 @@ aws configure
 ---
 #### Note: If you want to create new credentials, Follow the below steps:
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
-2. When the menu opens, click on Security Credentials.
+2. Click on Security Credentials.
 3. Under AWS IAM Credentials, click on **Create Access Key**.
-4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one.
-5. Complete the "aws configure" step
+4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.
+5. Then, Complete the `aws configure` step
 ---
-#### Once configured, do a smoke test to check if your credentials are valid
+#### Once configured, do a smoke test to check if your credentials are valid and get access to AWS.
 
 You can check using any one command
 ```
@@ -107,13 +105,13 @@ aws iam list-users
 ```
  sudo chmod 766 /etc/ansible/hosts
 ```
-This above command gives `read and write permissions to the owner,` `read and write permissions to the group,` and `read and write permissions to others.`
+**Note:** The above command gives `read and write permissions to the owner,` `read and write permissions to the group,` and `read and write permissions to others.`
 
 ___
 ### Task 3: Use Terraform to launch two servers.
 Create the Terraform configuration and variables files as described.
-* We need to create two additional servers (docker-server and jenkins-server, You can use **t2.micro** for Docker or Jenkins)
-* For **Git Operations** we will use the **Anchor EC2** from where we are operating now 
+* We need to create two additional servers (`docker-server` and `jenkins-server,` You can use **t2.micro** for Docker and Jenkins servers)
+* For **Git Operations** we will use the same **Anchor EC2** from where we are operating now 
 
 #### Create the terraform directory and set up the config files in it
 ```
@@ -123,20 +121,20 @@ As a first step, create a key using ssh-keygen.
 ```
 ssh-keygen -t rsa -b 2048 
 ```
-##### Explanation of options:
+##### Explanation:
 
-* -t rsa: Specifies the type of key to create, in this case, RSA.
-* -b 2048: Specifies the number of bits in the key, 2048 bits in this case. The larger the number of bits, the stronger the key.
+* `-t rsa:` Specifies the type of key to create, in this case, RSA.
+* `-b 2048:` Specifies the number of bits in the key, 2048 bits in this case. The larger the number of bits, the stronger the key.
 
 **Note:**
-1. This will create **id_rsa** and **id_rsa.pub** in **/home/ubuntu/.ssh/**
+1. This will create `**id_rsa**` and `**id_rsa.pub**` in **/home/ubuntu/.ssh/**
 2. Keep the path as **/home/ubuntu/.ssh/id_rsa**; don't set up any passphrase, just hit the '**Enter**' key for the 3 questions it asks
 
-#### Now prepare the Terraform config files.
+#### Now create the Terraform config files.
 ```
 vi DevOpsServers.tf
 ```
-Type the below code into DevOpsServers.tf
+Copy and paste the below code into `DevOpsServers.tf`
 ```
 provider "aws" {
   region = var.region
@@ -258,7 +256,7 @@ bash
 ```
 sudo apt update
 ```
-**Exit** from the Jenkins Server
+**Exit** only from the Jenkins Server
 
 #### Now `SSH` into `Docker-Server` and check they are accessible from `Anchor EC2`
 ```
@@ -272,17 +270,17 @@ bash
 ```
 sudo apt update
 ```
-**Exit** from the Docker Server
+**Exit** only from the Docker Server
 ___
 
 ### Task 4: Use Ansible to deploy respective packages onto each of the servers 
-* Navigate to the ansible directory and download the playbook:
-* Create a directory and change to it
+
+#### Create a directory and change to it
 ```
 cd ~
 mkdir ansible && cd ansible
 ```
-#### Now, Download the playbook, which will deploy packages into the servers.
+#### Now, Download the playbook, which will deploy packages onto the servers.
 ```
 wget https://devops-e-e.s3.ap-south-1.amazonaws.com/DevOpsSetup.yml
 ```
@@ -290,7 +288,7 @@ wget https://devops-e-e.s3.ap-south-1.amazonaws.com/DevOpsSetup.yml
 ```
 ansible-playbook DevOpsSetup.yml
 ```
-#### At the end of this step, the Docker-server and Jenkins-server will be ready for the 
+#### At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready for performing Labs
 
 #### Check if the Jenkins landing page is appearing.
 * Use your respective Public IP address as shown: http://44.202.164.153:8080/ 
@@ -306,7 +304,7 @@ ansible-playbook DevOpsSetup.yml
 4. Create a Terraform configuration to define the servers and their attributes.
 5. Launch the servers using Terraform.
 6. Update the Ansible hosts file with the server details.
-7. Configure Jenkins and Docker servers with proper hostnames.
+7. Configure Jenkins and Docker servers with proper host names.
 8. Use Ansible to install necessary software packages and dependencies on both servers.
 
 #### =============================END of LAB-01=============================
@@ -314,15 +312,15 @@ ansible-playbook DevOpsSetup.yml
 ## Lab 2: Git and GitHub Operations.
 
 **Objective:**
-This lab focuses on Git and GitHub operations, including initializing a Git repository, making commits, creating branches, and pushing code to a GitHub repository.
+This lab focuses on Git and GitHub operations, including `initializing a Git repository,` `making commits,` `creating branches,` and `pushing code to a GitHub repository.`
 
-#### Pre-requisites:
+### Pre-requisites:
 1. Create a **GitHub Account** & **Empty Public Repository** with name as **"hello-world"**
 
    **Note:** (To SignUp for GitHub Account, [Click Here](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home))
 2. Basic familiarity with Git commands.
 
-Once the GitHub Account and Empty repository is ready, let's operate in the local Git repository
+Once the GitHub Account and Empty repository is ready, let's operate in the local Anchor Server.
 
 ___
 ### Task-1: Initializing the local git repository and committing changes
@@ -400,13 +398,14 @@ ___
 ---
 **To Generate the Token Follow the below steps:**
 
-* First, Go to your `GitHub homepage` and Click on `settings` on the top right profile Icon.
+* First, Go to your `GitHub homepage,` Click on the top right `profile Icon` and then `settings`
 * Click on `Developer settings` (At the bottom on the left side menu). Click on `Personal Access Token` and then Click on `Generate New Token.`
 * Under '**Select Scopes**' select all items. Click on '**generate token**'.
-* Once generated, Copy and save the token in a safe location as it is not visible again in GitHub.
+* Once generated, **Copy and save the token in a safe location as it is not visible again in GitHub.**
 
    **Example:** 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
 ---
+Now you can push your code to the Remote repository using the below command.
 ```
 git push origin master 
 ```
