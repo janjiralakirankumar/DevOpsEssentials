@@ -2,7 +2,7 @@
 Welcome to the DevOps Essentials Lab Cheat Sheet!
 
 ![how-devops](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/b0493ccd-3370-4f98-b08a-6e76626ca226)
-![cici-pipeline-blog](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/7502c720-e297-46e4-ad20-483053970ca3)
+![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/fe242c84-e657-4952-bfe7-f05c9021f012)
 
 This guide provides step-by-step instructions for completing various DevOps labs, covering tasks like: 
 `Setting up servers using Terraform,` `Working with Git and GitHub,` `Configuring Jenkins and GitWebHook,` and `Deploying code in Docker containers.`
