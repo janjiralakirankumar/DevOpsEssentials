@@ -1,26 +1,36 @@
 # DevOps Essentials Lab Cheat Sheet
 Welcome to the DevOps Essentials Lab Cheat Sheet! 
 
-This guide provides the step-by-step instructions for completing various DevOps labs, covering tasks like: 
-Setting up servers using Terraform, Working with Git and GitHub, Configuring Jenkins, Using GitWebHook, and Deploying code in Docker containers.
+This guide provides step-by-step instructions for completing various DevOps labs, covering tasks like: 
+`Setting up servers using Terraform,` `Working with Git and GitHub,` `Configuring Jenkins and GitWebHook,` and `Deploying code in Docker containers.`
 
 ### DevOps Essentials Lab Pre-requisites
 1. Basic understanding of Linux commands,
 2. Basic knowledge of a Cloud platform such as AWS,
 3. It's good to have an AWS-Free Tier Account for Practice.
 ---
-## Lab 1: Use Terraform to Setup Docker Server and Jenkins Server for CICD Lab
+## Lab 1: Use Terraform to Setup the `Docker Server` and `Jenkins Server` for CICD Lab.
 
 **Objective:**
 The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
-First step is to Launch an EC2 Instance in AWS with **Ubuntu 20.04**, **t2.micro**, in the **us-east-1** Region and Use the EC2 Tag/Name as "**CICDLab-yourname**'
+The first step is to Manually Launch an EC2 Server using below configuration:
 
-**Note:** In the security group, open ports 22, 80, 8080, 9999, and 4243.
+* Region: North Virginia (us-east-1).
+* Use tag Name: `CICDLab-YourName`
+* OS version as `Ubuntu 22.04 LTS`
+* Instance type: `t2.micro`
+* Create a new Keypair with the Name `CICDLab-Keypair-YourName`
+* In security groups, include ports `22 (SSH)` and `80 (HTTP)` (Add remaining ports later)
+* Configure Storage: 10 GiB
+* Launch the Instance.
+* Once the Instance is Launched, Connect to the Instance using `MobaXterm` or `Putty` with the username `ubuntu`.
 
-#### Task 1: Install Terraform
+**Note:** Ensure to add the remaining ports in the security group ie... 8080, 9999, and 4243.
 
-After the EC2 server is up and running, SSH into the machine and do the following:
+#### Task 1: Installing Terraform on to Anchor Server.
+
+Once the Anchor EC2 server is up and running, SSH into the machine and do the following:
 ```
 sudo hostnamectl set-hostname CICDLab
 bash
@@ -66,13 +76,14 @@ aws configure
 | ----------------- | --------------------- |
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
+---
 #### Note: If you need to create new credentials, Follow the below steps:
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
 2. When the menu opens, click on Security Credentials.
 3. Under AWS IAM Credentials, click on **Create Access Key**.
 4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one.
 5. Complete the "aws configure" step
-
+---
 #### Once configured, do a smoke test to check if your credentials are valid
 ```
 aws s3 ls
