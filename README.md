@@ -168,8 +168,6 @@ resource "aws_instance" "my-machine" {
   }
 }
 ```
-
-
 Now, create the variables file with all variables to be used in the main config file.
 ```
 vi variables.tf
@@ -559,7 +557,10 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ## Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
 
-* Now, SSH into the Jenkins server (Make sure that you are root user and Install Tomcat web server)
+![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/d5dde194-f10d-4b4d-a20c-890e9ca3e392)
+
+
+* Now, SSH into the Jenkins server (Make sure that you are the root user and Install the Tomcat web server)
 * **Note:** (If you are already in Jenkins Server, again SSH is not needed.)
 
 1. Follow below steps:
@@ -679,6 +680,8 @@ ___
 
 **Objective:**
 In this lab, you will set up a Docker container as a Jenkins slave, build a Docker image for a Java web application, and deploy it in a Docker container.
+
+![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/9139c0b6-2571-4606-84d0-22dac79d479e)
 
 1. Go to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
 2. Click on **New Node** in the next window. Give the node name as **docker-slave** and Select **"permanent agent"**
