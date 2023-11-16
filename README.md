@@ -1,5 +1,5 @@
 # DevOps Essentials Lab Cheat Sheet
-Welcome to the DevOps Essentials Lab Cheat Sheet! 
+Welcome to the DevOps Essentials Lab Cheat Sheet!
 
 ![how-devops](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/b0493ccd-3370-4f98-b08a-6e76626ca226)
 
