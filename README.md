@@ -16,7 +16,8 @@ This guide provides step-by-step instructions for completing various DevOps labs
 **Objective:**
 The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
-### Task 0: First step is to `Manually Launch an EC2 Server` with the below configuration:
+---------------------------------------------------------------------
+### Task-0: The first step is to `Manually Launch an EC2 Server` with the below configuration:
 
 * **Region:** North Virginia (us-east-1).
 * **Use tag Name:** `CICDLab-YourName`
@@ -28,7 +29,8 @@ The objective of this lab is to set up two AWS EC2 instances, one for Jenkins an
 * Click on `Launch Instance.`
 * Once it is Launched, Ensure to add the remaining ports in the security group ie... `8080,` `9999,` and `4243.`
 
-### Task 1: Installing Terraform onto Anchor Server.
+---------------------------------------------------------------------
+### Task-1: Installing Terraform onto Anchor Server.
 
 Once the Anchor EC2 server is up and running, SSH into the machine using `MobaXterm` or `Putty` with the username `ubuntu` and do the following:
 ```
@@ -60,7 +62,7 @@ terraform -v
 rm terraform_1.6.4_linux_amd64.zip
 ```
 ---------------------------------------------------------------------
-### Task 2: Install Python 3, pip, AWS CLI, and Ansible
+### Task-2: Install Python 3, pip, AWS CLI, and Ansible
 Install Python 3 and the required packages:
 ```
 sudo apt-get update
@@ -77,7 +79,7 @@ aws configure
 | ----------------- | --------------------- |
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
----
+---------------------------------------------------------------------
 **Note:** If you want to create new credentials, Follow the below steps:
 
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
@@ -85,7 +87,8 @@ aws configure
 3. Under AWS IAM Credentials, click on **Create Access Key**.
 4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.
 5. Then, Complete the `aws configure` step
----
+
+---------------------------------------------------------------------
 #### Once configured, do a smoke test to check if your credentials are valid and get access to AWS.
 
 You can check using any one command
@@ -107,7 +110,7 @@ aws iam list-users
 **Note:** The above command gives `read and write permissions to the owner,` `read and write permissions to the group,` and `read and write permissions to others.`
 
 ---------------------------------------------------------------------
-### Task 3: Use Terraform to launch two servers.
+### Task-3: Use Terraform to launch two servers.
 Create the Terraform configuration and variables files as described.
 * We need to create two additional servers (`Docker-server` and `Jenkins-server,` You can use **t2.micro** for Docker and Jenkins servers)
 * For **Git Operations** we will use the same **Anchor EC2** from where we are operating now 
@@ -271,7 +274,7 @@ sudo apt update
 **Exit** only from the Docker Server, not the Anchor Server.
 
 ---------------------------------------------------------------------
-### Task 4: Use Ansible to deploy respective packages onto each of the servers 
+### Task-4: Use Ansible to deploy respective packages onto each of the servers 
 
 #### Create a directory and change to it
 ```
@@ -293,6 +296,7 @@ ansible-playbook DevOpsSetup.yml
 
 #### Verify that the Docker landing page is working.
 * Use your respective Docker's Public IP address as shown: http://**34.203.249.54**:4243/version 
+
 ---------------------------------------------------------------------
 **Summary:**
 1. Launch two EC2 instances in AWS - one for Jenkins and one for Docker.
@@ -320,7 +324,7 @@ This lab focuses on `Git` and `GitHub operations,` including `initializing a Git
 
 Once the GitHub Account and Empty repository is ready, let's operate in the local Anchor Server.
 
-___
+---------------------------------------------------------------------
 ### Task-1: Initializing the local git repository and committing changes
 
 On the `CICD anchor EC2,` do the below:
@@ -382,11 +386,12 @@ git log
 ```
 git status
 ```
-___
-### Task 2: Pushing the Code to your Remote GitHub Repository  
+
+---------------------------------------------------------------------
+### Task-2: Pushing the Code to your Remote GitHub Repository  
 
 * To push code to **Github**, You need to generate a **Personal Access Token** (PAT) in github.
----
+
 **To Generate the Token Follow the below steps:**
 
 * First, Go to your `GitHub homepage,` Click on the top right `profile Icon` and then `settings`
@@ -395,30 +400,38 @@ ___
 * Once generated, **Copy and save the token in a safe location as it is not visible again in GitHub.**
 
    **Example:** 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
----
-Create `Alias` as `Origin` to GitHub's Remote repository URL.
+
+* Create `Alias` as `Origin` to GitHub's Remote repository URL.
 ```
 git remote add origin < Replace your Repository URL > 
 ```
 (**Example:** `git remote add origin https://github.com/janjiralakirankumar/hello-world.git`)
+
+* To view the list of Aliases, run the below command in Terminal.
+```
+alias
+```
+* To view a specific alias use the below command.
 ```
 git remote show origin
 ```
-Now you can push your code to the Remote repository using the below command.
+* Now you can push your code to the Remote repository using the below command.
 ```
 git push origin master 
 ```
-* when it asks for password, enter the **Personal Access Token** and Press Enter (PAT is invisible and It's the expected behavior.)
+* When it asks for a password, enter the **Personal Access Token** and Press Enter (PAT is invisible and It's the expected behavior.)
 
- ___
+---------------------------------------------------------------------
 ### Task 3: Creating a Git Branch and Pushing Code to the Remote Repository
-
+* To create a new Branch
 ```
 git branch dev
 ```
+* To know the current branch
 ```
 git branch
 ```
+* To switch to another branch
 ```
 git checkout dev
 ```
@@ -488,7 +501,8 @@ git merge prod
 git push origin master
 ```
 #### When it asks for a `User ID` enter `GitHub's User ID,` when it asks for a `password` Enter `PAT` and Press Enter. (Note: PAT is invisible when you paste)
----
+
+---------------------------------------------------------------------
 **Summary:**
 1. Initialize a local Git repository on Anchor EC2 instance.
 2. Configure Git settings like email and username.
@@ -498,13 +512,14 @@ git push origin master
 6. Merge branches and Push the code to a GitHub repository.
 
 #### =============================END of LAB-02=============================
-
+---
 ## Lab 3: Configure Jenkins & Tomcat Server for Deploying our Application on the Same Server.
 
 **Objective:**
 The objective of this lab is to configure Jenkins to build and deploy applications. It includes `Setting up Jenkins,` `installing necessary plugins` and `configuring Jenkins to build Maven projects,` and `Installing Tomcat Server.` 
-___
-### Task 1: Configure Jenkins Server:
+
+---------------------------------------------------------------------
+### Task-1: Configure Jenkins Server:
 
 Initially, Copy the **private key** from **Anchor Server** to the **Jenkins Server** & **Docker Server**. so, that we can SSH from **Jenkins Server** to **Docker Server** and viseversa.
 ```
@@ -573,8 +588,9 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 * You can go to **Workspace** > **dist** folder to see that the **.war** file is created there.
 * war file will be created in **/var/lib/jenkins/workspace/hello-world/target/**
-___
-### Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
+
+---------------------------------------------------------------------
+### Task-2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
 
 ![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/d5dde194-f10d-4b4d-a20c-890e9ca3e392)
 
@@ -660,7 +676,7 @@ sudo service tomcat9 stop
 ```
 sudo apt remove tomcat9 -y
 ```
----
+---------------------------------------------------------------------
 **Summary:**
 1. Opening the `Jenkins Web Page` on the browser.
 2. Unlock Jenkins and create an admin user.
@@ -674,16 +690,17 @@ sudo apt remove tomcat9 -y
 10. Deploy the built WAR file to Tomcat.
 
 #### =============================END of LAB-03=============================
-
+---
 ## Lab 4: Using GitWebHook to build your code automatically using Jenkins
 
 **Objective:**
 This lab focuses on configuring Git WebHooks to automatically trigger Jenkins builds when code changes are pushed to a GitHub repository.
-___
-### Task 1: Configure Git WebHook in Jenkins
 
-1. Go to Jenkins webpage and choose **Manage Jenkins** > **Plugins**
-2. Go to the **Available** Tab, Search for **GitHub Integration**. Select on the **GitHub Integration Plugin** and then on **Install** (without restart).
+---------------------------------------------------------------------
+### Task-1: Configure Git WebHook in Jenkins
+
+1. Go to the Jenkins webpage and choose **Manage Jenkins** > **Plugins**
+2. Go to the **Available** Tab, Search for **GitHub Integration**. Select the **GitHub Integration Plugin** and then on **Install** (without restart).
 3. Once the installation is complete, click on **Go back to the top page**.
 4. In your **hello-world project**, Click on **Configure**.
 5. Go to **Build Triggers** and enable the **GitHub hook trigger for GITScm polling**. Then **Save**.
@@ -694,8 +711,9 @@ ___
 * **Content type:** application/JSON
 
 Then, Click on **Add Webhook**.
-___
-### Task 2: Verifying whether the WebHook is working or not by editing the Source Code
+
+---------------------------------------------------------------------
+### Task-2: Verifying whether the WebHook is working or not by editing the Source Code
 
 1. Now, Make a minor change and commit in GitHub's **hello-world repository** by editing **hello.txt** file.
 2. As the source code gets changed, Jenkins gets triggered by the WebHook and starts building the new source code.
@@ -709,8 +727,8 @@ ___
 4. Verify that Jenkins successfully starts a new build when changes are pushed.
 
 #### =============================END of LAB-04=============================
-
-## Lab 5: Configuring Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
+---
+## Lab-5: Configuring Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
 **Objective:**
 In this lab, you will set up a Docker container as a Jenkins slave, build a Docker image for a Java web application, and deploy it in a Docker container.
@@ -760,7 +778,7 @@ MAINTAINER "CloudThat"
 # Copy the war file to the images tomcat path
 ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/
 ```
----
+---------------------------------------------------------------------
 #### Explanatory Notes of Above Docker FIle:
 
 The Dockerfile you provided is a basic Dockerfile for deploying a Java web application using the Tomcat web server as the base image. Here's what each part of the Dockerfile does:
@@ -775,7 +793,7 @@ This Dockerfile is a simple example of how to package a Java web application in 
 
 Once you build this Docker image and run a container based on it, your Java web application should be accessible through Tomcat on port 8080 inside the container, as mentioned in your Jenkins job's post-build steps.
 
----
+---------------------------------------------------------------------
 1. Go to your **Jenkins Home page**, click on the **drop-down** on **hello-world project**, and select Configure 
 tab.
 2. In **General Tab**, Select **Restrict where this project can be run** and enter Label Expression as 
@@ -792,7 +810,7 @@ sudo docker container rm -f yourname-helloworld-container
 sudo docker build -t helloworld-image .
 sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image
 ```
----
+---------------------------------------------------------------------
 #### Explanatory Notes of the above Commands:
 
 The commands you provided are part of the Jenkins job's post-build steps, and they are responsible for building a Docker image and running a Docker container for your Java web application. Here's a breakdown of what each command does:
@@ -811,7 +829,7 @@ After running these commands, your Java web application should be deployed insid
 
 Make sure that Docker is properly configured on your host, and all the necessary dependencies for your Java web application are included in the WAR file. Additionally, ensure that the Dockerfile is correctly configured to set up your application inside the container.
 
----
+---------------------------------------------------------------------
 * Now you can build your **hello-world project** Either by
 1. Clicking on **"Build Now"** or
 2. By **making a small change in Github files**.
@@ -829,13 +847,13 @@ To access the Page In Browser Type **"http:// < Your Docker Host Public IP >:808
 5. Add post-build steps to the Jenkins job to copy the WAR file, build the Docker image, and run a Docker container.
 6. Trigger the Jenkins job to build and deploy the application in the Docker container.
 7. Access the deployed web application in the Docker container via the Docker host's public IP.
-----------------------------------------------------------------------
+
+---------------------------------------------------------------------
 Once Done, It's time to **Clean up** the Instances
 
 We can now **terminate all the 3 instances** and we are Done with All Labs.
 
 #### =============================END of LAB-05=============================
-
 ---
 ## Important Git Commands
 
@@ -949,7 +967,8 @@ Here are some important Git commands and their brief explanations:
     ```
 
 These are just a few fundamental Git commands. There are many more, each serving different purposes in the version control process.
-___
+
+---
 ## DevOps Tools and Documentation Links:
 
 Certainly! Here are the official websites and documentation links for some popular DevOps tools:
@@ -997,3 +1016,5 @@ Certainly! Here are the official websites and documentation links for some popul
      - Documentation: [Elastic Stack Documentation](https://www.elastic.co/guide/index.html)
 
 Always check the official websites for the most up-to-date information and documentation. Additionally, many of these tools may have vibrant communities where you can find additional resources, tutorials, and support.
+
+#### ============================= END OF All LABs =============================
