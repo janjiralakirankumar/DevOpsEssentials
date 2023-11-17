@@ -110,7 +110,7 @@ aws iam list-users
 ___
 ### Task 3: Use Terraform to launch two servers.
 Create the Terraform configuration and variables files as described.
-* We need to create two additional servers (`docker-server` and `jenkins-server,` You can use **t2.micro** for Docker and Jenkins servers)
+* We need to create two additional servers (`Docker-server` and `Jenkins-server,` You can use **t2.micro** for Docker and Jenkins servers)
 * For **Git Operations** we will use the same **Anchor EC2** from where we are operating now 
 
 #### Create the terraform directory and set up the config files in it
@@ -127,7 +127,7 @@ ssh-keygen -t rsa -b 2048
 * `-b 2048:` Specifies the number of bits in the key, 2048 bits in this case. The larger the number of bits, the stronger the key.
 
 **Note:**
-1. This will create `**id_rsa**` and `**id_rsa.pub**` in **/home/ubuntu/.ssh/**
+1. This will create `id_rsa` and `id_rsa.pub` in **/home/ubuntu/.ssh/**
 2. Keep the path as **/home/ubuntu/.ssh/id_rsa**; don't set up any passphrase, just hit the '**Enter**' key for the 3 questions it asks
 
 #### Now create the Terraform config files.
@@ -175,15 +175,15 @@ vi variables.tf
 Change the following data in variables.tf File. 
 1. Edit the **Allocated Region** (**Ex:** ap-south-1) & **AMI ID** of same region,
 2. Replace the same **Security Group ID** Created for the Anchor Server
-3. **KeyPair Name** (Example: "**YourName**-CICDlab-KeyPair")
+3. Add your Name for **KeyPair** (Example: "**YourName**-CICDlab-KeyPair")
 
 ```
 variable "region" {
     default = "us-east-1"
 }
 
-# Change the SG ID. You can use the same SG id used for your CICD anchor server
-# Basically the SG should open ports 22, 80, 8080, 9999 and 4243
+# Change the SG ID. You can use the same SG ID used for your CICD anchor server
+# Basically the SG should open ports 22, 80, 8080, 9999, and 4243
 variable  "sg_id" {
     default = "sg-06dc8863d3ed3d280" # us-east-1
 }
@@ -232,17 +232,16 @@ terraform apply -auto-approve
 ```
 cat /etc/ansible/hosts
 ```
-It will show IP addresses of the Jenkins server and docker server as example shown below.
+It will show IP addresses of the Jenkins server and docker server as an example shown below.
 
-* [jenkins-server]
-44.202.164.153
-* [docker-server]
-34.203.249.54
+* [jenkins-server] 44.202.164.153
+* [docker-server] 34.203.249.54
 
-To update Jenkins & Docker Public IP addresses (Optional)
+**(Optional Step):** When you stop and start the EC2 Instances Public IP Changes. In that case, To update Jenkins & Docker Public IP addresses use the below command
 ```
 sudo vi /etc/ansible/hosts 
 ```
+Once Updated, Save the File.
 
 #### Now `SSH` into `Jenkins-server` and check they are accessible from `Anchor EC2`
 ```
@@ -256,7 +255,7 @@ bash
 ```
 sudo apt update
 ```
-**Exit** only from the Jenkins Server
+**Exit** only from the Jenkins Server, not the Anchor Server.
 
 #### Now `SSH` into `Docker-Server` and check they are accessible from `Anchor EC2`
 ```
@@ -270,7 +269,7 @@ bash
 ```
 sudo apt update
 ```
-**Exit** only from the Docker Server
+**Exit** only from the Docker Server, not the Anchor Server.
 ___
 
 ### Task 4: Use Ansible to deploy respective packages onto each of the servers 
@@ -280,7 +279,7 @@ ___
 cd ~
 mkdir ansible && cd ansible
 ```
-#### Now, Download the playbook, which will deploy packages onto the servers.
+#### Now, Download the playbook, which will deploy packages onto the `Docker-server` and `Jenkins-Server.`
 ```
 wget https://devops-e-e.s3.ap-south-1.amazonaws.com/DevOpsSetup.yml
 ```
@@ -288,13 +287,13 @@ wget https://devops-e-e.s3.ap-south-1.amazonaws.com/DevOpsSetup.yml
 ```
 ansible-playbook DevOpsSetup.yml
 ```
-#### At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready for performing Labs
+#### At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready for performing further Labs
 
-#### Check if the Jenkins landing page is appearing.
-* Use your respective Public IP address as shown: http://44.202.164.153:8080/ 
+#### Verify that the Jenkins landing page is working.
+* Use your respective Jenkin'sPublic IP address as shown: http://**44.202.164.153**:8080/ 
 
-#### Check if docker is working
-* Use your respective Public IP address as shown: http://34.203.249.54:4243/version 
+#### Verify that the Docker landing page is working.
+* Use your respective Docker's Public IP address as shown: http://**34.203.249.54**:4243/version 
 
 ---
 **Summary:**
@@ -312,13 +311,14 @@ ansible-playbook DevOpsSetup.yml
 ## Lab 2: Git and GitHub Operations.
 
 **Objective:**
-This lab focuses on Git and GitHub operations, including `initializing a Git repository,` `making commits,` `creating branches,` and `pushing code to a GitHub repository.`
+This lab focuses on `Git` and `GitHub operations,` including `initializing a Git repository,` `making commits,` `creating branches,` and `pushing code to a GitHub repository.`
 
 ### Pre-requisites:
 1. Create a **GitHub Account** & **Empty Public Repository** with name as **"hello-world"**
 
    **Note:** (To SignUp for GitHub Account, [Click Here](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home))
-2. Basic familiarity with Git commands.
+2. You need to generate a **Personal Access Token** (PAT) in GitHub.
+3. Basic familiarity with **Git Commands.**
 
 Once the GitHub Account and Empty repository is ready, let's operate in the local Anchor Server.
 
@@ -337,19 +337,19 @@ git --version
 ```
 sudo apt install git -y
 ```
-Download the Java code that we are going to use in the CICD pipeline
+Download the **Java Code** that we are going to use in the CICD pipeline.
 ```
 wget https://devops-e-e.s3.ap-south-1.amazonaws.com/hello-world-master.zip
 ```
 ```
-unzip hello-world-master.zip -d hello-world-master
+unzip hello-world-master.zip
 ```
 ```
 ls
 rm hello-world-master.zip
 ```
 ```
-cd hello-world-master && cd hello-world-master
+cd hello-world-master
 ls
 ```
 ```
@@ -384,13 +384,6 @@ git log
 ```
 git status
 ```
-```
-git remote add origin < Replace your Repository URL > 
-```
-(**Example:** `git remote add origin https://github.com/janjiralakirankumar/hello-world.git`)
-```
-git remote show origin
-```
 ___
 ### Task 2: Pushing the Code to your Remote GitHub Repository  
 
@@ -405,6 +398,14 @@ ___
 
    **Example:** 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
 ---
+Create `Alias` as `Origin` to GitHub's Remote repository URL.
+```
+git remote add origin < Replace your Repository URL > 
+```
+(**Example:** `git remote add origin https://github.com/janjiralakirankumar/hello-world.git`)
+```
+git remote show origin
+```
 Now you can push your code to the Remote repository using the below command.
 ```
 git push origin master 
@@ -437,7 +438,7 @@ Press INSERT and add the below content
 </body>
 </html>
 ```
-Save vi using ESCAPE + :wq!
+Save the file using `ESCAPE+:wq!`
 ```
 git status
 ```
@@ -456,7 +457,7 @@ git log
 ```
 git push origin dev
 ```
-Enter PAT Token when it asks for a password and Press Enter. (PAT is invisible, when you paste)
+#### When it asks for a `User ID` enter `GitHub's User ID,` when it asks for a `password` Enter `PAT` and Press Enter. (Note: PAT is invisible when you paste)
 ```
 git branch
 ```
@@ -478,7 +479,7 @@ git merge dev
 ```
 git push origin prod
 ```
-Enter Token: <PAT>
+#### When it asks for a `User ID` enter `GitHub's User ID,` when it asks for a `password` Enter `PAT` and Press Enter. (Note: PAT is invisible when you paste)
 ```
 git checkout master
 ```
@@ -488,8 +489,7 @@ git merge prod
 ```
 git push origin master
 ```
-Enter UserID and Token then Press Enter.
-
+#### When it asks for a `User ID` enter `GitHub's User ID,` when it asks for a `password` Enter `PAT` and Press Enter. (Note: PAT is invisible when you paste)
 ---
 **Summary:**
 1. Initialize a local Git repository on Anchor EC2 instance.
@@ -501,27 +501,45 @@ Enter UserID and Token then Press Enter.
 
 #### =============================END of LAB-02=============================
 
-## Lab 3: Configure Jenkins & Tomcat Server for Deploying our Application on Jenkins Server
+## Lab 3: Configure Jenkins & Tomcat Server for Deploying our Application on the Same Server.
 
 **Objective:**
-The objective of this lab is to configure Jenkins to build and deploy applications. It includes `Setting up Jenkins,` `installing necessary plugins` and `configuring Jenkins to build Maven projects.`
+The objective of this lab is to configure Jenkins to build and deploy applications. It includes `Setting up Jenkins,` `installing necessary plugins` and `configuring Jenkins to build Maven projects,` and `Installing Tomcat Server.` 
 ___
 ### Task 1: Configure Jenkins Server:
 
-Initially, Copy the **private key** to the Jenkins server. so, that we can SSH from **Jenkins Server** to **Docker Server** and viseversa.
+Initially, Copy the **private key** from **Anchor Server** to the **Jenkins Server** & **Docker Server**. so, that we can SSH from **Jenkins Server** to **Docker Server** and viseversa.
 ```
 cd ~
 ```
 ```
 ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
 ```
+
+Here's a breakdown of the command:
+
+- `ansible`: The Ansible command-line tool.
+- `jenkins-server`: The target machine specified in your inventory file.
+- `-m copy`: Specifies the Ansible module to use, in this case, the `copy` module.
+- `-a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa"`: Specifies the arguments for the module, indicating the source and destination paths for the file copy.
+- `-b`: Run the Ansible command with elevated privileges.
+
 ```
 ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
 ```
-SSH into the **Jenkins server** with `Public IP` and get the **initial password** for Jenkins from below path.
+Here's a breakdown of the command:
+
+- `ansible`: The Ansible command-line tool.
+- `docker-server`: The target machine specified in your inventory file.
+- `-m copy`: Specifies the Ansible module to use, in this case, the `copy` module.
+- `-a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa"`: Specifies the arguments for the module, indicating the source and destination paths for the file copy.
+- `-b`: Run the Ansible command with elevated privileges.
+
+Using Jenkin's `Public IP` SSH into the **Jenkins Server** from the Anchor Server.
 ```
 ssh ubuntu@xx.xx.xx.xx
 ```
+Get the **Initial Password** for Jenkins from the below path.
 ```
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
@@ -529,10 +547,10 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 1. Now, go to the **Web Browser** and enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**
 2. Under Unlock Jenkins, enter the above **initialAdminPassword** & click **Continue**.
-3. Click on **Install suggested Plugins** on Customize Jenkins page.
+3. Click on **Install suggested Plugins** on the Customize Jenkins page.
 4. Once the plugins are installed, it gives you the page where you can create a New **Admin User**. 
 5. Enter the **User Id** and **Password** followed by **Name and E-Mail ID** then click on **Save & Continue**.
-6. In the next step, on Instance Configuration Page, verify your **Jenkins Public IP** and **Port Number** then click on **Save and Finish**
+6. In the next step, on the Instance Configuration Page, verify your **Jenkins Public IP** and **Port Number** then click on **Save and Finish**
 
 #### Now you will be prompted to the Jenkins Home Page
 
@@ -541,19 +559,19 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 3. Once the installation is completed, click on **Go back to the top page**.
 4. On Home Page select **Manage Jenkins** > **Tool**.
 5. Inside Tool Configuration, look for **Maven installations**, click **Add Maven**. 
-6. Give the **Name as "Maven"**, choose **Version as 3.9.4**, and **Save** the configuration.
-7. Now you need to make a project for your application build, for that select **New Item** from the Home Page of Jenkins
+6. Give the **Name as "Maven"**, choose **Version as 3.9.5**, and **Save** the configuration.
+7. Now you need to make a project for your application build, that selects **New Item** from the Home Page of Jenkins
 8. Enter an item name as **hello-world** and select the project as **Maven Project** and then **click OK.**
    ( You will be prompted to the configure page inside the hello-world project.)
 9. Go to the "**Source Code Management**" tab, and select Source Code Management as **Git**, Now you need to provide the GitHub Repository **Master Branch URL** and **GitHub Account Credentials**.
-10. In the Credentials field, you have to click **Add** then click on **Jenkins**.
+10. In the Credentials field, you have to click **Add** and then click on **Jenkins**.
 11. Then you will be prompted to the **Jenkins Credentials Provider** page. Under Add Credentials, you can add your **GitHub Username**, **Password**, and **Description**. Then click on **Add**.
 12. After returning to the Source Code Management Page, click on Credentials and Choose your **GitHub Credentials**.
-13. Keep all the other values as default and select "**Build**" Tab and inside Goals and options write "**clean package**" and **save** the configuration.
+13. Keep all the other values as default and select the "**Build**" Tab and inside Goals and options write "**clean package**" and **save** the configuration.
 
-#### Note: 'clean package' command clears the target directory, Builds the project, and packages the resulting JAR file into the target directory.
+#### Note: The 'clean package' command clears the target directory, Builds the project, and packages the resulting JAR file into the target directory.
 
-16. Now, you will get back to the Maven project "**hello-world**" and click on "**Build Now**" for building the **.war** file for your application
+16. Now, you will get back to the Maven project "**hello-world**" and click on "**Build Now**" to build the **.war** file for your application
 
 * You can go to **Workspace** > **dist** folder to see that the **.war** file is created there.
 * war file will be created in **/var/lib/jenkins/workspace/hello-world/target/**
@@ -561,7 +579,6 @@ ___
 ### Task 2: Installing and Configuring Tomcat for Deploying our Application on Jenkins Server
 
 ![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/d5dde194-f10d-4b4d-a20c-890e9ca3e392)
-
 
 * Now, SSH into the Jenkins server (Make sure that you are the root user and Install the Tomcat web server)
 * **Note:** (If you are already in Jenkins Server, again SSH is not needed.)
@@ -576,6 +593,7 @@ sudo apt install tomcat9 tomcat9-admin -y
 ```
 ss -ltn
 ```
+when you run `ss -ltn` command you'll see a list of `TCP sockets` that are in a listening state, and the output will include information such as the `local address,` `port,` and the `state of each socket.`
 ```
 sudo systemctl enable tomcat9
 ```
@@ -584,7 +602,7 @@ Now we need to navigate to **server.xml** to change the Tomcat port number from 
 ```
 sudo vi /etc/tomcat9/server.xml
 ```
-If you are unable to open file then change the permissions by using below command.
+**(Optional step):** If you are unable to open the file then change the permissions by using the below command.
 ```
 sudo chmod 766 /etc/tomcat9/server.xml
 ```
@@ -593,13 +611,13 @@ sudo chmod 766 /etc/tomcat9/server.xml
 ```
 g/8080/s//9999/g
 ```
-Save vi using **ESCAPE + :wq!**
+Save the file using `ESCAPE+:wq!`
 
 * To Verify whether the Port is changed, execute the below Command.
 ```
 cat /etc/tomcat9/server.xml
 ```
-If you are unable to open file then change the permissions by using below command.
+**(Optional step):** If you are unable to open the file then change the permissions by using the below command.
 ```
 sudo chmod 766 /etc/tomcat9/server.xml
 ```
@@ -612,17 +630,32 @@ sudo service tomcat9 status
 ```
 **To exit**, press **ctrl+c**
 
-* Once the Tomcat service restart is successful, go to your web browser and enter **Jenkins Server IP address** followed by **9999** port.
+* Once the Tomcat service restart is successful, go to your web browser and enter **Jenkins Server's Public IP address** followed by **9999** port.
 
-Example: **http://< Jenkins Public IP >:9999**     or     **http://184.72.112.155:9999**
+(Example: **http://< Jenkins Public IP >:9999**     or     **http://184.72.112.155:9999**)
+
 * Now you can check the Tomcat running on **port 9999** on the same machine.
 * We need to copy the **.war** file created in the previous Jenkins build from the Jenkins workspace to tomcat webapps directory to serve the web content
 ```
 sudo cp -R /var/lib/jenkins/workspace/hello-world/target/hello-world-war-1.0.0.war /var/lib/tomcat9/webapps
 ```
+The above command is copying a `WAR (Web Application Archive)` file from the Jenkins workspace to the Tomcat web apps directory. Let's break down the command:
+
+- `sudo`: Run the command with superuser (root) privileges, as copying files to system directories often requires elevated permissions.
+
+- `cp`: The copy command in Linux.
+
+- `-R`: Recursive option, used when copying directories. It ensures that the entire directory structure is copied.
+
+- `/var/lib/jenkins/workspace/hello-world/target/hello-world-war-1.0.0.war`: Source path, specifying the location of the WAR file in the Jenkins workspace.
+
+- `/var/lib/tomcat9/webapps`: Destination path, indicating the Tomcat webapps directory where the WAR file is being copied.
+
+This command assumes that your Jenkins job has built a WAR file named `hello-world-war-1.0.0.war` in the specified workspace directory. It then copies this WAR file into the Tomcat webapps directory, allowing Tomcat to deploy and run the web application.
+
 * Once this is done, go to your browser and enter Jenkins Public IP address followed by port 9999 and path (URL:  **http://< Jenkins Public IP >:9999/hello-world-war-1.0.0/**).
 * Now, you can see that Tomcat is now serving your web page
-* Now, Stop tomcat9 and remove it. Otherwise, it will slow down Jenkins.
+* Now, Stop tomcat9 and remove it. Otherwise, it will slow down the Jenkins server.
 ```
 sudo service tomcat9 stop
 ```
@@ -668,8 +701,8 @@ ___
 
 1. Now, Make a minor change and commit in GitHub's **hello-world repository** by editing **hello.txt** file.
 2. As the source code gets changed, Jenkins gets triggered by the WebHook and starts building the new source code.
-3. Go to Jenkins, and you can see a build is happening.
-4. Observe the successful load build on the Jenkins page.
+3. Go to Jenkins, and you can see a build is happening automatically.
+4. Observe the successful build on the Jenkins page.
 ---
 **Summary:**
 1. Configure Git WebHooks in Jenkins for automatic triggering of builds.
@@ -679,7 +712,7 @@ ___
 
 #### =============================END of LAB-04=============================
 
-## Lab 5: Add Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
+## Lab 5: Configuring Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
 **Objective:**
 In this lab, you will set up a Docker container as a Jenkins slave, build a Docker image for a Java web application, and deploy it in a Docker container.
