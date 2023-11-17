@@ -1,4 +1,4 @@
-# DevOps Essentials Lab Cheat Sheet
+#  DevOps Essentials Lab Cheat Sheet
 Welcome to the DevOps Essentials Lab Cheat Sheet!
 
 ![how-devops](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/b0493ccd-3370-4f98-b08a-6e76626ca226)
@@ -16,7 +16,7 @@ This guide provides step-by-step instructions for completing various DevOps labs
 **Objective:**
 The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
-
+---------------------------------------------------------------------
 ### Task 0: First step is to `Manually Launch an EC2 Server` with the below configuration:
 
 * **Region:** North Virginia (us-east-1).
@@ -28,8 +28,7 @@ The objective of this lab is to set up two AWS EC2 instances, one for Jenkins an
 * **Configure Storage:** 10 GiB
 * Click on `Launch Instance.`
 * Once it is Launched, Ensure to add the remaining ports in the security group ie... `8080,` `9999,` and `4243.`
-___
-
+---------------------------------------------------------------------
 ### Task 1: Installing Terraform onto Anchor Server.
 
 Once the Anchor EC2 server is up and running, SSH into the machine using `MobaXterm` or `Putty` with the username `ubuntu` and do the following:
@@ -61,7 +60,7 @@ terraform -v
 ```
 rm terraform_1.6.4_linux_amd64.zip
 ```
-___
+---------------------------------------------------------------------
 ### Task 2: Install Python 3, pip, AWS CLI, and Ansible
 Install Python 3 and the required packages:
 ```
@@ -79,14 +78,14 @@ aws configure
 | ----------------- | --------------------- |
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
----
+---------------------------------------------------------------------
 #### Note: If you want to create new credentials, Follow the below steps:
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
 2. Click on Security Credentials.
 3. Under AWS IAM Credentials, click on **Create Access Key**.
 4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.
 5. Then, Complete the `aws configure` step
----
+---------------------------------------------------------------------
 #### Once configured, do a smoke test to check if your credentials are valid and get access to AWS.
 
 You can check using any one command
@@ -107,7 +106,7 @@ aws iam list-users
 ```
 **Note:** The above command gives `read and write permissions to the owner,` `read and write permissions to the group,` and `read and write permissions to others.`
 
-___
+---------------------------------------------------------------------
 ### Task 3: Use Terraform to launch two servers.
 Create the Terraform configuration and variables files as described.
 * We need to create two additional servers (`Docker-server` and `Jenkins-server,` You can use **t2.micro** for Docker and Jenkins servers)
@@ -270,8 +269,8 @@ bash
 sudo apt update
 ```
 **Exit** only from the Docker Server, not the Anchor Server.
-___
 
+---------------------------------------------------------------------
 ### Task 4: Use Ansible to deploy respective packages onto each of the servers 
 
 #### Create a directory and change to it
@@ -294,8 +293,7 @@ ansible-playbook DevOpsSetup.yml
 
 #### Verify that the Docker landing page is working.
 * Use your respective Docker's Public IP address as shown: http://**34.203.249.54**:4243/version 
-
----
+---------------------------------------------------------------------
 **Summary:**
 1. Launch two EC2 instances in AWS - one for Jenkins and one for Docker.
 2. Install Terraform on the Jenkins server to automate infrastructure provisioning.
@@ -307,7 +305,7 @@ ansible-playbook DevOpsSetup.yml
 8. Use Ansible to install necessary software packages and dependencies on both servers.
 
 #### =============================END of LAB-01=============================
-
+---
 ## Lab 2: Git and GitHub Operations.
 
 **Objective:**
