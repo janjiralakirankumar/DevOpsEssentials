@@ -16,7 +16,7 @@ This guide provides step-by-step instructions for completing various DevOps labs
 **Objective:**
 The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
------------------------------------------------------------------------------
+-------
 ### Task 0: First step is to `Manually Launch an EC2 Server` with the below configuration:
 
 * **Region:** North Virginia (us-east-1).
