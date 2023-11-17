@@ -28,7 +28,7 @@ The objective of this lab is to set up two AWS EC2 instances, one for Jenkins an
 * **Configure Storage:** 10 GiB
 * Click on `Launch Instance.`
 * Once it is Launched, Ensure to add the remaining ports in the security group ie... `8080,` `9999,` and `4243.`
----------------------------------------------------------------------
+````````````````````````````````````````````````
 ### Task 1: Installing Terraform onto Anchor Server.
 
 Once the Anchor EC2 server is up and running, SSH into the machine using `MobaXterm` or `Putty` with the username `ubuntu` and do the following:
