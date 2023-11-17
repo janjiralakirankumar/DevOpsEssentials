@@ -77,18 +77,15 @@ aws configure
 | ----------------- | --------------------- |
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
-***Note: If you want to create new credentials, Follow the below steps:***
+---
+**Note:** If you want to create new credentials, Follow the below steps:
 
-*1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.*
-
-*2. Click on Security Credentials.*
-
-*3. Under AWS IAM Credentials, click on **Create Access Key**.*
-
-*4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.*
-
-*5. Then, Complete the `aws configure` step*
-
+1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
+2. Click on Security Credentials.
+3. Under AWS IAM Credentials, click on **Create Access Key**.
+4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.
+5. Then, Complete the `aws configure` step
+---
 #### Once configured, do a smoke test to check if your credentials are valid and get access to AWS.
 
 You can check using any one command
