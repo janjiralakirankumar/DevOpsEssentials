@@ -513,7 +513,7 @@ git push origin master
 
 #### =============================END of LAB-02=============================
 ---
-## Lab 3: Configure Jenkins & Tomcat Server for Deploying our Application on the Same Server.
+## Lab 3: Configuring Jenkins server and Installing Tomcat Jenkin's Server for Deploying our Application.
 
 **Objective:**
 The objective of this lab is to configure Jenkins to build and deploy applications. It includes `Setting up Jenkins,` `installing necessary plugins` and `configuring Jenkins to build Maven projects,` and `Installing Tomcat Server.` 
