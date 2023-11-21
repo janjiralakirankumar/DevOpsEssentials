@@ -582,7 +582,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 12. After returning to the Source Code Management Page, click on Credentials and Choose your **GitHub Credentials**.
 13. Keep all the other values as default and select the "**Build**" Tab and inside Goals and options write "**clean package**" and **save** the configuration.
 
-#### Note: The 'clean package' command clears the target directory, Builds the project, and packages the resulting JAR file into the target directory.
+#### Note: The 'clean package' command clears the target directory, Builds the project, and packages the resulting WAR file into the target directory.
 
 16. Now, you will get back to the Maven project "**hello-world**" and click on "**Build Now**" to build the **.war** file for your application
 
