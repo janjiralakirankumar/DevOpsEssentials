@@ -735,6 +735,8 @@ In this lab, you will set up a Docker container as a Jenkins slave, build a Dock
 
 ![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/9139c0b6-2571-4606-84d0-22dac79d479e)
 
+### Task-1: Configuring Docker Machine as Jenkins Slave.
+
 1. Go to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
 2. Click on **New Node** in the next window. Give the node name as **docker-slave** and Select **"permanent agent"**
 3. Fill out the details for the node docker-slave as given below.
@@ -759,7 +761,9 @@ cat id_rsa
 * Host Key Verification Strategy Select as **"Non Verifying Verification Strategy"** and **Save** it.
 * Click on the **Add** button.
 * it's done.
-  
+
+### Task-1: build and deploy code in Docker Host on the container.
+
 #### Now In CLI, SSH into your Docker Host and Perform the below steps to create a "Dockerfile" in /home/ubuntu directory.
 ```
 cd ~
