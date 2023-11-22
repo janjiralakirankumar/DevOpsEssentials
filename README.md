@@ -762,7 +762,7 @@ cat id_rsa
 * Click on the **Add** button.
 * it's done.
 
-### Task-1: build and deploy code in Docker Host on the container.
+### Task-2: Build and deploy code in Docker Host on the container.
 
 #### Now In CLI, SSH into your Docker Host and Perform the below steps to create a "Dockerfile" in /home/ubuntu directory.
 ```
