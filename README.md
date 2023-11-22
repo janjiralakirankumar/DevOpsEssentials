@@ -761,6 +761,7 @@ cat id_rsa
 * Host Key Verification Strategy Select as **"Non Verifying Verification Strategy"** and **Save** it.
 * Click on the **Add** button.
 * it's done.
+---
 
 ### Task-2: Build and deploy code in Docker Host on the container.
 
