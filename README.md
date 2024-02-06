@@ -44,11 +44,11 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.6.4/terraform_1.6.4_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.7.2/terraform_1.7.2_linux_amd64.zip
 ```
 View the [Terraform's Latest Versions](https://developer.hashicorp.com/terraform/downloads)
 ```
-unzip terraform_1.6.4_linux_amd64.zip
+unzip terraform_1.7.2_linux_amd64.zip
 ls
 ```
 ```
@@ -59,7 +59,7 @@ ls
 terraform -v
 ```
 ```
-rm terraform_1.6.4_linux_amd64.zip
+rm terraform_1.7.2_linux_amd64.zip
 ```
 ---------------------------------------------------------------------
 ### Task-2: Install Python 3, pip, AWS CLI, and Ansible
