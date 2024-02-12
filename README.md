@@ -735,6 +735,32 @@ In this lab, you will set up a Docker container as a Jenkins slave, build a Dock
 
 ![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/9139c0b6-2571-4606-84d0-22dac79d479e)
 
+### Task-0: 
+
+Generate SSH Key Pair in `/var/lib/jenkins/`
+
+1. Open a Jenkin's terminal on your machine.
+2. Swith to root user and then Jenkin's user
+```
+sudo su
+```
+```
+su jenkins
+```
+4. Navigate to the /var/lib/jenkins/ directory.
+```
+cd /var/lib/jenkins/
+```
+6. Now, run the following command to generate an SSH key pair:
+```
+ssh-keygen -t rsa -b 2048
+```
+4. Once done, from the same jenkin's user try to copy the public key to target machine's authorized keys.
+5. open the private key from the newly created ssh keypair and paste it in notepad.
+```
+cat /var/lib/jenkins/.ssh/id_rsa
+```
+
 ### Task-1: Configuring Docker Machine as Jenkins Slave.
 
 1. Go to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
@@ -748,17 +774,10 @@ In this lab, you will set up a Docker container as a Jenkins slave, build a Dock
 * In the host section, give the **Public IP of the Docker instance**.
 * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
 * Then in the next window, in kind select **SSH username with private key** (give username as ubuntu),
-* In **Private Key** Select **Enter directly** then Copy-Paste the Private Key and then click on **Add** .
-
-**Note:**
-To get the private key, Go to your **CICD-anchored EC2 machine** and run below command.
-```
-cd ~/.ssh
-cat id_rsa
-```
-* Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
+* In **Private Key** Select **Enter directly** then Paste the Private Key copied from point-5 of Task-0 and then click on **Add** .
+**Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
 * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
-* Host Key Verification Strategy Select as **"Non Verifying Verification Strategy"** and **Save** it.
+* Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it.
 * Click on the **Add** button.
 * it's done.
 ---
