@@ -747,16 +747,16 @@ sudo su
 ```
 su jenkins
 ```
-4. Navigate to the /var/lib/jenkins/ directory.
+3. Navigate to the /var/lib/jenkins/ directory.
 ```
 cd /var/lib/jenkins/
 ```
-6. Now, run the following command to generate an SSH key pair:
+4. Now, run the following command to generate an SSH key pair:
 ```
 ssh-keygen -t rsa -b 2048
 ```
-4. Once done, from the same jenkin's user try to copy the public key to target machine's authorized keys.
-5. open the private key from the newly created ssh keypair and paste it in notepad.
+5. Once done, from the same jenkin's user try to copy the public key to target machine's (Docker Server's) authorized keys.
+6. Open the private key from the newly created ssh keypair and paste it in notepad (We use later).
 ```
 cat /var/lib/jenkins/.ssh/id_rsa
 ```
@@ -774,7 +774,7 @@ cat /var/lib/jenkins/.ssh/id_rsa
 * In the host section, give the **Public IP of the Docker instance**.
 * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
 * Then in the next window, in kind select **SSH username with private key** (give username as ubuntu),
-* In **Private Key** Select **Enter directly** then Paste the Private Key copied from point-5 of Task-0 and then click on **Add** .
+* In **Private Key** Select **Enter directly** then Paste the Private Key copied from point-6 of Task-0 and then click on **Add** .
 **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
 * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
 * Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it.
