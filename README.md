@@ -755,20 +755,24 @@ Check the present working directory
 ```
 pwd
 ```
-3. Navigate to the /var/lib/jenkins/ directory.
+3. if not in the /var/lib/jenkins/ directory, then Navigate to it by below command.
 ```
 cd /var/lib/jenkins/
 ```
 4. Now, run the following command to generate an SSH key pair:
 ```
-ssh-keygen -t rsa -b 2048
+ssh-keygen
 ```
-5. Once done, from the same jenkin's user try to copy the public key to target machine's (Docker Server's) authorized keys.
-6. Open the private key from the newly created ssh keypair and paste it in notepad (We use later).
+5. Once done, from the same jenkin's user try to copy the `public key` to target machine's (Docker Server's) authorized keys.
+(copy the public key to notepad and open the docker's `/home/ubuntu/.ssh` path and paste the `public key` in `authorized keys`)
+6. Similarly, Open the `private key` from the newly created ssh keypair and paste it in notepad (We use later).
 ```
 cat /var/lib/jenkins/.ssh/id_rsa
 ```
-
+7. Now from `jenkin's user` try to ssh into docker's machine.
+```
+ssh ubuntu@<Docker's Public IP>
+```
 ### Task-1: Configuring Docker Machine as Jenkins Slave.
 
 1. Go to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
@@ -782,7 +786,7 @@ cat /var/lib/jenkins/.ssh/id_rsa
 * In the host section, give the **Public IP of the Docker instance**.
 * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
 * Then in the next window, in kind select **SSH username with private key** (give username as ubuntu),
-* In **Private Key** Select **Enter directly** then Paste the Private Key copied from point-6 of Task-0 and then click on **Add** .
+* In **Private Key** Select **Enter directly** then Paste the Private Key copied from `point-6 of Task-0` and then click on **Add** .
 **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
 * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
 * Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it.
