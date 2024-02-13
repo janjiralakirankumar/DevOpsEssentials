@@ -44,7 +44,7 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.7.2/terraform_1.7.3_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_amd64.zip
 ```
 View the [Terraform's Latest Versions](https://developer.hashicorp.com/terraform/downloads)
 ```
