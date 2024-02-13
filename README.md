@@ -743,6 +743,8 @@ Generate SSH Key Pair in `/var/lib/jenkins/`
 2. Swith to root user and then Jenkin's user
 ```
 sudo su
+```
+```
 cd
 ```
 ```
