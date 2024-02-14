@@ -20,11 +20,14 @@ The objective of this lab is to set up two AWS EC2 instances, one for Jenkins an
 ### Task-0: The first step is to `Manually Launch an Anchor EC2 Server` with the below configuration:
 
 #### Step-01: Pre-requisites:
+
+Login to AWS Console, go to EC2 Dashboard, and under "Network & Security," create a key pair and a security group.
+
 1. Create key pair with name: `DevOps-Keypair-YourName`
 2. Create security group with name: `DevOps-SG-YourName`
    (Include Ports: `22 [SSH],` `80 [HTTP],` `8080 [Jenkins],` `9999 [Tomcat],` and `4243 [Docker].`)
 
-Once you are ready, while Manually Launching an Anchor EC2 Instance, select the above `DevOps-Keypair-YourName` and `DevOps-SG-YourName`
+Once you are ready, then while Manually Launching an Anchor EC2 Instance, select the above `DevOps-Keypair-YourName` and `DevOps-SG-YourName`
 
 #### Step-02: Steps for launching the Anchor EC2 Instance
 
@@ -35,11 +38,14 @@ Once you are ready, while Manually Launching an Anchor EC2 Instance, select the 
 * Choose the existing Keypair with the Name: `DevOps-Keypair-YourName`
 * In security groups, Choose the existing security group with name: `DevOps-SG-YourName`
 * **Configure Storage:** 10 GiB
-* Click on `**Launch Instance.**`
+* Click on `Launch Instance.`
 ---------------------------------------------------------------------
-### Task-1: Installing Terraform onto Anchor Server.
+### Task-1: Installing Terraform onto `Anchor Server` to automate the creation of 2 more EC2 instances.
 
 Once the Anchor EC2 server is up and running, SSH into the machine using `MobaXterm` or `Putty` with the username `ubuntu` and do the following:
+
+[Click here to download MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) (**Note:** Choose `Installer Edition`)
+
 ```
 sudo hostnamectl set-hostname CICDLab
 bash
@@ -53,7 +59,7 @@ sudo apt install wget unzip -y
 ```
 wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_amd64.zip
 ```
-View the [Terraform's Latest Versions](https://developer.hashicorp.com/terraform/downloads)
+[Click here](https://developer.hashicorp.com/terraform/downloads) for Terraform's Latest Versions
 ```
 unzip terraform_1.7.3_linux_amd64.zip
 ls
@@ -62,38 +68,66 @@ ls
 sudo mv terraform /usr/local/bin
 ```
 ```
+rm terraform_1.7.3_linux_amd64.zip
+```
+```
 ls
 terraform -v
 ```
 ```
-rm terraform_1.7.3_linux_amd64.zip
+terraform
 ```
 ---------------------------------------------------------------------
-### Task-2: Install Python 3, pip, AWS CLI, and Ansible
+### Task-2: Install Python 3, pip, AWS CLI, and Ansible on to Anchor Server
 Install Python 3 and the required packages:
 ```
 sudo apt-get update
+```
+```
 sudo apt-get install python3-pip -y
 ```
 ```
 sudo pip3 install awscli boto boto3 ansible
 ```
+For Authentication with AWS we need to provide `IAM User's CLI Credentials`
 ```
 aws configure
 ```
-#### Enter the Credentials as below. Example:
+#### Credentials Example:
+
 | **Access Key ID** | **Secret Access Key** |
 | ----------------- | --------------------- |
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
 ---------------------------------------------------------------------
-**Note:** If you want to create new credentials, Follow the below steps:
-
+<details>
+  <summary>Steps to create New Credentials:</summary>
+  
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
 2. Click on Security Credentials.
 3. Under AWS IAM Credentials, click on **Create Access Key**.
 4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.
 5. Then, Complete the `aws configure` step
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Note:** If you want 
+
+
 
 ---------------------------------------------------------------------
 #### Once configured, do a smoke test to check if your credentials are valid and get access to AWS.
