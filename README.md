@@ -17,18 +17,25 @@ This guide provides step-by-step instructions for completing various DevOps labs
 The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
 ---------------------------------------------------------------------
-### Task-0: The first step is to `Manually Launch an EC2 Server` with the below configuration:
+### Task-0: The first step is to `Manually Launch an Anchor EC2 Server` with the below configuration:
+
+#### Step-01: Pre-requisites:
+1. Create key pair with name: `DevOps-Keypair-YourName`
+2. Create security group with name: `DevOps-SG-YourName`
+   (Include Ports: `22 [SSH],` `80 [HTTP],` `8080 [Jenkins],` `9999 [Tomcat],` and `4243 [Docker].`)
+
+Once you are ready, while Manually Launching an Anchor EC2 Instance, select the above `DevOps-Keypair-YourName` and `DevOps-SG-YourName`
+
+#### Step-02: Steps for launching the Anchor EC2 Instance
 
 * **Region:** North Virginia (us-east-1).
-* **Use tag Name:** `CICDLab-YourName`
+* **Use tag Name:** `Anchor-EC2-YourName`
 * **AMI Type and OS Version:** `Ubuntu 22.04 LTS`
 * **Instance type:** `t2.micro`
-* Create a new Keypair with the Name `CICDLab-Keypair-YourName`
-* In security groups, include ports `22 (SSH)` and `80 (HTTP)` (Add remaining ports later)
+* Choose the existing Keypair with the Name: `DevOps-Keypair-YourName`
+* In security groups, Choose the existing security group with name: `DevOps-SG-YourName`
 * **Configure Storage:** 10 GiB
-* Click on `Launch Instance.`
-* Once it is Launched, Ensure to add the remaining ports in the security group ie... `8080,` `9999,` and `4243.`
-
+* Click on `**Launch Instance.**`
 ---------------------------------------------------------------------
 ### Task-1: Installing Terraform onto Anchor Server.
 
