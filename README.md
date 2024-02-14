@@ -99,10 +99,9 @@ aws configure
 | ----------------- | --------------------- |
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
----------------------------------------------------------------------
 <details>
-  <summary>Click here to know the Steps to create New Credentials:</summary>
-  
+  <summary>**Click here to know the Steps to create New Credentials**:</summary>
+
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
 2. Click on Security Credentials.
 3. Under AWS IAM Credentials, click on **Create Access Key**.
