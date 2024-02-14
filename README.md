@@ -857,6 +857,8 @@ cd /home/ubuntu/.ssh
 ```
 vi authorized_keys
 ```
+**Note:** When you paste there should not be any line space between 2 keys
+
 Once Pasted, save the File.
 
 3. Now from `jenkin's user` try to ssh into docker machine.
