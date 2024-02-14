@@ -147,7 +147,14 @@ Create the Terraform configuration and variables files as described.
 ```
 mkdir devops-labs && cd devops-labs
 ```
-As a first step, create a key using `ssh-keygen` Command. (Same keypair will be used for newly created EC2 Instances)
+As a first step, create a key using `ssh-keygen` Command. (Same public will be attached to newly created EC2 Instances)
+
+**Note:**
+1. This will create `id_rsa` and `id_rsa.pub` in Anchor Machine in **/home/ubuntu/.ssh/**.
+2. While creating choose defaults like:
+   * path as **/home/ubuntu/.ssh/id_rsa**,
+   * don't set up any passphrase, and just hit the '**Enter**' key for 3 questions it asks.
+
 ```
 ssh-keygen -t rsa -b 2048 
 ```
@@ -158,10 +165,6 @@ ssh-keygen -t rsa -b 2048
 * `-t rsa:` Specifies the type of key to create, in this case, RSA.
 * `-b 2048:` Specifies the number of bits in the key, 2048 bits in this case. The larger the number of bits, the stronger the key.
 </details>
-
-**Note:**
-1. This will create `id_rsa` and `id_rsa.pub` in **/home/ubuntu/.ssh/**
-2. Keep the path as **/home/ubuntu/.ssh/id_rsa** only; don't set up any passphrase, just hit the '**Enter**' key for the 3 questions it asks
 
 #### Now create the Terraform config files.
 ```
@@ -266,21 +269,26 @@ terraform apply -auto-approve
 ```
 cat /etc/ansible/hosts
 ```
-It will show IP addresses of the `Jenkins server` and `docker server` as an example shown below.
+**Note:** The above command displays the IP addresses of the `Jenkins server` and `docker server` as an example shown below.
 
 * [jenkins-server]
+
   44.202.164.153
   
 * [docker-server]
+
   34.203.249.54
 
-**(Optional Step):** When you stop and start the EC2 Instances Public IP Changes. In that case, To update Jenkins & Docker Public IP addresses use the below command
+**(Optional Step):** When you `Stop` and `Start` the EC2 Instances, the Public IP Changes. In that case, To update Jenkin's & Docker's  new Public IPs in `Inventory file` use the below command
 ```
 sudo vi /etc/ansible/hosts 
 ```
 Once Updated, Save the File.
 
-#### Now `SSH` into `Jenkins-server` and check they are accessible from `Anchor EC2`
+#### Check the access from `Anchor to Jenkins` and `Anchor to Docker`
+
+##### Step-01: Now from `Anchor Server` SSH into `Jenkins-Server` and check they are accessible.
+
 ```
 ssh ubuntu@<Jenkins ip address>
 ```
@@ -294,7 +302,8 @@ sudo apt update
 ```
 **Exit** only from the Jenkins Server, not the Anchor Server.
 
-#### Now `SSH` into `Docker-Server` and check they are accessible from `Anchor EC2`
+##### Step-02: Now from `Anchor Server` SSH into `Docker-Server` and check they are accessible.
+
 ```
 ssh ubuntu@<Docker ip address>  
 ```
@@ -309,39 +318,30 @@ sudo apt update
 **Exit** only from the Docker Server, not the Anchor Server.
 
 ---------------------------------------------------------------------
-### Task-4: Use Ansible to deploy respective packages onto each of the servers 
+### Task-4: Use `Ansible` to deploy respective packages onto each of the servers 
 
-#### Create a directory and change to it
+#### Step-01: In Anchor Server Create a directory and change to it
 ```
 cd ~
 mkdir ansible && cd ansible
 ```
-#### Now, Download the playbook, which will deploy packages onto the `Docker-server` and `Jenkins-Server.`
+#### Step-02: Now, Download the playbook, which will deploy packages onto the `Docker-server` and `Jenkins-Server.`
 ```
 wget https://devops-e-e.s3.ap-south-1.amazonaws.com/DevOpsSetup.yml
 ```
-#### Run the above playbook to deploy the packages
+#### Step-03: Run the above playbook to deploy the packages
 ```
 ansible-playbook DevOpsSetup.yml
 ```
-#### At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready for performing further Labs
+At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready for performing further Labs
 
-#### Verify that the Jenkins landing page is working.
-* Use your respective Jenkin'sPublic IP address as shown: http://**44.202.164.153**:8080/ 
+#### Step-04:
 
-#### Verify that the Docker landing page is working.
-* Use your respective Docker's Public IP address as shown: http://**34.203.249.54**:4243/version 
+1. Verify that the Jenkins landing page is working.
+* Use your respective Jenkin's Public IP as shown: http://**44.202.164.153**:8080/ 
 
----------------------------------------------------------------------
-**Summary:**
-1. Launch two EC2 instances in AWS - one for Jenkins and one for Docker.
-2. Install Terraform on the Jenkins server to automate infrastructure provisioning.
-3. Configure AWS CLI and Ansible for managing resources.
-4. Create a Terraform configuration to define the servers and their attributes.
-5. Launch the servers using Terraform.
-6. Update the Ansible hosts file with the server details.
-7. Configure Jenkins and Docker servers with proper host names.
-8. Use Ansible to install necessary software packages and dependencies on both servers.
+2. Verify that the Docker landing page is working.
+* Use your respective Docker's Public IP as shown: http://**34.203.249.54**:4243/version 
 
 #### =============================END of LAB-01=============================
 ---
