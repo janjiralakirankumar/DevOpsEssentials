@@ -100,13 +100,15 @@ aws configure
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
 <details>
-  <summary>**Click here to know the Steps to create New Credentials**:</summary>
+  <summary>Click here to know the Steps to create New Credentials:</summary>
+
+##### Here is a step-by-step summary of the instructions:
 
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
 2. Click on Security Credentials.
 3. Under AWS IAM Credentials, click on **Create Access Key**.
-4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.
-5. Then, Complete the `aws configure` step
+4. If you already have two active keys, deactivate and delete the older one. Create a new one, download, and save it.
+5. Complete the `aws configure` step using the newly created access key, secret key, region, and output format.
 </details>
 
 ---------------------------------------------------------------------
