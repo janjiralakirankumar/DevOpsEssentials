@@ -101,7 +101,7 @@ aws configure
 
 ---------------------------------------------------------------------
 <details>
-  <summary>Steps to create New Credentials:</summary>
+  <summary>Click here to know the Steps to create New Credentials:</summary>
   
 1. Go to the AWS console. On the top right corner, click on your name or AWS profile ID.
 2. Click on Security Credentials.
@@ -109,26 +109,6 @@ aws configure
 4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.
 5. Then, Complete the `aws configure` step
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-**Note:** If you want 
-
-
-
 ---------------------------------------------------------------------
 #### Once configured, do a smoke test to check if your credentials are valid and get access to AWS.
 
