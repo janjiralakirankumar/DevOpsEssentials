@@ -833,42 +833,37 @@ cat /var/lib/jenkins/.ssh/id_rsa
    * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
    * Then in the next window, in kind select **SSH username with private key** (Give username as `ubuntu`),
    * In **Private Key** Select **Enter directly** then Paste the Private Key copied from `Point-4 of Task-0` (Or from Notepad if both are same) and then click on **Add** .
-   **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
+      **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
    * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
    * Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it.
    * Click on the **Add** button.
-   * it's done.
----
+   * Now, it's done.
 
+**Note:** Check whether the Slave Node is online/Offline. (If it is Offline do the below process)
 
-5. After completion, open the Docker machine and change the directory to `/home/ubuntu/.ssh` path, and paste the `public key` into the `authorized_keys` file.
+### Task-2:
+
+1. Now, Open the Docker machine, navigate to the `/home/ubuntu/.ssh` path, and paste the `public key` (Copied to NotePad) into the `authorized_keys` file.
 ```
 cd /home/ubuntu/.ssh
 ```
-Paste the Public from Notepad to the `Authorized Keys`
+2. Paste the Public from Notepad to the `Authorized Keys`
 ```
 vi authorizedkeys
 ```
 Once Pasted, save the File.
 
-6. Now from `jenkin's user` try to ssh into docker machine.
+3. Now from `jenkin's user` try to ssh into docker machine.
 ```
 ssh ubuntu@<Docker's Public IP>
 ```
+4. Recheck the status of the slave node (Online/Offline) from the Jenkins dashboard under nodes.
 
+**Note:** Ensure that the Slave node is online by the end of the process.
 
+### Task-3: Build and deploy code in Docker Host on the container.
 
-
-
-
-
-
-
-
-
-### Task-2: Build and deploy code in Docker Host on the container.
-
-#### Now In CLI, SSH into your Docker Host and Perform the below steps to create a "Dockerfile" in /home/ubuntu directory.
+#### Now, In the CLI, SSH into your Docker Host and execute the following steps to create a "Dockerfile" in the `/home/ubuntu` directory.
 ```
 cd ~
 ```
@@ -886,29 +881,27 @@ MAINTAINER "CloudThat"
 # Copy the war file to the images tomcat path
 ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/
 ```
----------------------------------------------------------------------
-#### Explanatory Notes of Above Docker FIle:
+   <details>
+     <summary>Explanatory Notes of Above Docker FIle:</summary>
+     
+   The provided Dockerfile is a basic configuration for deploying a Java web application using the Tomcat web server. Here's the breakdown of each part:
 
-The Dockerfile you provided is a basic Dockerfile for deploying a Java web application using the Tomcat web server as the base image. Here's what each part of the Dockerfile does:
+   1. `FROM tomcat:8-jre8`: Specifies the base image for the Docker container, utilizing the official Tomcat 8 image with Java 8 runtime. This image includes the Tomcat web server and Java runtime environment.
 
-1. `FROM tomcat:8-jre8`: This line specifies the base image for your Docker container. In this case, it uses the official Tomcat 8 image with the Java 8 runtime. This image contains the Tomcat web server and Java runtime environment.
+   2. `MAINTAINER "CloudThat"`: A comment indicating the maintainer or author of the Dockerfile.
 
-2. `MAINTAINER "CloudThat"`: This line is a comment and specifies the maintainer or author of the Dockerfile.
+   3. `ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/`: Copies the Java web application's WAR file (`hello-world-war-1.0.0.war`) into the `/usr/local/tomcat/webapps/` directory within the container. Upon Tomcat startup, the WAR file is automatically deployed as a web application.
+   
+   </details>
 
-3. `ADD hello-world-war-1.0.0.war /usr/local/tomcat/webapps/`: This line adds your Java web application's WAR file (`hello-world-war-1.0.0.war`) to the `/usr/local/tomcat/webapps/` directory inside the container. When Tomcat starts, it will automatically deploy the WAR file as a web application.
+This Dockerfile packages a Java web app in a container using a Tomcat base image. Customize it for your needs. After building and running a container, your app should be accessible via Tomcat on port 8080, following Jenkins job steps.
 
-This Dockerfile is a simple example of how to package a Java web application in a Docker container. It uses an existing Tomcat image as the base, and you're adding your application's WAR file to it. You can further customize this Dockerfile based on your specific requirements, such as adding environment variables, configuring Tomcat, or specifying additional settings for your application.
+### Task-4:
 
-Once you build this Docker image and run a container based on it, your Java web application should be accessible through Tomcat on port 8080 inside the container, as mentioned in your Jenkins job's post-build steps.
+1. Navigate to your **Jenkins Home page**, choose the **hello-world project** from the drop-down, and click on the Configure tab.
+2. In the **General Tab**, choose **Restrict where this project can be run** and set the Label Expression to **Slave-Nodes.**
+3. Move to the **Post Build Steps Tab**, select **"Run only if the build succeeds,"** add a post-build step, choose **Execute shell** from the drop-down, paste the provided commands (below) into the shell, and click **Save.**
 
----------------------------------------------------------------------
-1. Go to your **Jenkins Home page**, click on the **drop-down** on **hello-world project**, and select Configure 
-tab.
-2. In **General Tab**, Select **Restrict where this project can be run** and enter Label Expression as 
-**Slave-Nodes.**
-3. Go to **Post Steps Tab**, select **"Run only if the build succeeds"** then click on **Add post-build** step select **Execute shell** from the drop-down and copy paste the below commands in the shell and **Save**
-
-**Execute shell commands in Jenkins:**
 #### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
 
 ```
