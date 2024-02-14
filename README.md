@@ -109,6 +109,7 @@ aws configure
 4. If you already have two active keys, you can deactivate and delete the older one so that you can create a new one, then download, and save it.
 5. Then, Complete the `aws configure` step
 </details>
+
 ---------------------------------------------------------------------
 #### Once configured, do a smoke test to check if your credentials are valid and get access to AWS.
 
