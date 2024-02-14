@@ -140,14 +140,7 @@ aws iam list-users
 
 * For **Git Operations Lab** we will use the same **Anchor EC2** from where we are operating now 
 
-#### Create the terraform directory and set up the config files in it
-
-Create the Terraform configuration and variables files as described.
-
-```
-mkdir devops-labs && cd devops-labs
-```
-As a first step, create a key using `ssh-keygen` Command. (Same public will be attached to newly created EC2 Instances)
+**Step-01:** As a first step, create a key using `ssh-keygen` Command. (Same public will be attached to newly created EC2 Instances)
 
 **Note:**
 1. This will create `id_rsa` and `id_rsa.pub` in Anchor Machine in **/home/ubuntu/.ssh/**.
@@ -166,7 +159,15 @@ ssh-keygen -t rsa -b 2048
 * `-b 2048:` Specifies the number of bits in the key, 2048 bits in this case. The larger the number of bits, the stronger the key.
 </details>
 
-#### Now create the Terraform config files.
+ **Step-02:** Create the terraform directory and set up the config files in it
+
+Create the Terraform configuration and variables files as described.
+
+```
+mkdir devops-labs && cd devops-labs
+```
+
+**Step-03:** Now create the Terraform config files.
 ```
 vi DevOpsServers.tf
 ```
@@ -249,7 +250,7 @@ variable "my-servers" {
   default = ["jenkins-server", "docker-server"]
 }
 ```
-#### Now, execute the terraform commands to launch the new servers
+**Step-04:** Now, execute the terraform commands to launch the new servers
 ```
 terraform init
 ```
@@ -265,7 +266,7 @@ terraform plan
 ```
 terraform apply -auto-approve
 ```
-#### Once the terraform code is executed, check the host's `inventory file` and ensure the below output.
+**Step-05:** Once the terraform code is executed, check the host's `inventory file` and ensure the below output.
 ```
 cat /etc/ansible/hosts
 ```
@@ -279,15 +280,15 @@ cat /etc/ansible/hosts
 
   34.203.249.54
 
-**(Optional Step):** When you `Stop` and `Start` the EC2 Instances, the Public IP Changes. In that case, To update Jenkin's & Docker's  new Public IPs in `Inventory file` use the below command
+**(Optional Step):** When you `Stop` and `Start` the EC2 Instances, the Public IP Changes. In that case, execute the below command to update Jenkin's & Docker's new Public IPs in `Inventory file.` 
 ```
 sudo vi /etc/ansible/hosts 
 ```
 Once Updated, Save the File.
 
-#### Check the access from `Anchor to Jenkins` and `Anchor to Docker`
+**Step-06:**  Check the access from `Anchor to Jenkins` and `Anchor to Docker`
 
-##### Step-01: Now from `Anchor Server` SSH into `Jenkins-Server` and check they are accessible.
+##### From `Anchor Server` SSH into `Jenkins-Server` and check they are accessible.
 
 ```
 ssh ubuntu@<Jenkins ip address>
@@ -302,7 +303,7 @@ sudo apt update
 ```
 **Exit** only from the Jenkins Server, not the Anchor Server.
 
-##### Step-02: Now from `Anchor Server` SSH into `Docker-Server` and check they are accessible.
+##### Now from `Anchor Server` SSH into `Docker-Server` and check they are accessible.
 
 ```
 ssh ubuntu@<Docker ip address>  
