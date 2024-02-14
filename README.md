@@ -44,10 +44,10 @@ Once you are ready, then while Manually Launching an Anchor EC2 Instance, select
 
 Once the Anchor EC2 server is up and running, SSH into the machine using `MobaXterm` or `Putty` with the username `ubuntu` and do the following:
 
-[Click here to download MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) (**Note:** Choose `Installer Edition`)
+[Click here](https://mobaxterm.mobatek.net/download-home-edition.html) to download MobaXterm (**Note:** Choose `Installer Edition` and install on your Laptop) 
 
 ```
-sudo hostnamectl set-hostname CICDLab
+sudo hostnamectl set-hostname AnchorServer
 bash
 ```
 ```
@@ -100,7 +100,7 @@ aws configure
 | AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
 
 <details>
-  <summary>Click here to know the Steps to create New Credentials:</summary>
+  <summary>To know how to create New Credentials, Click here:</summary>
 
 ##### Here is a step-by-step summary of the instructions:
 
@@ -135,15 +135,18 @@ aws iam list-users
 ---------------------------------------------------------------------
 ### Task-3: Now, we use `Terraform` for launching two New Servers.
 
-* We need to create two additional servers (`Docker-server` and `Jenkins-server,` for next labs.
-(**Note:** You can use **t2.micro** for Docker and Jenkins servers)
+* We need to create two additional servers (`Docker-server` and `Jenkins-server,`) for next labs.
+
+(**Note:** We can use **t2.micro** for Docker and Jenkins servers)
 
 * For **Git Operations Lab** we will use the same **Anchor EC2** from where we are operating now 
 
-**Step-01:** As a first step, create a key using `ssh-keygen` Command. (Same public will be attached to newly created EC2 Instances)
+**Step-01:** As a first step, create a keyPair using `ssh-keygen` Command.
+
+(Same public will be attached to newly created EC2 Instances)
 
 **Note:**
-1. This will create `id_rsa` and `id_rsa.pub` in Anchor Machine in **/home/ubuntu/.ssh/**.
+1. This will create `id_rsa` and `id_rsa.pub` in Anchor Machine in `/home/ubuntu/.ssh/` path.
 2. While creating choose defaults like:
    * path as **/home/ubuntu/.ssh/id_rsa**,
    * don't set up any passphrase, and just hit the '**Enter**' key for 3 questions it asks.
@@ -238,7 +241,7 @@ variable "ins_type" {
 
 # Replace 'yourname' with your first name
 variable key_name {
-    default = "YourName-CICDlab-KeyPair"
+    default = "YourName-Jenkins-Docker-KeyPair"
 }
 
 variable public_key {
@@ -266,11 +269,13 @@ terraform plan
 ```
 terraform apply -auto-approve
 ```
-**Step-05:** Once the terraform code is executed, check the host's `inventory file` and ensure the below output.
+Once the Changes are Applies, Go to `EC2 Dashboard` and check that `2 New Instances` are launched.
+
+**Step-05:** Once the Terraform commands are executed, check the `inventory file` and ensure the below output.
 ```
 cat /etc/ansible/hosts
 ```
-**Note:** The above command displays the IP addresses of the `Jenkins server` and `docker server` as an example shown below.
+The above command displays the IP addresses of the `Jenkins server` and `docker server` as an example shown below.
 
 * [jenkins-server]
 
@@ -448,19 +453,15 @@ git remote add origin <Replace your Repository URL>
 ```
 (**Example:** `git remote add origin https://github.com/janjiralakirankumar/hello-world.git`)
 
-3. To view the list of Aliases, run the below command in Terminal.
-```
-git config --get-regexp alias
-```
-4. To view a specific alias use the below command.
+2. To view a specific alias use the below command.
 ```
 git remote show origin
 ```
-5. Now you can push your code from `Local Repository` to Remote Repository using the below command.
+3. Now you can push your code from `Local Repository` to Remote Repository using the below command.
 ```
 git push origin master 
 ```
-6. When it asks for a password, enter the **Personal Access Token** and Press Enter
+5. When it asks for a password, enter the **Personal Access Token** and Press Enter
 
    (**Note:** When you paste, PAT is invisible and It's the expected behavior.)
 
@@ -565,7 +566,7 @@ The objective of this lab is to configure Jenkins to build and deploy applicatio
 ---------------------------------------------------------------------
 ### Task-1: Configure Jenkins Server:
 
-#### Step-01:
+#### Step-00:
 
 1. Initially, Copy the **private key** from **Anchor Server** to the **Jenkins Server** & **Docker Server**. so, that we can SSH from **Jenkins Server** to **Docker Server** and viseversa.
 ```
@@ -601,8 +602,10 @@ ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu
    
    </details>
 
-2. Go to the **Web Browser** and open a new tab then enter the URL as shown: **http://< Jenkin's Public IP>:8080/** (It requests the **InitialAdminPassword** during the setup.)
-3. To obtain the **InitialAdminPassword**, access the Jenkins Server by SSHing from the Anchor Server, utilizing Jenkins' Public IP.
+#### Step-01:
+
+1. Go to the **Web Browser** and open a new tab then enter the URL as shown: **http://< Jenkin's Public IP>:8080/** (It requests the **InitialAdminPassword** during the setup.)
+2. To obtain the **InitialAdminPassword**, access the Jenkins Server by SSHing from the Anchor Server, utilizing Jenkins' Public IP.
 ```
 ssh ubuntu@xx.xx.xx.xx
 ```
@@ -787,7 +790,7 @@ In this lab, you will set up a `Docker container as a Jenkins slave,`and `build 
 
 ![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/9139c0b6-2571-4606-84d0-22dac79d479e)
 
-### Task-0: Generating SSH KeyPair in Jenkin's `/var/lib/jenkins/` path.
+### Task-0: Generating SSH KeyPair in `Jenkins User's` `/var/lib/jenkins/` path.
 
 1. Open a Jenkin's terminal on your machine.
 2. Generate password for `Jenkin's User`
@@ -821,8 +824,8 @@ cat /var/lib/jenkins/.ssh/id_rsa
 
 ### Task-1: Configuring Docker Machine as Jenkins Slave.
 
-1. Navigate to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
-2. Click on **New Node** in the next window. Give the node name as **docker-slave** and Select **"permanent agent"**
+1. In Jenkins Webpage, Navigate to **Jenkin's Dashboard** and click on the **Manage Jenkins** and **Nodes**.
+2. Click on **New Node** in the next window. Give the node name as `docker-slave` and Select `Permanent Agent`
 3. Fill out the details for the node docker-slave as given below.
    * The name should be given as **docker-slave**,
    * Remote Root Directory as **/home/ubuntu**,
@@ -833,23 +836,26 @@ cat /var/lib/jenkins/.ssh/id_rsa
    * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
    * Then in the next window, in kind select **SSH username with private key** (Give username as `ubuntu`),
    * In **Private Key** Select **Enter directly** then Paste the Private Key copied from `Point-4 of Task-0` (Or from Notepad if both are same) and then click on **Add** .
-      **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
+
+     **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
    * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
-   * Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it.
-   * Click on the **Add** button.
-   * Now, it's done.
+   * Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it and it's done.
 
 **Note:** Check whether the Slave Node is online/Offline. (If it is Offline do the below process)
 
 ### Task-2:
 
-1. Now, Open the Docker machine, navigate to the `/home/ubuntu/.ssh` path, and paste the `public key` (Copied to NotePad) into the `authorized_keys` file.
+Now, from Anchor server SSH to Docker Server and then do the following:
+
+1. Now, Open the Docker machine, navigate to the `/home/ubuntu/.ssh` path, and paste the `public key`
+  
+   (Copied to NotePad) into the `authorized_keys` file.
 ```
 cd /home/ubuntu/.ssh
 ```
 2. Paste the `Public key` from Notepad to the `Authorized Keys`
 ```
-vi authorizedkeys
+vi authorized_keys
 ```
 Once Pasted, save the File.
 
