@@ -360,20 +360,20 @@ This lab focuses on `Git` and `GitHub operations,` including `initializing a Git
 2. You need to generate a **Personal Access Token** (PAT) in GitHub.
 3. Basic familiarity with **Git Commands.**
 
-Once the GitHub Account and Empty repository is ready, let's operate in the local Anchor Server.
+Once the `GitHub Account` and `Empty repository` is ready, let's operate in the Anchor Server.
 
 ---------------------------------------------------------------------
 ### Task-1: Initializing the local git repository and committing changes
 
-On the `CICD anchor EC2,` do the below:
+On the `Anchor Server,` do the below:
 ```
-cd ~/
+cd ~
 ```
-Check the GIT version. 
+Check the GIT version (Git comes pre-installed on certain Linux machines by default). 
 ```
 git --version
 ```
-(Optional) If it does not exist, then you can install it with the below command. Else no need to execute the below line:  
+**(Optional)** If it does not exist, then you can install it using the below command. (Else no need to execute the below line):  
 ```
 sudo apt install git -y
 ```
@@ -385,17 +385,15 @@ wget https://devops-e-e.s3.ap-south-1.amazonaws.com/hello-world-master.zip
 unzip hello-world-master.zip
 ```
 ```
-ls
 rm hello-world-master.zip
 ```
 ```
 cd hello-world-master
-ls
 ```
 ```
 git init .
 ```
-To set the `User Identity` ie... `email and user name.` you can use below:
+To set the `User Identity` ie... `email and user name.` you can execute below commands:
 
 ```
 git config --global user.email "< Add your email >"
@@ -428,10 +426,11 @@ git status
 ---------------------------------------------------------------------
 ### Task-2: Pushing the Code to your Remote GitHub Repository  
 
-* To push code to **Github**, You need to generate a **Personal Access Token** (PAT) in github.
+1. To push code to **Github**, You need to generate a **Personal Access Token** (PAT) in github.
 
-**To Generate the Token Follow the below steps:**
-
+<details>
+  <summary>To Generate the Token Follow the below steps:</summary>
+  
 * First, Go to your `GitHub homepage,` Click on the top right `profile Icon` and then `settings`
 * Click on `Developer settings` (At the bottom on the left side menu). Click on `Personal Access Token` and then Click on `Generate New Token.`
 * Under '**Select Scopes**' select all items. Click on '**generate token**'.
@@ -439,25 +438,27 @@ git status
 
    **Example:** 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
 
-* Create `Alias` as `Origin` to GitHub's Remote repository URL.
+</details>
+
+2. Create `Alias` as `Origin` to GitHub's Remote repository URL.
 ```
 git remote add origin < Replace your Repository URL > 
 ```
 (**Example:** `git remote add origin https://github.com/janjiralakirankumar/hello-world.git`)
 
-* To view the list of Aliases, run the below command in Terminal.
+3. To view the list of Aliases, run the below command in Terminal.
 ```
 alias
 ```
-* To view a specific alias use the below command.
+4. To view a specific alias use the below command.
 ```
 git remote show origin
 ```
-* Now you can push your code to the Remote repository using the below command.
+5. Now you can push your code to the Remote repository using the below command.
 ```
 git push origin master 
 ```
-* When it asks for a password, enter the **Personal Access Token** and Press Enter (PAT is invisible and It's the expected behavior.)
+6. When it asks for a password, enter the **Personal Access Token** and Press Enter (PAT is invisible and It's the expected behavior.)
 
 ---------------------------------------------------------------------
 ### Task 3: Creating a Git Branch and Pushing Code to the Remote Repository
