@@ -358,7 +358,20 @@ This lab focuses on `Git` and `GitHub operations,` including `initializing a Git
 
    **Note:** (To SignUp for GitHub Account, [Click Here](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home))
 2. You need to generate a **Personal Access Token** (PAT) in GitHub.
-3. Basic familiarity with **Git Commands.**
+   
+<details>
+  <summary>Click Here To Generate the Token:</summary>
+  
+* First, Go to your `GitHub homepage,` Click on the top right `profile Icon` and then `settings`
+* Click on `Developer settings` (At the bottom on the left side menu). Click on `Personal Access Token` and then Click on `Generate New Token.`
+* Under '**Select Scopes**' select all items. Click on '**generate token**'.
+* Once generated, **Copy and save the token in a safe location as it is not visible again in GitHub.**
+
+   **Example:** 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
+
+</details>
+
+4. Basic familiarity with **Git Commands.**
 
 Once the `GitHub Account` and `Empty repository` is ready, let's operate in the Anchor Server.
 
@@ -427,18 +440,6 @@ git status
 ### Task-2: Pushing the Code to your Remote GitHub Repository  
 
 1. To push code to **Github**, You need to generate a **Personal Access Token** (PAT) in github.
-
-<details>
-  <summary>To Generate the Token Follow the below steps:</summary>
-  
-* First, Go to your `GitHub homepage,` Click on the top right `profile Icon` and then `settings`
-* Click on `Developer settings` (At the bottom on the left side menu). Click on `Personal Access Token` and then Click on `Generate New Token.`
-* Under '**Select Scopes**' select all items. Click on '**generate token**'.
-* Once generated, **Copy and save the token in a safe location as it is not visible again in GitHub.**
-
-   **Example:** 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
-
-</details>
 
 2. Create `Alias` as `Origin` to GitHub's Remote repository URL.
 ```
