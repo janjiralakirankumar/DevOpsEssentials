@@ -783,70 +783,88 @@ This lab focuses on configuring `Git WebHooks` to automatically `trigger Jenkins
 ## Lab-5: Configuring Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
 **Objective:**
-In this lab, you will set up a Docker container as a Jenkins slave, build a Docker image for a Java web application, and deploy it in a Docker container.
+In this lab, you will set up a `Docker container as a Jenkins slave,`and `build a Docker image` for a Java web application, and `Deploy it in a Docker container.`
 
 ![image](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/9139c0b6-2571-4606-84d0-22dac79d479e)
 
-### Task-0: 
-
-Generate SSH Key Pair in `/var/lib/jenkins/`
+### Task-0: Generating SSH KeyPair in Jenkin's `/var/lib/jenkins/` path.
 
 1. Open a Jenkin's terminal on your machine.
-2. Swith to root user and then Jenkin's user
+2. Generate password for `Jenkin's User`
 ```
-sudo su
+sudo passwd jenkins
 ```
-```
-cd
-```
+3. Swith to Jenkins user
 ```
 su jenkins
 ```
 ```
-cd
+cd ~
 ```
 Check the present working directory
 ```
 pwd
 ```
-3. if not in the /var/lib/jenkins/ directory, then Navigate to it by below command.
-```
-cd /var/lib/jenkins/
-```
+**Note:** if not in the Jenkin's `/var/lib/jenkins/` path, then Navigate to it.
+
 4. Now, run the following command to generate an SSH key pair:
 ```
 ssh-keygen
 ```
-5. Once done, from the same jenkin's user try to copy the `public key` to target machine's (Docker Server's) authorized keys.
-(copy the public key to notepad and open the docker's `/home/ubuntu/.ssh` path and paste the `public key` in `authorized keys`)
-6. Similarly, Open the `private key` from the newly created ssh keypair and paste it in notepad (We use later).
+Copy both `id_rsa` and `id_rsa.pub` Keys to notepad (We use them later)
+```
+cat /var/lib/jenkins/.ssh/id_rsa.pub
+```
 ```
 cat /var/lib/jenkins/.ssh/id_rsa
 ```
-7. Now from `jenkin's user` try to ssh into docker's machine.
+
+### Task-1: Configuring Docker Machine as Jenkins Slave.
+
+1. Navigate to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
+2. Click on **New Node** in the next window. Give the node name as **docker-slave** and Select **"permanent agent"**
+3. Fill out the details for the node docker-slave as given below.
+   * The name should be given as **docker-slave**,
+   * Remote Root Directory as **/home/ubuntu**,
+   * labels to be **Slave-Nodes**,
+   * usage to be given as **"use this node as much as possible"**
+   * Launch method to be set as **"launch agents via SSH"**.
+   * In the host section, give the **Public IP of the Docker instance**.
+   * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
+   * Then in the next window, in kind select **SSH username with private key** (Give username as `ubuntu`),
+   * In **Private Key** Select **Enter directly** then Paste the Private Key copied from `Point-4 of Task-0` (Or from Notepad if both are same) and then click on **Add** .
+   **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
+   * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
+   * Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it.
+   * Click on the **Add** button.
+   * it's done.
+---
+
+
+5. After completion, open the Docker machine and change the directory to `/home/ubuntu/.ssh` path, and paste the `public key` into the `authorized_keys` file.
+```
+cd /home/ubuntu/.ssh
+```
+Paste the Public from Notepad to the `Authorized Keys`
+```
+vi authorizedkeys
+```
+Once Pasted, save the File.
+
+6. Now from `jenkin's user` try to ssh into docker machine.
 ```
 ssh ubuntu@<Docker's Public IP>
 ```
-### Task-1: Configuring Docker Machine as Jenkins Slave.
 
-1. Go to **Jenkin's home page** and click on the **Manage Jenkins** and **Nodes**.
-2. Click on **New Node** in the next window. Give the node name as **docker-slave** and Select **"permanent agent"**
-3. Fill out the details for the node docker-slave as given below.
-* The name should be given as **docker-slave**,
-* Remote Root Directory as **/home/ubuntu**,
-* labels to be **Slave-Nodes**,
-* usage to be given as **"use this node as much as possible"**
-* Launch method to be set as **"launch agents via SSH"**.
-* In the host section, give the **Public IP of the Docker instance**.
-* For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
-* Then in the next window, in kind select **SSH username with private key** (give username as ubuntu),
-* In **Private Key** Select **Enter directly** then Paste the Private Key copied from `point-6 of Task-0` and then click on **Add** .
-**Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
-* Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
-* Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it.
-* Click on the **Add** button.
-* it's done.
----
+
+
+
+
+
+
+
+
+
 
 ### Task-2: Build and deploy code in Docker Host on the container.
 
