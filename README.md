@@ -847,7 +847,7 @@ cat /var/lib/jenkins/.ssh/id_rsa
 ```
 cd /home/ubuntu/.ssh
 ```
-2. Paste the Public from Notepad to the `Authorized Keys`
+2. Paste the `Public key` from Notepad to the `Authorized Keys`
 ```
 vi authorizedkeys
 ```
@@ -911,43 +911,35 @@ sudo docker container rm -f yourname-helloworld-container
 sudo docker build -t helloworld-image .
 sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image
 ```
----------------------------------------------------------------------
-#### Explanatory Notes of the above Commands:
+   <details>
+     <summary>Click here for breakup of command</summary>
+     
+   The commands you provided are part of the Jenkins job's post-build steps, and they are responsible for building a Docker image and running a Docker container for your Java web application. Here's a breakdown of what each command does:
+   
+   1. `cd ~`: Change the working directory to the user's home directory.
+   
+   2. `cp -f /home/ubuntu/workspace/hello-world/target/hello-world-war-1.0.0.war .`: Copy the WAR file (presumably the artifact of your Java web application) from the Jenkins workspace to the current directory (`~`), where you'll perform the Docker build.
+   
+   3. `sudo docker container rm -f yourname-helloworld-container`: Remove any existing Docker container with the name "yourname-helloworld-container" forcefully if it exists. You should replace "yourname" with your actual first name.
+   
+   4. `sudo docker build -t helloworld-image .`: Build a Docker image with the tag "helloworld-image" based on the Dockerfile located in the current directory (`.`). The Dockerfile you created earlier specifies how the image should be built.
+   
+   5. `sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image`: Run a Docker container named "yourname-helloworld-container" from the "helloworld-image" image. This container will be detached (`-d`) and will map port 8080 on the host to port 8080 inside the container. You should replace "yourname" with your actual first name.
+      
+   </details>
 
-The commands you provided are part of the Jenkins job's post-build steps, and they are responsible for building a Docker image and running a Docker container for your Java web application. Here's a breakdown of what each command does:
+Upon executing these commands, your Java web application should be deployed within a Docker container, accessible on port 8080 of your Docker host.
 
-1. `cd ~`: Change the working directory to the user's home directory.
+### Task-5: Building the **hello-world project**
 
-2. `cp -f /home/ubuntu/workspace/hello-world/target/hello-world-war-1.0.0.war .`: Copy the WAR file (presumably the artifact of your Java web application) from the Jenkins workspace to the current directory (`~`), where you'll perform the Docker build.
+Either:
+1. Manually click on **"Build Now"** in Jenkins.
+2. Make a small change in GitHub files.
 
-3. `sudo docker container rm -f yourname-helloworld-container`: Remove any existing Docker container with the name "yourname-helloworld-container" forcefully if it exists. You should replace "yourname" with your actual first name.
+After a successful build, access the Tomcat server page:
 
-4. `sudo docker build -t helloworld-image .`: Build a Docker image with the tag "helloworld-image" based on the Dockerfile located in the current directory (`.`). The Dockerfile you created earlier specifies how the image should be built.
-
-5. `sudo docker run -d -p 8080:8080 --name yourname-helloworld-container helloworld-image`: Run a Docker container named "yourname-helloworld-container" from the "helloworld-image" image. This container will be detached (`-d`) and will map port 8080 on the host to port 8080 inside the container. You should replace "yourname" with your actual first name.
-
-After running these commands, your Java web application should be deployed inside a Docker container, and it will be accessible on port 8080 of your Docker host.
-
-Make sure that Docker is properly configured on your host, and all the necessary dependencies for your Java web application are included in the WAR file. Additionally, ensure that the Dockerfile is correctly configured to set up your application inside the container.
-
----------------------------------------------------------------------
-* Now you can build your **hello-world project** Either by
-1. Clicking on **"Build Now"** or
-2. By **making a small change in Github files**.
-
-* Once the build is successful, access the tomcat server page,
-
-To access the Page In Browser Type **"http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/"** to see the website
-* **Example:** http://3.95.192.77:8080/hello-world-war-1.0.0/
----
-**Summary:**
-1. Configure a Jenkins slave node ie... named as "docker-slave."
-2. Configure the slave node to use SSH for communication.
-3. Set up a Dockerfile to define the Docker image for the Java web application.
-4. Create a Jenkins job to build and deploy the Java web application in a Docker container.
-5. Add post-build steps to the Jenkins job to copy the WAR file, build the Docker image, and run a Docker container.
-6. Trigger the Jenkins job to build and deploy the application in the Docker container.
-7. Access the deployed web application in the Docker container via the Docker host's public IP.
+In your browser, type **"http:// < Your Docker Host Public IP >:8080/hello-world-war-1.0.0/"** to view the website.
+*Example:* http://3.95.192.77:8080/hello-world-war-1.0.0/
 
 ---------------------------------------------------------------------
 Once Done, It's time to **Clean up** the Instances
