@@ -112,9 +112,9 @@ aws configure
 </details>
 
 ---------------------------------------------------------------------
-#### Once configured, do a smoke test to check if your credentials are valid and get access to AWS.
+#### Once configured, do a smoke test to check if your credentials are valid and got the access to AWS account.
 
-You can check using any one command
+You can check using any one command or both.
 ```
 aws s3 ls
 ```
@@ -123,37 +123,45 @@ aws s3 ls
 aws iam list-users
 ```
 
-#### Create a host inventory file with the necessary permissions
+#### Create a host inventory file with the necessary permissions (Ansible need this Inventory file for identifying the targets)
  ```
  sudo mkdir /etc/ansible && sudo touch /etc/ansible/hosts
 ```
 ```
  sudo chmod 766 /etc/ansible/hosts
 ```
-**Note:** The above command gives `read and write permissions to the owner,` `read and write permissions to the group,` and `read and write permissions to others.`
+**Note:** The above command gives `Read and Write` permissions to `Owner,` `Read and Write` permissions to the `Group,` and `Read and Write` permissions to `Others.`
 
 ---------------------------------------------------------------------
-### Task-3: Use Terraform to launch two servers.
-Create the Terraform configuration and variables files as described.
-* We need to create two additional servers (`Docker-server` and `Jenkins-server,` You can use **t2.micro** for Docker and Jenkins servers)
-* For **Git Operations** we will use the same **Anchor EC2** from where we are operating now 
+### Task-3: Now, we use `Terraform` for launching two New Servers.
+
+* We need to create two additional servers (`Docker-server` and `Jenkins-server,` for next labs.
+(**Note:** You can use **t2.micro** for Docker and Jenkins servers)
+
+* For **Git Operations Lab** we will use the same **Anchor EC2** from where we are operating now 
 
 #### Create the terraform directory and set up the config files in it
+
+Create the Terraform configuration and variables files as described.
+
 ```
 mkdir devops-labs && cd devops-labs
 ```
-As a first step, create a key using ssh-keygen.
+As a first step, create a key using `ssh-keygen` Command. (Same keypair will be used for newly created EC2 Instances)
 ```
 ssh-keygen -t rsa -b 2048 
 ```
-##### Explanation:
 
+<details>
+  <summary>Click here for explanation</summary>
+  
 * `-t rsa:` Specifies the type of key to create, in this case, RSA.
 * `-b 2048:` Specifies the number of bits in the key, 2048 bits in this case. The larger the number of bits, the stronger the key.
+</details>
 
 **Note:**
 1. This will create `id_rsa` and `id_rsa.pub` in **/home/ubuntu/.ssh/**
-2. Keep the path as **/home/ubuntu/.ssh/id_rsa**; don't set up any passphrase, just hit the '**Enter**' key for the 3 questions it asks
+2. Keep the path as **/home/ubuntu/.ssh/id_rsa** only; don't set up any passphrase, just hit the '**Enter**' key for the 3 questions it asks
 
 #### Now create the Terraform config files.
 ```
@@ -193,14 +201,15 @@ resource "aws_instance" "my-machine" {
   }
 }
 ```
-Now, create the variables file with all variables to be used in the main config file.
+Now, create the variables file with all variables to be used in the `DevOpsServers.tf` config file.
 ```
 vi variables.tf
 ```
-Change the following data in variables.tf File. 
+**Note:** Change the following Inputs in `variables.tf.`
+
 1. Edit the **Allocated Region** (**Ex:** ap-south-1) & **AMI ID** of same region,
 2. Replace the same **Security Group ID** Created for the Anchor Server
-3. Add your Name for **KeyPair** (Example: "**YourName**-CICDlab-KeyPair")
+3. Add your Name for **KeyPair** ("**YourName**-CICDlab-KeyPair")
 
 ```
 variable "region" {
@@ -237,7 +246,7 @@ variable "my-servers" {
   default = ["jenkins-server", "docker-server"]
 }
 ```
-#### Now, execute the terraform config files to launch the servers
+#### Now, execute the terraform commands to launch the new servers
 ```
 terraform init
 ```
@@ -253,14 +262,17 @@ terraform plan
 ```
 terraform apply -auto-approve
 ```
-#### After the terraform code is executed, check the host's inventory file and ensure the below output.
+#### Once the terraform code is executed, check the host's `inventory file` and ensure the below output.
 ```
 cat /etc/ansible/hosts
 ```
-It will show IP addresses of the Jenkins server and docker server as an example shown below.
+It will show IP addresses of the `Jenkins server` and `docker server` as an example shown below.
 
-* [jenkins-server] 44.202.164.153
-* [docker-server] 34.203.249.54
+* [jenkins-server]
+  44.202.164.153
+  
+* [docker-server]
+  34.203.249.54
 
 **(Optional Step):** When you stop and start the EC2 Instances Public IP Changes. In that case, To update Jenkins & Docker Public IP addresses use the below command
 ```
