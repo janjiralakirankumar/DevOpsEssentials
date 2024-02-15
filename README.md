@@ -813,7 +813,7 @@ In this lab, you will set up a `Docker container as a Jenkins slave,`and `build 
 
      **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
    * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
-   * Host Key Verification Strategy Select as **"known hostkey Verification Strategy"** and **Save** it and it's done.
+   * Host Key Verification Strategy Select as **Non Verifying Verification Strategy** and **Save** it and it's done.
 
 **Note:** Check whether the Slave Node is online/Offline. (If it is Offline do the below process)
 
