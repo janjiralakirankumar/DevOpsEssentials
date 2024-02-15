@@ -804,6 +804,7 @@ In this lab, you will set up a `Docker container as a Jenkins slave,`and `build 
    * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
    * Then in the next window, in kind select **SSH username with private key** (Give username as `ubuntu`),
    * In **Private Key** Select **Enter directly**
+   
    **Note:** To get the `Private Key` go to `Anchor Server` and Execute the below command:
       ```
       cd ~/.ssh
