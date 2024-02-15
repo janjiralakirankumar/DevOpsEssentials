@@ -804,18 +804,18 @@ In this lab, you will set up a `Docker container as a Jenkins slave,`and `build 
    * For Credentials for this Docker node, click on the dropdown button named **Add** and then click on **Jenkins**;
    * Then in the next window, in kind select **SSH username with private key** (Give username as `ubuntu`),
    * In **Private Key** Select **Enter directly**
-   * To get the `Private Key` go to `Anchor Server` and do as shown below:
+   **Note:** To get the `Private Key` go to `Anchor Server` and Execute the below command:
       ```
       cd ~/.ssh
       cat id_rsa
       ```
-   * Paste the Private Key and then click on **Add** .
-
-     **Note:** Copy the entire content, including the **first and last lines**. Paste it into the space provided for the **private key** then click on **Add**.
+      Also, Copy the entire content, including the **first and last lines**.
+     
+   * Once Copied, Paste it into the space provided for the **private key** then click on **Add**..
    * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
    * Host Key Verification Strategy Select as **Non Verifying Verification Strategy** and **Save** it and it's done.
 
-**Note:** Check whether the Slave Node is online/Offline. (If it is Offline do the below process)
+**Note:** Check whether the Slave Node is online/Offline.
 
 **(Optional Step):** If still the slave node is offline, do as below:
 1. From Jenkin's server using Docker's Public IP SSH into Docker server.
