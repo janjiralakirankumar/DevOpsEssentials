@@ -608,7 +608,10 @@ ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu
 
 #### Step-01:
 
-1. Go to the **Web Browser** and open a new tab then enter the URL as shown: **http://< Jenkin's Public IP>:8080/** (It requests the **InitialAdminPassword** during the setup.)
+1. Go to the **Web Browser** and open a new tab then enter the URL as shown:
+
+   **http://< Jenkin's Public IP>:8080/** (It requests the **InitialAdminPassword** during the setup.)
+   
 2. To obtain the **InitialAdminPassword**, access the Jenkins Server by SSHing from the Anchor Server, utilizing Jenkins' Public IP.
 ```
 ssh ubuntu@xx.xx.xx.xx
@@ -621,7 +624,10 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 #### Step-02:
 
-1. Now, go to the **Web Browser** to jenkin's landing page (Enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**)
+1. Now, go to the **Web Browser** to jenkin's landing page:
+   
+   Enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**)
+
 2. Under Unlock Jenkins, enter the above **initialAdminPassword** & click **Continue**.
 3. Click on **Install suggested Plugins** on the Customize Jenkins page.
 4. Once the plugins are installed, it gives you the page where you can create a New **Admin User**. 
@@ -809,12 +815,12 @@ In this lab, you will set up a `Docker container as a Jenkins slave,`and `build 
    * Then in the next window, in kind select **SSH username with private key** (Give username as `ubuntu`),
    * In **Private Key** Select **Enter directly**
    
-   **Note:** To get the `Private Key` go to `Anchor Server` and Execute the below command:
+   **Note:** To get the `Private Key` go to `Anchor Server` (Not Jenkins/Docker) and Execute the below command:
       ```
       cd ~/.ssh
       cat id_rsa
       ```
-      Also, Copy the entire content, including the **first and last lines**.
+     (Copy the entire content of the Private Key, including the **First and Last line** till `5 hyphens` only.)
      
    * Once Copied, Paste it into the space provided for the **private key** then click on **Add**..
    * Now, In SSH Credentials, choose the newly created **Ubuntu** credentials.
@@ -822,9 +828,12 @@ In this lab, you will set up a `Docker container as a Jenkins slave,`and `build 
 
 **Note:** Check whether the Slave Node is online/Offline.
 
-**(Optional Step):** If still the slave node is offline, do as below:
-1. From Jenkin's server using Docker's Public IP SSH into Docker server.
-2. Now, Re-check whether the Slave node is Online/Offline.
+   <details>
+     <summary>**(Optional Step):** If still the slave node is offline, do as below:</summary>
+     
+   1. From Jenkin's server using Docker's Public IP SSH into Docker server.
+   2. Now, Re-check whether the Slave node is Online/Offline.
+   </details>
 
 ### Task-3: Build and deploy code in Docker Host on the container.
 
@@ -867,7 +876,7 @@ This Dockerfile packages a Java web app in a container using a Tomcat base image
 
 1. Navigate to your **Jenkins Home page**, choose the **hello-world project** from the drop-down, and click on the Configure tab.
 2. In the **General Tab**, choose **Restrict where this project can be run** and set the Label Expression to **Slave-Nodes.**
-3. Move to the **Post Build Steps Tab**, select **"Run only if the build succeeds,"** add a post-build step, choose **Execute shell** from the drop-down, paste the provided commands (below) into the shell, and click **Save.**
+3. Move to the **Post Build Steps Tab**, select **"Run only if the build succeeds,"** and then select `add a post-build step`, choose **Execute shell** from the drop-down, paste the provided commands (below) into the shell, and click **Save.**
 
 #### Note: You may replace 'yourname' with your actual first name (lines 3 and 5).
 
