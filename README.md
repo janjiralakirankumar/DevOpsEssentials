@@ -339,14 +339,18 @@ At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready 
 
 #### Step-04:
 
-1. Verify that the Jenkins landing page is working.
+##### 1. Verify that the Jenkins landing page is working:
   
-   * Use your respective Jenkin's Public IP as shown: http://**44.202.164.153**:8080/ 
-
-2. Verify that the Docker landing page is working.
+   * Use your respective `Jenkin's Public IP` as shown:
+   ```
+   http://**44.202.164.153**:8080/ 
+   ```
+##### 2. Verify that the Docker landing page is working.
   
-   * Use your respective Docker's Public IP as shown: http://**34.203.249.54**:4243/version 
-
+   * Use your respective `Docker's Public IP` as shown:
+   ```
+   http://**34.203.249.54**:4243/version 
+   ```
 #### =============================END of LAB-01=============================
 ---
 ## Lab 2: Git and GitHub Operations.
