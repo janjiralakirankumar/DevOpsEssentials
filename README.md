@@ -133,11 +133,7 @@ aws iam list-users
 **Note:** The above command gives `Read and Write` permissions to `Owner,` `Read and Write` permissions to the `Group,` and `Read and Write` permissions to `Others.`
 
 ---------------------------------------------------------------------
-### Task-3: Now, we use `Terraform` for launching two New Servers.
-
-* We need to create two additional servers (`Docker-server` and `Jenkins-server,`) for next labs.
-
-(**Note:** We can use **t2.micro** for Docker and Jenkins servers)
+### Task-3: Utilizing Terraform, initiate the deployment of two new servers: `Docker-server` and `Jenkins-server` 
 
 * For **Git Operations Lab** we will use the same **Anchor EC2** from where we are operating now 
 
