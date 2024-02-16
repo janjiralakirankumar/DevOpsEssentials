@@ -624,9 +624,9 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 #### Step-02:
 
-1. Now, go to the **Web Browser** to jenkin's landing page:
+1. Now, go back to jenkin's landing page in the **Web Browser**:
    
-   Enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**)
+   (Enter the Jenkins URL as shown: **http://< Jenkin's Public IP>:8080/**)
 
 2. Under Unlock Jenkins, enter the above **initialAdminPassword** & click **Continue**.
 3. Click on **Install suggested Plugins** on the Customize Jenkins page.
