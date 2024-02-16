@@ -829,7 +829,7 @@ In this lab, you will set up a `Docker container as a Jenkins slave,`and `build 
 **Note:** Check whether the Slave Node is online/Offline.
 
    <details>
-     <summary>**(Optional Step):** If still the slave node is offline, do as below:</summary>
+     <summary>(Optional Step): If still the slave node is offline, do as below:</summary>
      
    1. From Jenkin's server using Docker's Public IP SSH into Docker server.
    2. Now, Re-check whether the Slave node is Online/Offline.
