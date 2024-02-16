@@ -339,8 +339,6 @@ At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready 
 
 #### Step-04:
 
----
-
 **1. Verify the Jenkins Landing Page:**
 
    * Open a web browser and navigate to your Jenkins landing page using your Jenkins server's public IP address. Replace `<Your_Jenkins_IP>` with the actual public IP.
@@ -348,8 +346,6 @@ At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready 
    ```
    http://<Your_Jenkins_IP>:8080/
    ```
-
----
 
 **2. Verify the Docker Landing Page:**
 
@@ -359,7 +355,6 @@ At the end of this step, the `Docker-Server` and `Jenkins-Server` will be ready 
    http://<Your_Docker_IP>:4243/version
    ```
 
----
 #### =============================END of LAB-01=============================
 ---
 ## Lab 2: Git and GitHub Operations.
