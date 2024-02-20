@@ -14,7 +14,7 @@ This guide provides step-by-step instructions for completing various DevOps labs
 ## Lab 1: Use Terraform to Setup the `Docker Server` and `Jenkins Server` for CICD Lab.
 
 **Objective:**
-The objective of this lab is to set up two AWS EC2 instances, one for Jenkins and one for Docker, using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
+The objective of this lab is to set up two AWS EC2 instances, `one for Jenkins` and `one for Docker,` using Terraform. This lab aims to provide a foundation for building a Continuous Integration/Continuous Deployment (CICD) environment.
 
 ---------------------------------------------------------------------
 ### Task-0: The first step is to `Manually Launch an Anchor EC2 Server` with the below configuration:
@@ -25,11 +25,11 @@ Login to AWS Console, go to EC2 Dashboard, and under "Network & Security," creat
 
 1. Create key pair with name: `DevOps-Keypair-YourName`
 2. Create security group with name: `DevOps-SG-YourName`
-   (Include Ports: `22 [SSH],` `80 [HTTP],` `8080 [Jenkins],` `9999 [Tomcat],` and `4243 [Docker].`)
+   (Include Ports: `22 [SSH],` `80 [HTTP],` `8080 [Jenkins],` `9999 [Tomcat],` and `4243 [Docker]`)
 
-Once you are ready, then while Manually Launching an Anchor EC2 Instance, select the above `DevOps-Keypair-YourName` and `DevOps-SG-YourName`
+Once you are ready, and while Manually Launching an `Anchor EC2 Instance`, select the above `DevOps-Keypair-YourName` and `DevOps-SG-YourName`
 
-#### Step-02: Steps for launching the Anchor EC2 Instance
+#### Step-02: Steps for Manually launching the Anchor EC2 Instance
 
 * **Region:** North Virginia (us-east-1).
 * **Use tag Name:** `Anchor-EC2-YourName`
