@@ -465,9 +465,9 @@ git remote show origin
 ```
 git push origin master 
 ```
-5. When it asks for a password, enter the **Personal Access Token** and Press Enter
+**Note:** When it asks for a password, enter the **Personal Access Token** and Press Enter
 
-   (**Note:** When you paste, PAT is invisible and It's the expected behavior.)
+   (When you paste, PAT is invisible and It's the expected behavior.)
 
 ---------------------------------------------------------------------
 ### Task 3: Creating a Git Branch and Pushing Code to the Remote Repository
