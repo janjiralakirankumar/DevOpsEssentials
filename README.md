@@ -796,7 +796,7 @@ This lab focuses on configuring `Git WebHooks` to automatically `trigger Jenkins
 ## Lab-5: Configuring Docker Machine as Jenkins Slave, build and deploy code in Docker Host as a container
 
 **Objective:**
-In this lab, you will set up a `Docker container as a Jenkins slave,`and `build a Docker image` for a Java web application, and `Deploy it in a Docker container.`
+In this lab, you will set up a `Docker Server` as a `Jenkin's Slave,`and `build a Docker image` for a Java Web Application, and `Deploy it in a Docker container` in Docker Server.
 
 ![Deploy Code to Docker Server](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/1b157348-478a-4362-a580-5801634044ef)
 
