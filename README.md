@@ -668,7 +668,7 @@ Do the below in Jenkin's Dashboard:
 ---------------------------------------------------------------------
 ### Task-2: Installing and Configuring Tomcat for Deploying our Application on the same Jenkins Server
 
-![MicrosoftTeams-image (7)](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/e30d814c-d810-4eb4-9d48-299ee7ace4e3)
+![Deploy Code to Tomcat Server](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/0bf912eb-86b9-4271-ac58-79f582175632)
 
 * SSH into the Jenkins server as the root user and install the Tomcat web server.
   **Note:** (If you are already in Jenkins Server, again SSH is not needed.)
@@ -798,7 +798,7 @@ This lab focuses on configuring `Git WebHooks` to automatically `trigger Jenkins
 **Objective:**
 In this lab, you will set up a `Docker container as a Jenkins slave,`and `build a Docker image` for a Java web application, and `Deploy it in a Docker container.`
 
-![MicrosoftTeams-image (8)](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/4e34e412-6357-4f5a-aec7-caf8b5d491c6)
+![Deploy Code to Docker Server](https://github.com/janjiralakirankumar/DevOpsEssentials/assets/137407373/1b157348-478a-4362-a580-5801634044ef)
 
 ### Task-1: Configuring Docker Machine as Jenkins Slave.
 
