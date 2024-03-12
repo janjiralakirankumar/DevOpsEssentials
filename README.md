@@ -57,18 +57,18 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.7.4/terraform_1.7.4_linux_amd64.zip
 ```
 [Click here](https://developer.hashicorp.com/terraform/downloads) for Terraform's Latest Versions
 ```
-unzip terraform_1.7.3_linux_amd64.zip
+unzip terraform_1.7.4_linux_amd64.zip
 ls
 ```
 ```
 sudo mv terraform /usr/local/bin
 ```
 ```
-rm terraform_1.7.3_linux_amd64.zip
+rm terraform_1.7.4_linux_amd64.zip
 ```
 ```
 ls
