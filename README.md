@@ -137,7 +137,7 @@ aws iam list-users
 ```
  sudo chmod 766 /etc/ansible/hosts
 ```
-**Note:** The above command gives `Read and Write` permissions to `Owner,` `Read and Write` permissions to the `Group,` and `Read and Write` permissions to `Others.`
+**Note:** The above command gives `Read, Write and Execute` permissions to `Owner,` `Read and Write` permissions to the `Group,` and `Read and Write` permissions to `Others.`
 
 ---------------------------------------------------------------------
 ### Task-3: Utilizing Terraform, initiate the deployment of two new servers: `Docker-server` and `Jenkins-server` 
