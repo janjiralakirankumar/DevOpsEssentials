@@ -64,18 +64,18 @@ sudo apt update
 sudo apt install wget unzip -y
 ```
 ```
-wget https://releases.hashicorp.com/terraform/1.8.1/terraform_1.8.1_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.9.2/terraform_1.9.2_linux_amd64.zip
 ```
 [Click here](https://developer.hashicorp.com/terraform/downloads) for Terraform's Latest Versions
 ```
-unzip terraform_1.8.1_linux_amd64.zip
+unzip terraform_1.9.2_linux_amd64.zip
 ls
 ```
 ```
 sudo mv terraform /usr/local/bin
 ```
 ```
-rm terraform_1.8.1_linux_amd64.zip
+rm terraform_1.9.2_linux_amd64.zip
 ```
 ```
 ls
