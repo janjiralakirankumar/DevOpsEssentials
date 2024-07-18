@@ -334,11 +334,134 @@ sudo apt update
 cd ~
 mkdir ansible && cd ansible
 ```
-#### Step-02: Now, Download the playbook, which will deploy packages onto the `Docker-server` and `Jenkins-Server.`
+#### Step-02: Now, Create a playbook, which will deploy packages onto the `Docker-server` and `Jenkins-Server.`
+
+* Create a new File with the name `DevOpsSetup.yml.`
 ```
-wget https://devops-e-e.s3.ap-south-1.amazonaws.com/DevOpsSetup.yml
+vi DevOpsSetup.yml
 ```
-#### Step-03: Run the above playbook to deploy the packages
+* Copy and paste the below code and save it.
+```
+---
+- name: Start installing Jenkins pre-requisites before installing Jenkins
+  hosts: jenkins-server
+  become: yes
+  become_method: sudo
+  gather_facts: no
+
+  tasks:
+
+  - name: Update apt repository with latest packages
+    apt:
+      update_cache: yes
+      upgrade: yes
+
+  - name: Installing jdk17 in Jenkins server
+    apt:
+      name: openjdk-17-jdk
+      update_cache: yes
+    become: yes
+
+  - name: Installing jenkins apt repository key
+    apt_key:
+      url: https://pkg.jenkins.io/debian/jenkins.io-2023.key
+      state: present
+    become: yes
+
+  - name: Configuring the apt repository
+    apt_repository:
+      repo: deb https://pkg.jenkins.io/debian binary/
+      filename: /etc/apt/sources.list.d/jenkins.list
+      state: present
+    become: yes
+
+  - name: Update apt-get repository with "apt-get update"
+    apt:
+      update_cache: yes
+
+  - name: Finally, its time to install Jenkins
+    apt: name=jenkins update_cache=yes
+    become: yes
+
+  - name: Jenkins is installed. Lets start 'Jenkins' now!
+    service: name=jenkins state=started
+
+  - name: Wait until the file /var/lib/jenkins/secrets/initialAdminPassword is present before continuing
+    wait_for:
+      path: /var/lib/jenkins/secrets/initialAdminPassword
+
+  - name: You can find Jenkins admin password under 'debug'
+    command: cat /var/lib/jenkins/secrets/initialAdminPassword
+    register: out
+
+  - debug: var=out.stdout_lines
+
+
+- name: Start the Docker installation steps
+  hosts: docker-server
+  become: yes
+  become_method: sudo
+  gather_facts: no
+
+  tasks:
+
+  - name: Update 'apt' repository with latest versions of packages
+    apt:
+      update_cache: yes
+
+  - name: install docker prerequisite packages
+    apt:
+      name: ['ca-certificates', 'curl', 'gnupg', 'lsb-release']
+      update_cache: yes
+      state: latest
+
+  - name: Install the docker apt repository key
+    apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
+    become: yes
+
+  - name: Configure the apt repository
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu bionic stable
+      state: present
+    become: yes
+
+  - name: Update 'apt' repository
+    apt:
+      update_cache: yes
+
+  - name: Install Docker packages
+    apt:
+      name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+      update_cache: yes
+    become: yes
+
+  - name: Install jdk17 in Docker server. Maven needs this.
+    apt:
+      name: openjdk-17-jre-headless
+      update_cache: yes
+    become: yes
+
+  - name: Start Docker service
+    service:
+      name: docker
+      state: started
+      enabled: yes
+
+  - lineinfile:
+       dest: /lib/systemd/system/docker.service
+       regexp: '^ExecStart='
+       line: 'ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock'
+
+  - name: Reload systemd
+    command: systemctl daemon-reload
+
+  - name: docker restart
+    service:
+      name: docker
+      state: restarted
+...
+```
+#### Step-03: Run the above playbook to deploy the packages onto target servers.
 ```
 ansible-playbook DevOpsSetup.yml
 ```
