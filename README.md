@@ -840,6 +840,10 @@ cat /etc/tomcat9/server.xml
 ```
 sudo chmod 766 /etc/tomcat9/server.xml
 ```
+3. Now Install Default JDK tomcat requires it.
+```
+sudo apt-get install default-jdk
+```
 Now restart the system for the changes to take effect
 ```
 sudo service tomcat9 restart
@@ -849,7 +853,7 @@ sudo service tomcat9 status
 ```
 **To exit**, press **Ctrl+C**
 
-3. Once the Tomcat service restart is successful, go to your web browser and enter **Jenkins Server's Public IP address** followed by **9999** port.
+4. Once the Tomcat service restart is successful, go to your web browser and enter **Jenkins Server's Public IP address** followed by **9999** port.
 
    (Example: **http://< Jenkins Public IP >:9999**     (Or)     **http://184.72.112.155:9999**)
 
