@@ -749,6 +749,13 @@ ansible docker-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu
    
    </details>
 
+2. Now `SSH` from `Jenkins Server` ---> `Docker Server` and from `Docker Server` ---> `Jenkins Server`
+```
+ssh ubuntu@<Public IP of Docker>
+```
+```
+ssh ubuntu@<Public IP of Jenkins>
+```
 #### Step-01:
 
 1. Go to the **Web Browser** and open a new tab then enter the URL as shown:
