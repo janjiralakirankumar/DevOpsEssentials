@@ -697,6 +697,9 @@ git push origin master
 
 (**Note:** PAT is invisible when you paste)
 
+### Important Note:
+*  Once the Java code is pushed from local repo of git to github's helloworld repository in pom.xml file change the version to `3.3.2`
+
 #### =============================END of LAB-02=============================
 ---
 ## Lab 3: Configuring Jenkins server and Installing Tomcat onto Jenkin's Server for Deploying our Application.
@@ -715,6 +718,9 @@ cd ~
 ```
 ```
 ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa dest=/home/ubuntu/.ssh/id_rsa" -b
+```
+```
+ansible jenkins-server -m copy -a "src=/home/ubuntu/.ssh/id_rsa.pub dest=/home/ubuntu/.ssh/id_rsa.pub" -b
 ```
   
    <details>
@@ -956,10 +962,9 @@ In this lab, you will set up a `Docker Server` as a `Jenkin's Slave,`and `build 
    * Then in the next window, in kind select **SSH username with private key** (Give username as `ubuntu`),
    * In **Private Key** Select **Enter directly**
    
-   **Note:** To get the `Private Key` go to `Anchor Server` (Not Jenkins/Docker) and Execute the below command:
+   **Note:** To get the `Private Key` go to `Jenkins Server` and Execute the below command:
       ```
-      cd ~/.ssh
-      cat id_rsa
+      cat /home/ubuntu/.ssh/id_rsa
       ```
      (Copy the entire content of the Private Key, including the **First and Last line** till `5 hyphens` only.)
      
