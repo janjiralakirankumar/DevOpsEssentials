@@ -93,8 +93,15 @@ sudo apt-get update
 ```
 sudo apt-get install python3-pip -y
 ```
+Installing `AWS CLI`
 ```
-sudo pip3 install awscli boto boto3 ansible
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+```
+Installing Ansible
+```
+sudo apt-get install ansible -y
 ```
 For Authentication with AWS we need to provide `IAM User's CLI Credentials`
 ```
