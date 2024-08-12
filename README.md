@@ -538,7 +538,7 @@ sudo apt install git -y
 ```
 Download the **Java Code** that we are going to use in the CICD pipeline.
 ```
-wget https://devops-e-e.s3.ap-south-1.amazonaws.com/hello-world-master.zip
+wget https://github.com/janjiralakirankumar/DevOpsEssentials/blob/master/hello-world-master.zip
 ```
 ```
 unzip hello-world-master.zip
