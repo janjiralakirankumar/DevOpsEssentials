@@ -348,6 +348,10 @@ mkdir ansible && cd ansible
 vi DevOpsSetup.yml
 ```
 * Copy and paste the below code and save it.
+
+<details>
+  <summary>Click to copy the script</summary>
+
 ```
 ---
 - name: Start installing Jenkins pre-requisites before installing Jenkins
@@ -468,6 +472,9 @@ vi DevOpsSetup.yml
       state: restarted
 ...
 ```
+
+</details>
+
 #### Step-03: Run the above playbook to deploy the packages onto target servers.
 ```
 ansible-playbook DevOpsSetup.yml
